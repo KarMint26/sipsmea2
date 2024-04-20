@@ -14,17 +14,25 @@
             <thead>
                 <tr class="text-center">
                     <th class="col col-md-1">No</th>
-                    <th class="col col-md-2">Nama Tempat</th>
-                    <th class="col col-md-3">Lokasi</th>
-                    <th class="col col-md-1">Telepon</th>
-                    <th class="col col-md-1">Jam Buka</th>
-                    <th class="col col-md-1">Rating</th>
-                    <th class="col col-md-1">Daya Tampung</th>
-                    <th class="col col-md-1">Akses Jalan</th>
+                    <th class="col col-md-2 sort @if ($sortColumn == 'title') {{ $sortDirection }} @endif"
+                        wire:click="sort('title')">Nama Tempat</th>
+                    <th class="col col-md-4 sort @if ($sortColumn == 'location') {{ $sortDirection }} @endif"
+                        wire:click="sort('location')">Lokasi</th>
+                    <th class="col col-md-1 sort @if ($sortColumn == 'telephone') {{ $sortDirection }} @endif"
+                        wire:click="sort('telephone')">Telepon</th>
+                    <th class="col col-md-1 sort @if ($sortColumn == 'open_time') {{ $sortDirection }} @endif"
+                        wire:click="sort('open_time')">Jam Buka</th>
+                    <th class="col col-md-1 sort @if ($sortColumn == 'rating') {{ $sortDirection }} @endif"
+                        wire:click="sort('rating')">Rating</th>
+                    <th class="col col-md-1 sort @if ($sortColumn == 'daya_tampung') {{ $sortDirection }} @endif"
+                        wire:click="sort('daya_tampung')">Daya Tampung</th>
+                    <th class="col col-md-1 sort @if ($sortColumn == 'akses_jalan') {{ $sortDirection }} @endif"
+                        wire:click="sort('akses_jalan')">Akses Jalan</th>
+                    <th class="col col-md-1 sort @if ($sortColumn == 'status') {{ $sortDirection }} @endif"
+                        wire:click="sort('status')">Status</th>
                     <th class="col col-md-1">Link Gmaps</th>
                     <th class="col col-md-1">Gambar</th>
-                    <th class="col col-md-1">Status</th>
-                    <th class="col col-md-2">Aksi</th>
+                    <th class="col col-md-4">Aksi</th>
                 </tr>
             </thead>
             <tbody>
@@ -39,30 +47,32 @@
                         <td class="text-center">{{ $value->daya_tampung }}</td>
                         <td class="text-center">{{ $value->akses_jalan }}</td>
                         <td class="text-center">
-                            <a href="{{ $value->link_gmaps }}" target="_blank" style="color: var(--primaryColor)">Google
+                            {{ $value->status }}
+                        </td>
+                        <td class="text-center">
+                            <a href="{{ $value->link_gmaps }}" target="_blank"
+                                style="color: var(--primaryColor)">Google
                                 Maps</a>
                         </td>
                         <td class="text-center">
                             <a href="{{ $value->image_url }}" target="_blank">
                                 <img src="{{ $value->image_url }}" width="90" height="70" alt="image-place"></a>
                         </td>
-                        <td class="text-center"
-                            style="color: #fff; padding: 0.5rem 0.85rem; {{ $value->status == 'aktif' ? 'background-color: green;' : 'background-color: red;' }}">
-                            {{ $value->status }}
-                        </td>
+
                         <td class="action-field">
                             <a wire:click="edit({{ $value->id }})" data-toggle="modal" data-target="#editModal"
                                 class="btn btn-warning btn-sm"><i class="fas fa-edit"></i> Edit</a>
-                            <a wire:click="switch_status({{ $value->id }}, {{ $value->status }})" data-toggle="modal"
-                                data-target="#deleteModal"
-                                class="btn btn-{{ $value->status == 'aktif' ? 'primary' : 'danger' }} btn-sm"><i
-                                    class="fas fa-trash"></i>
-                                {{ $value->status == 'aktif' ? 'Nonaktif' : 'Aktif' }}</a>
+                            <button wire:click="switch_status({{ $value->id }}, '{{ $value->status }}')"
+                                class="btn btn-{{ $value->status == 'aktif' ? 'primary' : 'danger' }} btn-sm">
+                                <i class="fas fa-adjust"></i>
+                                {{ $value->status == 'aktif' ? 'Aktif' : 'Nonaktif' }}
+                            </button>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
+        <div>{{ $peminat }}</div>
     </div>
     {{ $dataPlaces->links() }}
 
@@ -124,6 +134,27 @@
                                     </div>
                                 @endif
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="rating">Rating</label>
+                                <input placeholder="5.00" type="text" class="form-control" id="rating"
+                                    wire:model="rating">
+                                @if ($errors->has('rating'))
+                                    <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('rating') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="akses_jalan">Akses Jalan</label>
+                                <input placeholder="5" type="number" class="form-control" id="akses_jalan"
+                                    wire:model="akses_jalan">
+                                @if ($errors->has('akses_jalan'))
+                                    <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                        <i
+                                            class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('akses_jalan') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -138,6 +169,19 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="daya_tampung">Daya Tampung</label>
+                                <input placeholder="5" type="number" class="form-control" id="daya_tampung"
+                                    wire:model="daya_tampung">
+                                @if ($errors->has('daya_tampung'))
+                                    <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                        <i
+                                            class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('daya_tampung') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
                                 <label for="image_url">Link Gambar</label>
                                 <input
                                     placeholder="https://lh5.googleusercontent.com/p/AF1QipMllT2eXSMUXTqPdWGRT37ccunJdTniXq3v-GGg=w426-h240-k-no"
@@ -222,6 +266,27 @@
                                     </div>
                                 @endif
                             </div>
+                            <div class="form-group col-md-6">
+                                <label for="rating">Rating</label>
+                                <input placeholder="5" type="number" class="form-control" id="rating"
+                                    wire:model="rating">
+                                @if ($errors->has('rating'))
+                                    <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                        <i class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('rating') }}
+                                    </div>
+                                @endif
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="akses_jalan">Akses Jalan</label>
+                                <input placeholder="5" type="number" class="form-control" id="akses_jalan"
+                                    wire:model="akses_jalan">
+                                @if ($errors->has('akses_jalan'))
+                                    <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                        <i
+                                            class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('akses_jalan') }}
+                                    </div>
+                                @endif
+                            </div>
                         </div>
                         <div class="form-row">
                             <div class="form-group col-md-6">
@@ -236,6 +301,19 @@
                                 @endif
                             </div>
                             <div class="form-group col-md-6">
+                                <label for="daya_tampung">Daya Tampung</label>
+                                <input placeholder="5" type="number" class="form-control" id="daya_tampung"
+                                    wire:model="daya_tampung">
+                                @if ($errors->has('daya_tampung'))
+                                    <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                        <i
+                                            class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('daya_tampung') }}
+                                    </div>
+                                @endif
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-12">
                                 <label for="image_url">Link Gambar</label>
                                 <input placeholder="link gambar..." type="text" class="form-control"
                                     id="image_url" wire:model="image_url">
@@ -272,15 +350,6 @@
             $('#storeModal').modal('hide');
         });
 
-        $wire.on('delete', () => {
-            toastr.options = {
-                "progressBar": true,
-                "closeButton": true,
-            }
-            toastr.success("Data berhasil dihapus");
-            $('#deleteModal').modal('hide');
-        });
-
         $wire.on('update', () => {
             toastr.options = {
                 "progressBar": true,
@@ -288,6 +357,14 @@
             }
             toastr.success("Data berhasil diupdate");
             $('#editModal').modal('hide');
+        });
+
+        $wire.on('ss', () => {
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true,
+            }
+            toastr.success("Update status berhasil");
         });
     </script>
 @endscript

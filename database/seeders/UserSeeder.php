@@ -21,10 +21,10 @@ class UserSeeder extends Seeder
          */
         // User::create([
         //     [
-        //         "name" => "admin",
-        //         "username" => "admin",
-        //         "password" => bcrypt("glr413fv37"),
-        //         "role" => "admin",
+                // "name" => "admin",
+                // "username" => "admin",
+                // "password" => bcrypt("glr413fv37"),
+                // "role" => "admin",
         //     ],
         //     [
         //         "name" => "Febri Fiana",
@@ -34,11 +34,19 @@ class UserSeeder extends Seeder
         //     ]
         // ]);
 
-        User::create([
-            "name" => "Febri Fiana",
-            "username" => "16517",
-            "password" => bcrypt("hgu7lr9z"),
-            "role" => "siswa",
+        User::insert([
+            [
+                "name" => "admin",
+                "username" => "admin",
+                "password" => bcrypt("glr413fv37"),
+                "role" => "admin",
+            ],
+            [
+                "name" => "Febri Fiana",
+                "username" => "16517",
+                "password" => bcrypt("hgu7lr9z"),
+                "role" => "siswa",
+            ]
         ]);
     }
 }

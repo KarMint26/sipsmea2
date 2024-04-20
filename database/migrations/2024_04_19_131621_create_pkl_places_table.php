@@ -22,7 +22,7 @@ return new class extends Migration
             $table->decimal('rating', 2, 2)->default(0);
             $table->integer('daya_tampung')->default(0);
             $table->integer('akses_jalan')->default(0);
-            $table->enum('status', ['aktif', 'nonaktif']);
+            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->timestamps();
         });
     }

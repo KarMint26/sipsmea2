@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('username');
             $table->string('password');
-            $table->enum('role', ['admin', 'siswa']);
+            $table->enum('role', ['admin', 'siswa'])->default('siswa');
             $table->decimal('w1', 2, 2)->default(0);
             $table->decimal('w2', 2, 2)->default(0);
             $table->decimal('w3', 2, 2)->default(0);

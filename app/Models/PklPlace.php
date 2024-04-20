@@ -26,4 +26,10 @@ class PklPlace extends Model
     {
         return $this->hasMany(Peminatan::class, 'pkl_place_id');
     }
+
+    protected $casts = [
+        'rating' => 'decimal:2',
+        'daya_tampung' => 'integer',
+        'akses_jalan' => 'integer',
+    ];
 }
