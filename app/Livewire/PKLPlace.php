@@ -2,6 +2,9 @@
 
 namespace App\Livewire;
 
+use App\Models\AcademicYear;
+use App\Models\Peminatan;
+use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\PklPlace as ModelsPKLPlace;
 use Livewire\WithPagination;
@@ -17,7 +20,7 @@ class PKLPlace extends Component
     public $open_time = '';
     public $link_gmaps = '';
     public $image_url = '';
-    public $rating = 0;
+    public $rating = 0.00;
     public $daya_tampung = 0;
     public $akses_jalan = 0;
     public $pkl_place_id = '';
@@ -38,7 +41,7 @@ class PKLPlace extends Component
             "location" => "required|min:5",
             "telephone" => "required|min:8",
             "open_time" => "required|min:4",
-            "rating" => "required",
+            "rating" => "required|numeric",
             "daya_tampung" => "required|numeric",
             "akses_jalan" => "required|numeric",
             "link_gmaps" => "required|min:5",
@@ -63,9 +66,49 @@ class PKLPlace extends Component
             "image_url.min" => "Minimal 5 karakter",
         ]);
         ModelsPKLPlace::create($validated);
+        $this->addDataToPeminatan();
 
         $this->dispatch('store');
         $this->clear();
+    }
+
+    public function addDataToPeminatan()
+    {
+        // Dapatkan tanggal saat ini
+        $currentDate = Carbon::now();
+
+        // Dapatkan tahun akademik yang sesuai dengan tanggal saat ini
+        $academicYear = AcademicYear::where('start_date', '<=', $currentDate)
+            ->where('end_date', '>=', $currentDate)
+            ->first();
+
+        // Jika tidak ada tahun akademik yang sesuai, buat tahun akademik baru
+        if (!$academicYear) {
+            // Dapatkan tahun akademik berdasarkan tahun saat ini
+            $currentYear = $currentDate->year;
+            $nextYear = $currentYear + 1;
+            $academicYearName = $currentYear . '/' . $nextYear;
+
+            // Buat tahun akademik baru dan simpan
+            $academicYear = AcademicYear::create([
+                'academic_year' => $academicYearName,
+                'start_date' => Carbon::create($currentYear, 8, 10), // Tanggal mulai selalu 10 Agustus
+                'end_date' => Carbon::create($nextYear, 8, 10), // Tanggal selesai selalu 10 Agustus tahun berikutnya
+            ]);
+        }
+
+        // Gunakan academic year id yang terkait
+        $academicYearId = $academicYear->id;
+
+        // Pkl Place Id now + 1
+        $lastPklPlaceId = ModelsPKLPlace::max('id');
+
+        // Simpan data ke dalam tabel peminatan
+        Peminatan::create([
+            'peminat' => 0,
+            'pkl_place_id' => $lastPklPlaceId+1,
+            'academic_year_id' => $academicYearId
+        ]);
     }
 
     public function edit($id)
@@ -141,6 +184,9 @@ class PKLPlace extends Component
         $this->open_time = '';
         $this->link_gmaps = '';
         $this->image_url = '';
+        $this->rating = 0.00;
+        $this->daya_tampung = 0;
+        $this->akses_jalan = 0;
     }
 
     public function render()
@@ -154,9 +200,6 @@ class PKLPlace extends Component
             $data = ModelsPKLPlace::orderBy($this->sortColumn, $this->sortDirection)->paginate(5);
         }
 
-        $peminatans = ModelsPKLPlace::find(1)->peminatans;
-        $peminat = $peminatans->isNotEmpty() ? $peminatans->first()->peminat : null;
-
-        return view('livewire.p-k-l-place', ['dataPlaces' => $data, "peminat" => $peminat]);
+        return view('livewire.p-k-l-place', ['dataPlaces' => $data]);
     }
 }

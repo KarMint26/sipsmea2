@@ -72,7 +72,6 @@
                 @endforeach
             </tbody>
         </table>
-        <div>{{ $peminat }}</div>
     </div>
     {{ $dataPlaces->links() }}
 
@@ -136,7 +135,7 @@
                             </div>
                             <div class="form-group col-md-6">
                                 <label for="rating">Rating</label>
-                                <input placeholder="5.00" type="text" class="form-control" id="rating"
+                                <input placeholder="5.00" type="number" class="form-control" id="rating"
                                     wire:model="rating">
                                 @if ($errors->has('rating'))
                                     <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
