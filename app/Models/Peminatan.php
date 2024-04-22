@@ -29,4 +29,8 @@ class Peminatan extends Model
     {
         return $this->hasMany(Alternatif::class, 'peminatan_id');
     }
+
+    protected $casts = [
+        'peminat' => 'integer',
+    ];
 }

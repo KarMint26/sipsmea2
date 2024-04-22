@@ -25,4 +25,9 @@ class Alternatif extends Model
     {
         return $this->belongsTo(User::class, 'user_id');
     }
+
+    protected $casts = [
+        'jarak' => 'integer',
+        'current_peminat' => 'integer',
+    ];
 }

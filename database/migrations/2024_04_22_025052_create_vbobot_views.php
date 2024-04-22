@@ -10,15 +10,14 @@ return new class () extends Migration {
      */
     public function up(): void
     {
-        DB::statement("CREATE VIEW vbobot_views AS (
+        DB::statement("CREATE OR REPLACE VIEW v_bobot AS
             SELECT id,
-                w1/(w1+w2+w3+w4+w5) AS w1,
-                w2/(w1+w2+w3+w4+w5) AS w2,
-                w3/(w1+w2+w3+w4+w5) AS w3,
-                w4/(w1+w2+w3+w4+w5) AS w4,
-                w5/(w1+w2+w3+w4+w5) AS w5
-            FROM users
-        )");
+                w1/(ABS(w1)+ABS(w2)+ABS(w3)+ABS(w4)+ABS(w5)) AS w1,
+                w2/(ABS(w1)+ABS(w2)+ABS(w3)+ABS(w4)+ABS(w5)) AS w2,
+                w3/(ABS(w1)+ABS(w2)+ABS(w3)+ABS(w4)+ABS(w5)) AS w3,
+                w4/(ABS(w1)+ABS(w2)+ABS(w3)+ABS(w4)+ABS(w5)) AS w4,
+                w5/(ABS(w1)+ABS(w2)+ABS(w3)+ABS(w4)+ABS(w5)) AS w5
+            FROM users");
     }
 
     /**
@@ -26,6 +25,6 @@ return new class () extends Migration {
      */
     public function down(): void
     {
-        DB::statement("DROP VIEW IF EXISTS vbobot_views");
+        DB::statement("DROP VIEW IF EXISTS v_bobot");
     }
 };

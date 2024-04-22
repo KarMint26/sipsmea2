@@ -182,6 +182,9 @@
                         </div>
                         <p><i class="bi bi-telephone-fill me-2"></i> {{ $pkl->telephone }}</p>
                         <p><i class="bi bi-clock-fill me-2"></i> {{ $pkl->open_time }}</p>
+                        <p><i class="bi bi-heart-fill me-2"></i> {{ $pkl->peminatans()->first()->peminat }} Peminat</p>
+                        <p><i class="bi bi-people-fill me-2"></i> {{ $pkl->daya_tampung }} Daya Tampung</p>
+                        <p><i class="bi bi-star-fill me-2"></i> {{ $pkl->rating }}</p>
                         <a href="{{ $pkl->link_gmaps }}" target="_blank" class="btn-sip mt-2"><i
                                 class="bi bi-map-fill me-1 me-md-2"></i>
                             Selengkapnya</a>

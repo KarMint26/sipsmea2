@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use App\Models\AcademicYear;
 use App\Models\Peminatan;
+use App\Models\VBobot;
 use Carbon\Carbon;
 use Livewire\Component;
 use App\Models\PklPlace as ModelsPKLPlace;
@@ -66,6 +67,7 @@ class PKLPlace extends Component
             "image_url.min" => "Minimal 5 karakter",
         ]);
         ModelsPKLPlace::create($validated);
+        $this->addDataToPeminatan();
 
         $this->dispatch('store');
         $this->clear();
@@ -76,39 +78,52 @@ class PKLPlace extends Component
         // Dapatkan tanggal saat ini
         $currentDate = Carbon::now();
 
-        // Dapatkan tahun akademik yang sesuai dengan tanggal saat ini
+        // Dapatkan atau buat tahun akademik yang sesuai dengan tanggal saat ini
         $academicYear = AcademicYear::where('start_date', '<=', $currentDate)
             ->where('end_date', '>=', $currentDate)
             ->first();
 
-        // Jika tidak ada tahun akademik yang sesuai, buat tahun akademik baru
         if (!$academicYear) {
-            // Dapatkan tahun akademik berdasarkan tahun saat ini
+            // Buat tahun akademik baru jika tidak ada yang sesuai
             $currentYear = $currentDate->year;
-            $nextYear = $currentYear + 1;
-            $academicYearName = $currentYear . '/' . $nextYear;
+            $nextYear = 0;
+            $academicYearName = 0;
 
-            // Buat tahun akademik baru dan simpan
-            $academicYear = AcademicYear::create([
-                'academic_year' => $academicYearName,
-                'start_date' => Carbon::create($currentYear, 8, 10), // Tanggal mulai selalu 10 Agustus
-                'end_date' => Carbon::create($nextYear, 8, 10), // Tanggal selesai selalu 10 Agustus tahun berikutnya
-            ]);
+            if ($currentDate->month <= 8 && $currentDate->day <= 10){
+                $nextYear = $currentYear - 1;
+                $academicYearName = $nextYear . '/' . $currentYear;
+                $academicYear = AcademicYear::create([
+                    'academic_year' => $academicYearName,
+                    'start_date' => Carbon::create($nextYear, 8, 10),
+                    'end_date' => Carbon::create($currentYear, 8, 10),
+                ]);
+            } else {
+                $nextYear = $currentYear + 1;
+                $academicYearName = $currentYear . '/' . $nextYear;
+                $academicYear = AcademicYear::create([
+                    'academic_year' => $academicYearName,
+                    'start_date' => Carbon::create($currentYear, 8, 10),
+                    'end_date' => Carbon::create($nextYear, 8, 10),
+                ]);
+            }
         }
 
         // Gunakan academic year id yang terkait
         $academicYearId = $academicYear->id;
 
-        // Pkl Place Id now + 1
-        $lastPklPlaceId = ModelsPKLPlace::max('id');
+        // Dapatkan id dari tempat PKL yang baru saja ditambahkan
+        $newPklPlaceId = ModelsPKLPlace::latest()->first()->id;
 
-        // Simpan data ke dalam tabel peminatan
-        Peminatan::create([
-            'peminat' => 0,
-            'pkl_place_id' => $lastPklPlaceId+1,
-            'academic_year_id' => $academicYearId
-        ]);
+        if ($newPklPlaceId) {
+            // Simpan data ke dalam tabel peminatan jika ada id tempat PKL yang baru
+            Peminatan::create([
+                'peminat' => 0,
+                'pkl_place_id' => $newPklPlaceId,
+                'academic_year_id' => $academicYearId,
+            ]);
+        }
     }
+
 
     public function edit($id)
     {
