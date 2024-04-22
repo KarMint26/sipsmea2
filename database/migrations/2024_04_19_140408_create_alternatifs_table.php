@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('alternatifs', function (Blueprint $table) {
             $table->id();
-            $table->decimal('jarak', 2, 2)->default(0);
+            $table->decimal('jarak')->default(0);
             $table->integer('current_peminat')->default(0);
             $table->foreignIdFor(Peminatan::class)->constrained()->cascadeOnDelete();
             $table->foreignIdFor(User::class)->constrained()->cascadeOnDelete();

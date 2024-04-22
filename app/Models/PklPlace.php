@@ -28,7 +28,7 @@ class PklPlace extends Model
     }
 
     protected $casts = [
-        'rating' => 'decimal:2',
+        'rating' => 'integer',
         'daya_tampung' => 'integer',
         'akses_jalan' => 'integer',
     ];

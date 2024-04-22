@@ -19,7 +19,7 @@ return new class extends Migration
             $table->string('open_time');
             $table->string('link_gmaps');
             $table->string('image_url');
-            $table->decimal('rating', 2, 2)->default(0);
+            $table->integer('rating')->default(0);
             $table->integer('daya_tampung')->default(0);
             $table->integer('akses_jalan')->default(0);
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');

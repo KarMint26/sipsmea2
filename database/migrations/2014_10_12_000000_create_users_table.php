@@ -17,11 +17,11 @@ return new class extends Migration
             $table->string('username');
             $table->string('password');
             $table->enum('role', ['admin', 'siswa'])->default('siswa');
-            $table->decimal('w1', 2, 2)->default(0);
-            $table->decimal('w2', 2, 2)->default(0);
-            $table->decimal('w3', 2, 2)->default(0);
-            $table->decimal('w4', 2, 2)->default(0);
-            $table->decimal('w5', 2, 2)->default(0);
+            $table->integer('w1')->default(0);
+            $table->integer('w2')->default(0);
+            $table->integer('w3')->default(0);
+            $table->integer('w4')->default(0);
+            $table->integer('w5')->default(0);
             $table->timestamps();
         });
     }

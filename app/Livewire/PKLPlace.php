@@ -20,7 +20,7 @@ class PKLPlace extends Component
     public $open_time = '';
     public $link_gmaps = '';
     public $image_url = '';
-    public $rating = 0.00;
+    public $rating = 0;
     public $daya_tampung = 0;
     public $akses_jalan = 0;
     public $pkl_place_id = '';
@@ -66,7 +66,6 @@ class PKLPlace extends Component
             "image_url.min" => "Minimal 5 karakter",
         ]);
         ModelsPKLPlace::create($validated);
-        $this->addDataToPeminatan();
 
         $this->dispatch('store');
         $this->clear();
