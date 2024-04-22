@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -26,7 +27,7 @@ class LoginController extends Controller
             'password' => $request->password,
         ];
 
-        if($request->username != 'admin' && $request->password != 'glr413fv37'){
+        if($request->username != 'admin' && $request->password != 'glr413fv37') {
             return redirect('/')->with('error', 'Hanya Admin Yang Dapat Login');
         }
 
@@ -38,13 +39,24 @@ class LoginController extends Controller
     }
     public function student_login(Request $request)
     {
-        // https://sipsmea.techtitans.id/student-login?username=16517&password=hgu7lr9z&role=siswa
-        // http://127.0.0.1/student-login?username=16517&password=hgu7lr9z&role=siswa
+        // https://sipsmea.techtitans.id/student-login?username=16517&password=hgu7lr9z&role=siswa - Tidak Aktif
+        // http://127.0.0.1:8000/student-login?username=16517&password=hgu7lr9z&role=siswa - Tidak Aktif
+
+        // https://sipsmea.techtitans.id/student-login?username=16517&password=hgu7lr9z&role=siswa - Aktif
+        // http://127.0.0.1:8000/student-login?username=17854&password=07VtQ2ebdY509Hbv262&role=siswa - Aktif
+
         $credentials = [
             'username' => $request->username,
             'password' => $request->password,
         ];
-        if($request->role != 'siswa'){
+
+        $userDetail = User::where('username', $request->username)->first();
+
+        if ($userDetail->status != 'aktif') {
+            return redirect('/')->with('error', 'Gagal login, akun tidak aktif');
+        }
+
+        if($request->role != 'siswa') {
             return redirect('/')->with('error', 'Login QR Code Hanya Untuk Siswa');
         }
 

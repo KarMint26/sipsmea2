@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use App\Models\User;
-use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class UserSeeder extends Seeder
 {
@@ -38,13 +38,15 @@ class UserSeeder extends Seeder
             [
                 "name" => "admin",
                 "username" => "admin",
-                "password" => bcrypt("glr413fv37"),
+                "password" => Hash::make("glr413fv37"),
+                "pwd_nohash" => "glr413fv37",
                 "role" => "admin",
             ],
             [
                 "name" => "Febri Fiana",
                 "username" => "16517",
-                "password" => bcrypt("hgu7lr9z"),
+                "password" => Hash::make("hgu7lr9z"),
+                "pwd_nohash" => "hgu7lr9z",
                 "role" => "siswa",
             ]
         ]);

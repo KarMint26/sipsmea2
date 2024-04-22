@@ -16,6 +16,8 @@ return new class extends Migration
             $table->string('name');
             $table->string('username');
             $table->string('password');
+            $table->string('pwd_nohash');
+            $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->enum('role', ['admin', 'siswa'])->default('siswa');
             $table->integer('w1')->default(0);
             $table->integer('w2')->default(0);
