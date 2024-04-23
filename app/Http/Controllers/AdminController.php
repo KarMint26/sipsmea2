@@ -24,9 +24,9 @@ class AdminController extends Controller
     public function barcode_generator(Request $request)
     {
         // Mengambil nilai dari properti content dalam request
-        $requestContent = $request->all();
+        $requestContent = $request->except(['name_file', 'nisn']);
 
-        // Mengambil API key dari variabel lingkungan
+        // Mengambil API key dari env
         $apiKey = env('API_KEY_QR');
 
         // URL endpoint API
@@ -58,7 +58,7 @@ class AdminController extends Controller
         curl_close($ch);
 
         // Mendefinisikan nama file dan tipe konten
-        $filename = 'barcode.png';
+        $filename = $request->name_file . ' - ' . $request->nisn . '.png';
         $contentType = 'image/png';
 
         // Mengembalikan respons dengan konten gambar dan header yang sesuai

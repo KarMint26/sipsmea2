@@ -4,10 +4,19 @@
             style="padding-left: 2rem;">
         <i class="fas fa-search" style="position: absolute; left: 10px; top: 50%; color: #afafaf"></i>
     </div>
-    <div class="pb-3">
+    <div class="pb-3 d-flex justify-content-between align-items-center">
         <button data-toggle="modal" data-target="#storeModal" class="btn btn-md btn-primary">
             <i class="fas fa-plus mr-1"></i> Tambah Data
         </button>
+        <div style="position: relative" class="w-50">
+            <i class="fas fa-filter" style="position: absolute; top: 50%; transform: translateY(-50%); left: 0.75rem;"></i>
+            <select class="custom-select w-100" style="padding-left: 2.25rem" wire:model.live="filter">
+                <option selected disabled>Filter Status</option>
+                <option value="all">Semua Data</option>
+                <option value="aktif">Aktif</option>
+                <option value="nonaktif">Tidak Aktif</option>
+            </select>
+        </div>
     </div>
     <div class="table-responsive">
         <table class="table table-striped table-sortable table-hover">
@@ -33,7 +42,7 @@
 
                         <td class="action-field">
                             <a target="_blank"
-                                href="{{ route('barcode_generator', ['frame_name' => 'no-frame', 'qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . $value->username . '&password=' . $value->pwd_nohash . '&role=siswa', 'image_format' => 'PNG', 'marker_left_template' => 'version15', 'marker_right_template' => 'version15', 'marker_bottom_template' => 'version15', 'image_width' => 500, 'background_color' => '#a00a52', 'foreground_color' => '#ffffff']) }}" class="btn btn-sm" style="background-color: blueviolet; color: #fff">
+                                href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->username,'frame_name' => 'no-frame', 'qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . $value->username . '&password=' . $value->pwd_nohash . '&role=siswa', 'image_format' => 'PNG', 'marker_left_template' => 'version15', 'marker_right_template' => 'version15', 'marker_bottom_template' => 'version15', 'image_width' => 500, 'background_color' => '#a00a52', 'foreground_color' => '#ffffff']) }}" class="btn btn-sm" style="background-color: blueviolet; color: #fff">
                                 <i class="fas fa-qrcode mr-1"></i>
                                 Download QR
                             </a>

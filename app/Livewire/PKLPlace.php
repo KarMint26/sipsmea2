@@ -28,6 +28,7 @@ class PKLPlace extends Component
     public $keyword = '';
     public $sortColumn = 'title';
     public $sortDirection = 'asc';
+    public $filter = 'all';
 
     public function sort($columnName)
     {
@@ -206,12 +207,30 @@ class PKLPlace extends Component
     public function render()
     {
         if($this->keyword != null) {
-            $data = ModelsPKLPlace::where('title', 'like', '%' . $this->keyword . '%')
-                ->orWhere('location', 'like', '%' . $this->keyword . '%')
-                ->orWhere('telephone', 'like', '%' . $this->keyword . '%')
-                ->orWhere('open_time', 'like', '%' . $this->keyword . '%')->paginate(5);
+            $data = ModelsPKLPlace::where(function ($query) {
+                $query->where('title', 'like', '%' . $this->keyword . '%')
+                    ->orWhere('location', 'like', '%' . $this->keyword . '%')
+                    ->orWhere('telephone', 'like', '%' . $this->keyword . '%')
+                    ->orWhere('open_time', 'like', '%' . $this->keyword . '%');
+            })
+            ->where(function ($query) {
+                if($this->filter != 'all') {
+                    $query->where('status', 'like', $this->filter . '%');
+                }
+            })
+            ->paginate(10);
         } else {
-            $data = ModelsPKLPlace::orderBy($this->sortColumn, $this->sortDirection)->paginate(5);
+            if($this->filter != null && $this->filter != '') {
+                if($this->filter != 'all') {
+                    $data = ModelsPKLPlace::where('status', 'like', $this->filter . '%')
+                            ->orderBy($this->sortColumn, $this->sortDirection)
+                            ->paginate(10);
+                } else {
+                    $data = ModelsPKLPlace::orderBy($this->sortColumn, $this->sortDirection)->paginate(5);
+                }
+            } else {
+                $data = ModelsPKLPlace::orderBy($this->sortColumn, $this->sortDirection)->paginate(5);
+            }
         }
 
         return view('livewire.p-k-l-place', ['dataPlaces' => $data]);

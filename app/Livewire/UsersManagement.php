@@ -6,15 +6,20 @@ use App\Models\User;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Str;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class UsersManagement extends Component
 {
+    use WithPagination;
+    protected $paginationTheme = 'bootstrap';
+
     public $name = '';
     public $username = '';
     public $user_id = '';
     public $keyword = '';
     public $sortColumn = 'name';
     public $sortDirection = 'asc';
+    public $filter = 'all';
 
     public function generateRandomPassword()
     {
@@ -96,11 +101,29 @@ class UsersManagement extends Component
     public function render()
     {
         if($this->keyword != null) {
-            $data = User::where('id', '>', '1')
-                ->orWhere('name', 'like', '%' . $this->keyword . '%')
-                ->orWhere('username', 'like', '%' . $this->keyword . '%')->paginate(5);
+            $data = User::where(function ($query) {
+                $query->where('name', 'like', '%' . $this->keyword . '%')
+                      ->orWhere('username', 'like', '%' . $this->keyword . '%');
+            })
+            ->where(function ($query) {
+                if($this->filter != 'all') {
+                    $query->where('status', 'like', $this->filter . '%');
+                }
+            })
+            ->where('id', '<>', 1)
+            ->paginate(10);
         } else {
-            $data = User::where('id', '>', '1')->orderBy($this->sortColumn, $this->sortDirection)->paginate(5);
+            if($this->filter != null && $this->filter != '') {
+                if($this->filter != 'all') {
+                    $data = User::where('id', '>', 1)->where('status', 'like', $this->filter . '%')
+                            ->orderBy($this->sortColumn, $this->sortDirection)
+                            ->paginate(10);
+                } else {
+                    $data = User::where('id', '>', 1)->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
+                }
+            } else {
+                $data = User::where('id', '>', 1)->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
+            }
         }
 
         return view('livewire.users-management', ['dataSiswa' => $data]);

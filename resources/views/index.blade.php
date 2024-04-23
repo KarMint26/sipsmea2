@@ -95,7 +95,7 @@
                             <a class="nav-link" href="/">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/#list_pkl">Daftar Tempat PKL</a>
+                            <a class="nav-link dtp" href="/#list_pkl">Daftar Tempat PKL</a>
                         </li>
                         @if (Auth::user() && Auth::user()->role == 'admin')
                             <li class="nav-item dropdown mt-2">
@@ -222,6 +222,12 @@
             toastr.error("{{ session('error') }}")
         </script>
     @endif
+
+    <script>
+        $('.dtp').click(() => {
+            $('#offcanvasNavbar').offcanvas('hide');
+        })
+    </script>
 </body>
 
 </html>
