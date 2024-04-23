@@ -53,7 +53,7 @@
     {{ $dataSiswa->links() }}
 
     <!-- Modal Store Data -->
-    <div wire:ignore.self class="modal fade" id="storeModal" tabindex="-1" aria-labelledby="storeModalLabel"
+    <div wire:ignore.self class="modal fade" id="storeModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="storeModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">
@@ -101,7 +101,7 @@
     </div>
 
     <!-- Modal Edit Data -->
-    <div wire:ignore.self class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel"
+    <div wire:ignore.self class="modal fade" id="editModal" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="editModalLabel"
         aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
             <div class="modal-content">

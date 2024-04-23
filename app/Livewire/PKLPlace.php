@@ -89,7 +89,7 @@ class PKLPlace extends Component
             $nextYear = 0;
             $academicYearName = 0;
 
-            if ($currentDate->month <= 8 && $currentDate->day <= 10){
+            if ($currentDate->month <= 8){
                 $nextYear = $currentYear - 1;
                 $academicYearName = $nextYear . '/' . $currentYear;
                 $academicYear = AcademicYear::create([
