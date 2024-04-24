@@ -43,7 +43,7 @@ class UserSeeder extends Seeder
                 "role" => "admin",
             ],
             [
-                "name" => "Febri Fiana",
+                "name" => "Demo5",
                 "username" => "16517",
                 "password" => Hash::make("hgu7lr9z"),
                 "pwd_nohash" => "hgu7lr9z",
