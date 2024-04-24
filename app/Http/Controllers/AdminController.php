@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PklPlace;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
 {
     public function index()
     {
-        return view('admin.dashboard');
+        $tempat_pkl_aktif = PklPlace::where('status', 'aktif')->count();
+        $tempat_pkl_nonaktif = PklPlace::where('status', 'nonaktif')->count();
+        $users_aktif = User::where('status', 'aktif')->count();
+        $users_nonaktif = User::where('status', 'nonaktif')->count();
+        return view('admin.dashboard', ["tempat_pkl_aktif" => $tempat_pkl_aktif, "tempat_pkl_nonaktif" => $tempat_pkl_nonaktif, "users_aktif" => $users_aktif, "users_nonaktif" => $users_nonaktif]);
     }
 
     public function tempat_pkl()
