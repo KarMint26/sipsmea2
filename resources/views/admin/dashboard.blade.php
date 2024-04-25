@@ -1,7 +1,7 @@
 @extends('layouts.default_dashboard')
 
-@section('title', 'Dashboard')
-@section('subtitle', 'Dashboard')
+@section('title', 'DASHBOARD')
+@section('subtitle', 'DASHBOARD')
 
 @section('content')
     <!-- Small boxes (Stat box) -->

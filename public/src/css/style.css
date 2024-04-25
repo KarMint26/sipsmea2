@@ -6,6 +6,23 @@ html {
     --primaryColor: #a00a52;
 }
 
+.border-sip {
+    border: 1px solid var(--primaryColor);
+}
+
+.cb:checked {
+    background-color: var(--primaryColor) !important;
+    border-color: var(--primaryColor) !important;
+}
+
+.text-primary-sip {
+    color: var(--primaryColor);
+}
+
+.bg-primary-sip {
+    background-color: var(--primaryColor);
+}
+
 .navbar {
     background-color: #fff;
 }
@@ -324,3 +341,25 @@ html {
         flex-direction: row;
     }
 }
+
+/* SPK */
+
+.title-siswa-1 {
+    font-size: 2rem;
+}
+
+@media screen and (min-width: 768px) {
+    .title-siswa-1 {
+        font-size: 2.5rem;
+    }
+    .fcl {
+        width: 70%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    .title-siswa-1 {
+        font-size: 3rem;
+    }
+}
+

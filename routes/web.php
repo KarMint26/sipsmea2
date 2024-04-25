@@ -34,6 +34,18 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/student', [StudentController::class, 'index'])->name('student.index');
+    Route::post('/student', [StudentController::class, 'send_pkl'])->name('student.send_pkl');
+
+    // Nilai Alternatif
+    Route::get('/student/alternatif', [StudentController::class, 'alternatif_view'])->name('student.alternatif_view');
+    Route::post('/student/alternatif', [StudentController::class, 'alternatif_post'])->name('student.alternatif_post');
+    Route::post('/student/alternatif_back', [StudentController::class, 'alternatif_back'])->name('student.alternatif_back');
+
+    // Bobot
+    Route::get('/student/bobot', [StudentController::class, 'bobot_view'])->name('student.bobot_view');
+
+    // Hasil SPK
+    Route::get('/student/result', [StudentController::class, 'result_view'])->name('student.result_view');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
