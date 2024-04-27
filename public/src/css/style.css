@@ -348,12 +348,48 @@ html {
     font-size: 2rem;
 }
 
+.text-result {
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.text-name {
+    font-size: 1rem;
+}
+
+.floating_btn {
+    padding: 0.5rem 1rem;
+    position: fixed;
+    text-decoration: none;
+    bottom: 1rem;
+    right: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    background-color: var(--primaryColor);
+    color: #fff;
+    font-size: 0.85rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 @media screen and (min-width: 768px) {
     .title-siswa-1 {
         font-size: 2.5rem;
     }
+    .text-result {
+        font-size: 1.5rem;
+    }
+    .text-name {
+        font-size: 1.5rem;
+    }
     .fcl {
         width: 70%;
+    }
+    .floating_btn {
+        font-size: 1.15rem;
     }
 }
 

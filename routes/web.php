@@ -43,9 +43,11 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
 
     // Bobot
     Route::get('/student/bobot', [StudentController::class, 'bobot_view'])->name('student.bobot_view');
+    Route::post('/student/bobot', [StudentController::class, 'bobot_post'])->name('student.bobot_post');
 
     // Hasil SPK
     Route::get('/student/result', [StudentController::class, 'result_view'])->name('student.result_view');
+    Route::get('/download-pdf', [StudentController::class, 'download_pdf'])->name('download_pdf');
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {

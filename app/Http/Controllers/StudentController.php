@@ -5,10 +5,12 @@ namespace App\Http\Controllers;
 use App\Models\Alternatif;
 use App\Models\Peminatan;
 use App\Models\PklPlace;
+use App\Models\User;
 use App\Models\VAlternatif;
 use App\Models\VBobot;
 use App\Models\VSawHasil;
 use App\Models\VWpHasil;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,10 +22,10 @@ class StudentController extends Controller
         // proteksi halaman jika sudah ada hasil
         $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
                         ->whereNotNull('hasil')
-                        ->get(); // atau first() jika Anda hanya ingin satu record
+                        ->get();
 
         if (!$vsaw_hasils->isEmpty()) {
-            return redirect()->route('student.result_view')->with('message', 'Anda tidak dapat kembali ke halaman sebelumnya');
+            return redirect()->route('student.result_view')->with('message', 'Berhasil menampilkan hasil perhitungan SPK');
         }
 
         // proteksi halaman jika sudah ada jarak
@@ -38,7 +40,7 @@ class StudentController extends Controller
         // proteksi halaman jika sudah ada alternatif
         $alt_value = Alternatif::where('user_id', Auth::user()->id)->get();
 
-        if(!$alt_value->isEmpty()){
+        if(!$alt_value->isEmpty()) {
             return redirect()->route('student.alternatif_view')->with('message', 'Anda tidak dapat kembali ke halaman sebelumnya');
         }
 
@@ -78,10 +80,10 @@ class StudentController extends Controller
         // proteksi halaman jika sudah ada hasil
         $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
                         ->whereNotNull('hasil')
-                        ->get(); // atau first() jika Anda hanya ingin satu record
+                        ->get();
 
         if (!$vsaw_hasils->isEmpty()) {
-            return redirect()->route('student.result_view')->with('message', 'Anda tidak dapat kembali ke halaman sebelumnya');
+            return redirect()->route('student.result_view')->with('message', 'Berhasil menampilkan hasil perhitungan SPK');
         }
 
         // proteksi halaman jika sudah ada jarak
@@ -96,7 +98,7 @@ class StudentController extends Controller
         // proteksi halaman jika belum ada alternatif
         $alt_value = Alternatif::where('user_id', Auth::user()->id)->get();
 
-        if($alt_value->isEmpty()){
+        if($alt_value->isEmpty()) {
             return redirect()->route('student.index')->with('message', 'Anda tidak dapat mengakses halaman selanjutnya');
         }
 
@@ -131,10 +133,10 @@ class StudentController extends Controller
         // proteksi halaman jika sudah ada hasil
         $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
                         ->whereNotNull('hasil')
-                        ->get(); // atau first() jika Anda hanya ingin satu record
+                        ->get();
 
         if (!$vsaw_hasils->isEmpty()) {
-            return redirect()->route('student.result_view')->with('message', 'Anda tidak dapat kembali ke halaman sebelumnya');
+            return redirect()->route('student.result_view')->with('message', 'Berhasil menampilkan hasil perhitungan SPK');
         }
 
         // proteksi halaman jika belum ada jarak
@@ -149,36 +151,50 @@ class StudentController extends Controller
         return view('siswa.bobot');
     }
 
+    public function bobot_post(Request $request)
+    {
+
+    }
+
     // Hasil SAW dan WP
     public function result_view(Request $request)
     {
         // proteksi halaman jika belum ada hasil
         $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
                         ->whereNotNull('hasil')
-                        ->get(); // atau first() jika Anda hanya ingin satu record
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
+        $vwp_hasils = VWpHasil::where('id', Auth::user()->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
+        $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
 
         if ($vsaw_hasils->isEmpty()) {
             return redirect()->back()->with('message', 'Hasil belum dapat dimunculkan');
         }
 
-        return view('siswa.result');
+        return view('siswa.result', ["saw" => $vsaw_hasils, "wp" => $vwp_hasils, "timestamp" => $timestamp]);
     }
 
-    public function redirect_bobot()
+    public function download_pdf(Request $request)
     {
-        // proteksi halaman dari /student/bobot
-        $bobot_user = VBobot::where('id', Auth::user()->id)
-                    ->where(function ($query) {
-                        $query->whereNull('w1')
-                              ->orWhereNull('w2')
-                              ->orWhereNull('w3')
-                              ->orWhereNull('w4')
-                              ->orWhereNull('w5');
-                    })
-                    ->first();
+        $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
 
-        if ($bobot_user) {
-            return redirect()->route('student.bobot_view')->with('message', 'anda tidak dapat kembali ke halaman sebelumnya selain bobot');
-        }
+        $vwp_hasils = VWpHasil::where('id', Auth::user()->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+        $name = Auth::user()->name;
+        $nis = Auth::user()->username;
+        $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
+
+        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "timestamp" => $timestamp]);
+        return $pdf->download($name . ' - ' . $nis . '.pdf');
     }
 }
