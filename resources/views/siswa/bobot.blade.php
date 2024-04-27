@@ -73,6 +73,16 @@
         </script>
     @endif
 
+    @if (session('success'))
+        <script>
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true,
+            }
+            toastr.success("{{ session('success') }}")
+        </script>
+    @endif
+
     @if ($errors->any())
         <script>
             toastr.options = {

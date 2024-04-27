@@ -71,7 +71,7 @@ class StudentController extends Controller
             ]);
         }
 
-        return redirect()->route('student.alternatif_view');
+        return redirect()->route('student.alternatif_view')->with('success', 'Berhasil memilih Tempat PKL');
     }
 
     // Alternatif
@@ -109,7 +109,25 @@ class StudentController extends Controller
 
     public function alternatif_post(Request $request)
     {
+        $data_alternatif = Alternatif::where('user_id', Auth::user()->id)->get();
+        $rules = [];
+        $messages = [];
 
+        foreach ($request->alt as $key => $value) {
+            $rules["alt.{$key}"] = 'required|numeric';
+            $messages["alt.{$key}.required"] = "Jarak wajib diisi";
+            $messages["alt.{$key}.numeric"] = "Jarak harus berupa angka";
+        }
+
+        $validated = $request->validate($rules, $messages);
+
+        for ($i=0; $i < 5; $i++) {
+            $data_alternatif[$i]->update([
+                'jarak' => $validated['alt'][$i]
+            ]);
+        }
+
+        return redirect()->route('student.bobot_view')->with('success', 'Berhasil mengisi jarak');
     }
 
     public function alternatif_back(Request $request)
@@ -169,7 +187,7 @@ class StudentController extends Controller
         ]);
 
         $newData = User::where('id', Auth::user()->id)->update($validated);
-        if($newData){
+        if($newData) {
             return redirect()->route('student.result_view')->with('message', 'Berhasil menampilkan hasil perhitungan SPK');
         }
     }
