@@ -153,7 +153,25 @@ class StudentController extends Controller
 
     public function bobot_post(Request $request)
     {
+        $rules = [
+            "w1" => "required",
+            "w2" => "required",
+            "w3" => "required",
+            "w4" => "required",
+            "w5" => "required"
+        ];
+        $validated = $request->validate($rules, [
+            "w1.required" => "Bobot jarak wajib diisi",
+            "w2.required" => "Bobot rating wajib diisi",
+            "w3.required" => "Bobot daya tampung wajib diisi",
+            "w4.required" => "Bobot akses jalan wajib diisi",
+            "w5.required" => "Bobot peminat wajib diisi",
+        ]);
 
+        $newData = User::where('id', Auth::user()->id)->update($validated);
+        if($newData){
+            return redirect()->route('student.result_view')->with('message', 'Berhasil menampilkan hasil perhitungan SPK');
+        }
     }
 
     // Hasil SAW dan WP

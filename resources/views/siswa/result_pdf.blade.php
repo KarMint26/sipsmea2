@@ -49,9 +49,14 @@
 </head>
 
 <body>
+    <div class="m-auto text-center mb-5">
+        <h1><span style="color: #a00a52;">SIP</span> SMEA</h1>
+        <h3>Sistem Pendukung Keputusan Pemilihan Tempat PKL</h3>
+    </div>
+
     <div>
-        <div class="text-name mb-3">Nama : {{ $name }}</div>
-        <div class="text-name">NIS : {{ $nis }}</div>
+        <div class="text-name mb-3">Nama Siswa : {{ $name }}</div>
+        <div class="text-name">NIS Siswa : {{ $nis }}</div>
     </div>
 
     <div class="text-center fw-semibold text-result mt-5">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>

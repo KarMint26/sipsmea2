@@ -9,6 +9,9 @@
         <div class="mt-3">
             {{ $value->pkl_place()->first()->title }}
             <div>
+                Jarak {{ $value->alternatifs()->jarak }}
+            </div>
+            <div>
                 Rating {{ $value->pkl_place()->first()->rating }}
             </div>
             <div>

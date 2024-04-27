@@ -17,7 +17,7 @@
                 @foreach ($saw as $key => $value)
                     <tr class="text-center">
                         <td>
-                            {{ $key+1 }}
+                            {{ $key + 1 }}
                         </td>
                         <td>
                             {{ $value->title }}
@@ -45,7 +45,7 @@
                 @foreach ($wp as $key => $value)
                     <tr class="text-center">
                         <td>
-                            {{ $key+1 }}
+                            {{ $key + 1 }}
                         </td>
                         <td>
                             {{ $value->title }}

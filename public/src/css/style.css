@@ -375,6 +375,10 @@ html {
     cursor: pointer;
 }
 
+.btext {
+    font-size: 1.2rem;
+}
+
 @media screen and (min-width: 768px) {
     .title-siswa-1 {
         font-size: 2.5rem;
@@ -390,6 +394,9 @@ html {
     }
     .floating_btn {
         font-size: 1.15rem;
+    }
+    .btext {
+        font-size: 1.75rem;
     }
 }
 
