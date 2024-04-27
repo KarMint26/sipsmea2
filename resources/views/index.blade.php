@@ -43,7 +43,7 @@
                     </a>
                 @endif
             </div>
-            <img src="{{ asset('src/assets/hero-landing.svg') }}" alt="hero-landing" />
+            <img src="{{ asset('src/assets/hero-landing.png') }}" alt="hero-landing" />
         </div>
     </section>
 
