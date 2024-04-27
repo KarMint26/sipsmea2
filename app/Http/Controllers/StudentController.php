@@ -71,7 +71,7 @@ class StudentController extends Controller
             ]);
         }
 
-        return redirect()->route('student.alternatif_view', ["data_cb" => $data]);
+        return redirect()->route('student.alternatif_view');
     }
 
     // Alternatif
@@ -99,12 +99,12 @@ class StudentController extends Controller
         $alt_value = Alternatif::where('user_id', Auth::user()->id)->get();
 
         if($alt_value->isEmpty()) {
-            return redirect()->route('student.index')->with('message', 'Anda tidak dapat mengakses halaman selanjutnya');
+            return redirect()->route('student.index')->with('message', 'Harus memilih 5 tempat PKL');
         }
 
-        $peminatan = Peminatan::all()->whereIn('pkl_place_id', $request->data_cb);
+        $alternatif = Alternatif::all()->whereIn('user_id', Auth::user()->id);
 
-        return view('siswa.alternatif', ["peminatan" => $peminatan, "data_cb" => $request->data_cb]);
+        return view('siswa.alternatif', ["alternatif" => $alternatif]);
     }
 
     public function alternatif_post(Request $request)
@@ -114,11 +114,11 @@ class StudentController extends Controller
 
     public function alternatif_back(Request $request)
     {
-        $data_cb = $request->data_cb;
+        $data_cb = Alternatif::all()->whereIn('user_id', Auth::user()->id);
 
         // kurangi peminat tempat pkl
         foreach ($data_cb as $value) {
-            Peminatan::where('pkl_place_id', $value)->decrement('peminat');
+            Peminatan::where('pkl_place_id', $value->peminatan->pkl_place_id)->decrement('peminat');
         }
 
         // delete tempat pkl

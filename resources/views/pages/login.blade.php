@@ -26,7 +26,7 @@
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <div class="head-login">
-                        <h1>SIP <span style="color: var(--primaryColor)">SMEA</span></h1>
+                        <h1><span style="color: var(--primaryColor)">SIP</span> SMEA</h1>
                         <h5>
                             Sistem Pendukung Keputusan Pemilihan Tempat Praktek Kerja
                             Lapangan

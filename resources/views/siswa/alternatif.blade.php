@@ -5,32 +5,26 @@
 @section('content')
     <div>Nilai Alternatif</div>
 
-    @foreach ($peminatan as $value)
+    @foreach ($alternatif as $value)
         <div class="mt-3">
-            {{ $value->pkl_place()->first()->title }}
+            {{ $value->peminatan->pkl_place->title }}
             <div>
-                Jarak {{ $value->alternatifs()->jarak }}
+                Jarak {{ $value->jarak }}
             </div>
             <div>
-                Rating {{ $value->pkl_place()->first()->rating }}
+                Rating {{ $value->peminatan->pkl_place->rating }}
             </div>
             <div>
-                Daya Tampung {{ $value->pkl_place()->first()->daya_tampung }}
+                Daya Tampung {{ $value->peminatan->pkl_place->daya_tampung }}
             </div>
             <div>
-                Akses Jalan {{ $value->pkl_place()->first()->akses_jalan }}
+                Akses Jalan {{ $value->peminatan->pkl_place->akses_jalan }}
             </div>
-            {{ $value->peminat }}
+            {{ $value->peminatan->peminat }}
         </div>
     @endforeach
 
-    @if ($data_cb != null)
-        @foreach ($data_cb as $cb)
-            <div>{{ $cb }}</div>
-        @endforeach
-    @endif
-
-    <form action="{{ route('student.alternatif_back', ['data_cb' => $data_cb]) }}" method="post">
+    <form action="{{ route('student.alternatif_back') }}" method="post">
         @csrf
         @method('post')
         <button type="submit" class="btn-sip">Back</button>
