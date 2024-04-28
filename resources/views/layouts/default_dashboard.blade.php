@@ -6,6 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIP SMEA - @yield('title')</title>
     <link rel="shortcut icon" href="{{ asset('src/assets/favicon.ico') }}" type="image/x-icon" />
+    <!-- PWA  -->
+    <meta name="theme-color" content="#a00a52" />
+    <link rel="apple-touch-icon" href="{{ asset('src/assets/favicon.png') }}">
+    <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
     <!-- Toaster -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
@@ -40,6 +44,23 @@
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <!-- External Css -->
     <link rel="stylesheet" href="{{ asset('src/css/style.css') }}" />
+
+    {{-- Open Graph --}}
+    <meta property="og:title" content="SIP SMEA" />
+    <meta
+      property="og:description"
+      content="Website Sistem Informasi PKL Untuk Pendukung Keputusan Pemilihan Tempat PKL."
+    />
+    <meta
+      property="og:image"
+      itemprop="image"
+      content="https://sipsmea.techtitans.id/src/assets/preview.png"
+    />
+    <meta property="og:url" content="https://sipsmea.techtitans.id" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image:type" content="image/png" />
+    <meta property="og:image:width" content="600" />
+    <meta property="og:image:height" content="400" />
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -235,6 +256,25 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.js"
         integrity="sha512-lbwH47l/tPXJYG9AcFNoJaTMhGvYWhVM9YI43CT+uteTRRaiLCui8snIgyAN8XWgNjNhCqlAUdzZptso6OCoFQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    {{-- PWA --}}
+    <script src="{{ asset('/sw.js') }}"></script>
+    <script>
+        if ("serviceWorker" in navigator) {
+            // Register a service worker hosted at the root of the
+            // site using the default scope.
+            navigator.serviceWorker.register("/sw.js").then(
+                (registration) => {
+                    console.log("Service worker registration succeeded:", registration);
+                },
+                (error) => {
+                    console.error(`Service worker registration failed: ${error}`);
+                },
+            );
+        } else {
+            console.error("Service workers are not supported.");
+        }
+    </script>
 </body>
 
 </html>

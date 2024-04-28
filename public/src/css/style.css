@@ -7,20 +7,20 @@ html {
 }
 
 .border-sip {
-    border: 1px solid var(--primaryColor);
+    border: 1px solid #a00a52;
 }
 
 .cb:checked {
-    background-color: var(--primaryColor) !important;
-    border-color: var(--primaryColor) !important;
+    background-color: #a00a52 !important;
+    border-color: #a00a52 !important;
 }
 
 .text-primary-sip {
-    color: var(--primaryColor);
+    color: #a00a52;
 }
 
 .bg-primary-sip {
-    background-color: var(--primaryColor);
+    background-color: #a00a52;
 }
 
 .navbar {
@@ -33,7 +33,7 @@ html {
 
 .btn-sip {
     display: inline-block;
-    background-color: var(--primaryColor);
+    background-color: #a00a52;
     color: #fff;
     padding: 0.5rem 1.25rem;
     border-radius: 0.5rem;
@@ -54,7 +54,7 @@ html {
 
 .btn-sip-wide {
     display: inline-block;
-    background-color: var(--primaryColor);
+    background-color: #a00a52;
     color: #fff;
     padding: 0.5rem 1.25rem;
     border-radius: 0.5rem;
@@ -66,7 +66,7 @@ html {
 }
 
 .btn-sip:hover {
-    background-color: var(--primaryColor);
+    background-color: #a00a52;
     color: #fff;
 }
 
@@ -74,7 +74,7 @@ html {
     width: fit-content;
     height: 40px;
     padding: 0.5rem 1.25rem !important;
-    background-color: var(--primaryColor);
+    background-color: #a00a52;
     color: #fff !important;
     border-radius: 0.5rem;
     font-weight: 600;
@@ -85,7 +85,7 @@ html {
 }
 
 .dropdown-item:active {
-    background-color: var(--primaryColor) !important;
+    background-color: #a00a52 !important;
 }
 
 .btn-custom-dropdown:hover {
@@ -149,7 +149,7 @@ html {
 }
 
 .wrapper-landing .content h1 {
-    color: var(--primaryColor);
+    color: #a00a52;
     font-weight: 600;
     font-size: 1.8rem;
 }
@@ -256,11 +256,11 @@ html {
 
 /* Dashboard */
 .active {
-    background-color: var(--primaryColor) !important;
+    background-color: #a00a52 !important;
 }
 
 .breadcrumb-item a {
-    color: var(--primaryColor);
+    color: #a00a52;
 }
 
 .nl-l {
@@ -368,7 +368,7 @@ html {
     align-items: center;
     gap: 0.5rem;
     border-radius: 0.5rem;
-    background-color: var(--primaryColor);
+    background-color: #a00a52;
     color: #fff;
     font-size: 0.85rem;
     font-weight: bold;

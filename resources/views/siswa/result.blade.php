@@ -59,7 +59,7 @@
         </table>
     </div>
 
-    <div class="m-auto text-center mb-3 mt-4">
+    <div class="m-auto text-center mb-3 mt-4" style="margin-bottom: 4rem;">
         Hasil perhitungan pada {{ $timestamp }}
     </div>
 
