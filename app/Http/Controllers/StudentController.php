@@ -52,6 +52,10 @@ class StudentController extends Controller
     {
         $data = $request->cb;
 
+        if (!$request->cb) {
+            return redirect()->back()->with('message', 'Harus memilih 5 tempat PKL');
+        }
+
         if (count($data) != 5) {
             return redirect()->back()->with('message', 'Harus memilih 5 tempat PKL');
         }
