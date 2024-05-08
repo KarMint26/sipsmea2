@@ -6,8 +6,6 @@ use App\Models\Alternatif;
 use App\Models\Peminatan;
 use App\Models\PklPlace;
 use App\Models\User;
-use App\Models\VAlternatif;
-use App\Models\VBobot;
 use App\Models\VSawHasil;
 use App\Models\VWpHasil;
 use Barryvdh\DomPDF\Facade\Pdf;

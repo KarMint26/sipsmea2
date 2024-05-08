@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\PklPlace;
 use App\Models\User;
 use Illuminate\Http\Request;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
 class AdminController extends Controller
 {
@@ -33,39 +34,32 @@ class AdminController extends Controller
 
     public function barcode_generator(Request $request)
     {
-        // Mengambil nilai dari properti content dalam request
-        $requestContent = $request->except(['name_file', 'nisn']);
+        // $requestContent = $request->except(['name_file', 'nisn']);
+        // $postData = json_encode($requestContent);
+        // $apiKey = env('API_KEY_QR');
+        // $url = 'https://api.qr-code-generator.com/v1/create?access-token=' . $apiKey;
+        // $ch = curl_init();
 
-        // Mengambil API key dari env
-        $apiKey = env('API_KEY_QR');
+        // curl_setopt($ch, CURLOPT_URL, $url);
+        // curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        // curl_setopt($ch, CURLOPT_POST, 1);
+        // curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
+        // curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
 
-        // URL endpoint API
-        $url = 'https://api.qr-code-generator.com/v1/create?access-token=' . $apiKey;
+        // $fileContents = curl_exec($ch);
+        // if (curl_errno($ch)) {
+        //     $errorMessage = curl_error($ch);
+        // }
+        // curl_close($ch);
 
-        // Data yang akan dikirimkan dalam body permintaan
-        $postData = json_encode($requestContent);
-
-        // Inisialisasi CURL
-        $ch = curl_init();
-
-        // Set opsi CURL
-        curl_setopt($ch, CURLOPT_URL, $url);
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-        curl_setopt($ch, CURLOPT_POST, 1);
-        curl_setopt($ch, CURLOPT_POSTFIELDS, $postData);
-        curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json'));
-
-        // Eksekusi permintaan dan tangkap responsenya
-        $fileContents = curl_exec($ch);
-
-        // Menangani error jika ada
-        if (curl_errno($ch)) {
-            $errorMessage = curl_error($ch);
-            // Lakukan sesuatu dengan pesan error
-        }
-
-        // Menutup CURL
-        curl_close($ch);
+        $fileContents = QrCode::format('png')
+            ->merge('src/assets/favicon.png', 0.2, true)
+            ->size(400)->errorCorrection('H')
+            ->backgroundColor(160, 10, 82)
+            ->color(255, 255, 255)
+            ->eye('square')
+            ->margin(4)
+            ->generate($request->qr_code_text);
 
         // Mendefinisikan nama file dan tipe konten
         $filename = $request->name_file . ' - ' . $request->nisn . '.png';

@@ -59,7 +59,7 @@
         <div class="text-name">NIS Siswa : {{ $nis }}</div>
     </div>
 
-    <div class="text-center fw-semibold text-result mt-5">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>
+    <div class="text-left fw-semibold text-result mt-5">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>
     <div class="table-responsive mt-2 mb-5">
         <table class="table table-striped table-bordered table-sortable table-hover">
             <thead class="tw">
@@ -79,7 +79,7 @@
                             {{ $value->title }}
                         </td>
                         <td>
-                            {{ $value->hasil }}
+                            {{ number_format($value->hasil, 5, '.', '') }}
                         </td>
                     </tr>
                 @endforeach
@@ -87,7 +87,7 @@
         </table>
     </div>
 
-    <div class="text-center fw-semibold text-result">HASIL PERHITUNGAN METODE WP (Weighted Product)</div>
+    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE WP (Weighted Product)</div>
     <div class="table-responsive mt-2 mb-4">
         <table class="table table-striped table-bordered table-sortable table-hover">
             <thead class="tw">
@@ -107,7 +107,7 @@
                             {{ $value->title }}
                         </td>
                         <td>
-                            {{ $value->hasil }}
+                            {{ number_format($value->hasil, 5, '.', '') }}
                         </td>
                     </tr>
                 @endforeach

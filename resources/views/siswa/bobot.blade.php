@@ -14,47 +14,47 @@
                 @method('post')
                 <select class="form-select mb-3" name="w1" id="w1" aria-label="w1">
                     <option selected disabled>Bobot Untuk Jarak</option>
-                    <option value="-1">1</option>
-                    <option value="-2">2</option>
-                    <option value="-3">3</option>
-                    <option value="-4">4</option>
-                    <option value="-5">5</option>
+                    <option value="-1">Sangat Tidak Penting</option>
+                    <option value="-2">Tidak Penting</option>
+                    <option value="-3">Cukup Penting</option>
+                    <option value="-4">Penting</option>
+                    <option value="-5">Sangat Penting</option>
                 </select>
 
                 <select class="form-select mb-3" name="w2" id="w2" aria-label="w2">
                     <option selected disabled>Bobot Untuk Rating</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">Sangat Tidak Penting</option>
+                    <option value="2">Tidak Penting</option>
+                    <option value="3">Cukup Penting</option>
+                    <option value="4">Penting</option>
+                    <option value="5">Sangat Penting</option>
                 </select>
 
                 <select class="form-select mb-3" name="w3" id="w3" aria-label="w3">
                     <option selected disabled>Bobot Untuk Daya Tampung</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">Sangat Tidak Penting</option>
+                    <option value="2">Tidak Penting</option>
+                    <option value="3">Cukup Penting</option>
+                    <option value="4">Penting</option>
+                    <option value="5">Sangat Penting</option>
                 </select>
 
                 <select class="form-select mb-3" name="w4" id="w4" aria-label="w4">
                     <option selected disabled>Bobot Untuk Akses Jalan</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
+                    <option value="1">Sangat Tidak Penting</option>
+                    <option value="2">Tidak Penting</option>
+                    <option value="3">Cukup Penting</option>
+                    <option value="4">Penting</option>
+                    <option value="5">Sangat Penting</option>
                 </select>
 
                 <select class="form-select mb-3" name="w5" id="w5" aria-label="w5">
                     <option selected disabled>Bobot Untuk Peminat</option>
-                    <option value="-1">1</option>
-                    <option value="-2">2</option>
-                    <option value="-3">3</option>
-                    <option value="-4">4</option>
-                    <option value="-5">5</option>
+                    <option value="-1">Sangat Tidak Penting</option>
+                    <option value="-2">Tidak Penting</option>
+                    <option value="-3">Cukup Penting</option>
+                    <option value="-4">Penting</option>
+                    <option value="-5">Sangat Penting</option>
                 </select>
                 <button class="btn-sip mt-2" type="submit">Submit</button>
             </form>

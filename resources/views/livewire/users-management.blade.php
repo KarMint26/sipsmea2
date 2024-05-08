@@ -42,7 +42,7 @@
 
                         <td class="action-field">
                             <a target="_blank"
-                                href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->username,'frame_name' => 'no-frame', 'qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . $value->username . '&password=' . $value->pwd_nohash . '&role=siswa', 'image_format' => 'PNG', 'marker_left_template' => 'version15', 'marker_right_template' => 'version15', 'marker_bottom_template' => 'version15', 'image_width' => 500, 'background_color' => '#a00a52', 'foreground_color' => '#ffffff']) }}" class="btn btn-sm" style="background-color: blueviolet; color: #fff">
+                                href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->username, 'qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . $value->username . '&password=' . $value->pwd_nohash . '&role=siswa']) }}" class="btn btn-sm" style="background-color: blueviolet; color: #fff">
                                 <i class="fas fa-qrcode mr-1"></i>
                                 Download QR
                             </a>

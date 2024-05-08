@@ -3,7 +3,7 @@
 @section('title', 'Hasil Perhitungan SPK')
 
 @section('content')
-    <div class="text-center fw-semibold text-result">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>
+    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>
     <div class="table-responsive mt-2 mb-4">
         <table class="table table-striped table-bordered table-sortable table-hover">
             <thead>
@@ -23,7 +23,7 @@
                             {{ $value->title }}
                         </td>
                         <td>
-                            {{ $value->hasil }}
+                            {{ number_format($value->hasil, 5, '.', '') }}
                         </td>
                     </tr>
                 @endforeach
@@ -31,7 +31,7 @@
         </table>
     </div>
 
-    <div class="text-center fw-semibold text-result">HASIL PERHITUNGAN METODE WP (Weighted Product)</div>
+    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE WP (Weighted Product)</div>
     <div class="table-responsive mt-2 mb-4">
         <table class="table table-striped table-bordered table-sortable table-hover">
             <thead>
@@ -51,7 +51,7 @@
                             {{ $value->title }}
                         </td>
                         <td>
-                            {{ $value->hasil }}
+                            {{ number_format($value->hasil, 5, '.', '') }}
                         </td>
                     </tr>
                 @endforeach
