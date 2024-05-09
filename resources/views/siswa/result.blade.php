@@ -59,6 +59,34 @@
         </table>
     </div>
 
+    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE TOPSIS</div>
+    <div class="table-responsive mt-2 mb-4">
+        <table class="table table-striped table-bordered table-sortable table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th class="col col-md-1">No</th>
+                    <th class="col col-md-3">Nama Tempat PKL</th>
+                    <th class="col col-md-3">Hasil Perhitungan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($topsis as $key => $value)
+                    <tr class="text-center">
+                        <td>
+                            {{ $key + 1 }}
+                        </td>
+                        <td>
+                            {{ $value->title }}
+                        </td>
+                        <td>
+                            {{ number_format($value->hasil, 5, '.', '') }}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
     <div class="m-auto text-center mb-3 mt-4" style="margin-bottom: 4rem;">
         Hasil perhitungan pada {{ $timestamp }}
     </div>

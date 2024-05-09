@@ -7,6 +7,7 @@ use App\Models\Peminatan;
 use App\Models\PklPlace;
 use App\Models\User;
 use App\Models\VSawHasil;
+use App\Models\VTopsisHasil;
 use App\Models\VWpHasil;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
@@ -123,7 +124,7 @@ class StudentController extends Controller
 
         $validated = $request->validate($rules, $messages);
 
-        for ($i=0; $i < 5; $i++) {
+        for ($i = 0; $i < 5; $i++) {
             $data_alternatif[$i]->update([
                 'jarak' => $validated['alt'][$i]
             ]);
@@ -208,13 +209,18 @@ class StudentController extends Controller
                         ->orderBy('hasil', 'desc')
                         ->get();
 
+        $topsis_hasils = VTopsisHasil::where('user_id', Auth::user()->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
         $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
 
         if ($vsaw_hasils->isEmpty()) {
             return redirect()->back()->with('message', 'Hasil belum dapat dimunculkan');
         }
 
-        return view('siswa.result', ["saw" => $vsaw_hasils, "wp" => $vwp_hasils, "timestamp" => $timestamp]);
+        return view('siswa.result', ["saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
     }
 
     public function download_pdf(Request $request)
@@ -228,11 +234,17 @@ class StudentController extends Controller
                         ->whereNotNull('hasil')
                         ->orderBy('hasil', 'desc')
                         ->get();
+
+        $topsis_hasils = VTopsisHasil::where('user_id', Auth::user()->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
         $name = Auth::user()->name;
         $nis = Auth::user()->username;
         $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
 
-        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "timestamp" => $timestamp]);
+        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
         return $pdf->download($name . ' - ' . $nis . '.pdf');
     }
 }

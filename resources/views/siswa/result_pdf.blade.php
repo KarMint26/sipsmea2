@@ -88,7 +88,7 @@
     </div>
 
     <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE WP (Weighted Product)</div>
-    <div class="table-responsive mt-2 mb-4">
+    <div class="table-responsive mt-2 mb-5">
         <table class="table table-striped table-bordered table-sortable table-hover">
             <thead class="tw">
                 <tr class="tw text-center">
@@ -102,6 +102,34 @@
                     <tr class="text-center">
                         <td>
                             {{ $key+1 }}
+                        </td>
+                        <td>
+                            {{ $value->title }}
+                        </td>
+                        <td>
+                            {{ number_format($value->hasil, 5, '.', '') }}
+                        </td>
+                    </tr>
+                @endforeach
+            </tbody>
+        </table>
+    </div>
+
+    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE TOPSIS</div>
+    <div class="table-responsive mt-2 mb-4">
+        <table class="table table-striped table-bordered table-sortable table-hover">
+            <thead>
+                <tr class="text-center">
+                    <th class="col col-md-1">No</th>
+                    <th class="col col-md-3">Nama Tempat PKL</th>
+                    <th class="col col-md-3">Hasil Perhitungan</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($topsis as $key => $value)
+                    <tr class="text-center">
+                        <td>
+                            {{ $key + 1 }}
                         </td>
                         <td>
                             {{ $value->title }}
