@@ -36,23 +36,27 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     Route::get('/student', [StudentController::class, 'index'])->name('student.index');
     Route::post('/student', [StudentController::class, 'send_pkl'])->name('student.send_pkl');
 
-    // Nilai Alternatif
-    Route::get('/student/alternatif', [StudentController::class, 'alternatif_view'])->name('student.alternatif_view');
-    Route::post('/student/alternatif', [StudentController::class, 'alternatif_post'])->name('student.alternatif_post');
-    Route::post('/student/alternatif_back', [StudentController::class, 'alternatif_back'])->name('student.alternatif_back');
+    Route::prefix('/student')->group(function () {
+        // Nilai Alternatif
+        Route::get('/alternatif', [StudentController::class, 'alternatif_view'])->name('student.alternatif_view');
+        Route::post('/alternatif', [StudentController::class, 'alternatif_post'])->name('student.alternatif_post');
+        Route::post('/alternatif_back', [StudentController::class, 'alternatif_back'])->name('student.alternatif_back');
 
-    // Bobot
-    Route::get('/student/bobot', [StudentController::class, 'bobot_view'])->name('student.bobot_view');
-    Route::post('/student/bobot', [StudentController::class, 'bobot_post'])->name('student.bobot_post');
+        // Bobot
+        Route::get('/bobot', [StudentController::class, 'bobot_view'])->name('student.bobot_view');
+        Route::post('/bobot', [StudentController::class, 'bobot_post'])->name('student.bobot_post');
 
-    // Hasil SPK
-    Route::get('/student/result', [StudentController::class, 'result_view'])->name('student.result_view');
-    Route::get('/download-pdf', [StudentController::class, 'download_pdf'])->name('download_pdf');
+        // Hasil SPK
+        Route::get('/result', [StudentController::class, 'result_view'])->name('student.result_view');
+        Route::get('/download-pdf', [StudentController::class, 'download_pdf'])->name('download_pdf');
+    });
 });
 
 Route::middleware(['auth', 'role:admin'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('dashboard.index');
-    Route::get('/admin/tempat_pkl', [AdminController::class, 'tempat_pkl'])->name('dashboard.tempat_pkl');
-    Route::get('/admin/manajemen_pengguna', [AdminController::class, 'manajemen_pengguna'])->name('dashboard.manajemen_pengguna');
-    Route::get('/generate-barcode', [AdminController::class, 'barcode_generator'])->name('barcode_generator');
+    Route::prefix('/admin')->group(function () {
+        Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard.index');
+        Route::get('/tempat_pkl', [AdminController::class, 'tempat_pkl'])->name('dashboard.tempat_pkl');
+        Route::get('/manajemen_pengguna', [AdminController::class, 'manajemen_pengguna'])->name('dashboard.manajemen_pengguna');
+        Route::get('/generate-barcode', [AdminController::class, 'barcode_generator'])->name('barcode_generator');
+    });
 });
