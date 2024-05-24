@@ -1,6 +1,6 @@
 @extends('layouts.default')
 
-@section('title', 'Sistem SPK')
+@section('title', 'Pilih Tempat PKL')
 
 @section('content')
     <div class="d-flex justify-content-between align-items-start flex-column flex-lg-row gap-5 mb-5 w-full h-fit">

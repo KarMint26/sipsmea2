@@ -55,7 +55,7 @@
                     Lapangan Yang Disediakan.
                 </p>
                 @if (Auth::user() && Auth::user()->role == 'siswa')
-                    <a href="/student" class="btn-sip-wide">
+                    <a href="{{ route('student.index') }}" class="btn-sip-wide">
                         <i class="bi bi-skip-start-circle-fill me-2"></i> Mulai Sekarang
                     </a>
                 @else

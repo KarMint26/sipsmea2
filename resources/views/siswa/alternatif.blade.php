@@ -52,7 +52,7 @@
         <form action="{{ route('student.alternatif_back') }}" method="post">
             @csrf
             @method('post')
-            <button type="submit" class="btn btn-secondary">Back</button>
+            <button type="submit" class="btn btn-secondary">Kembali</button>
         </form>
         <!-- Button trigger modal -->
         <button type="button" style="margin-top: 0 !important" class="btn-sip" data-bs-toggle="modal"

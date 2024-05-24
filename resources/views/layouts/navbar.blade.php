@@ -44,9 +44,19 @@
                         data-bs-toggle="dropdown" aria-expanded="false">
                         {{ Auth::user()->name }}
                     </a>
-                    <ul class="dropdown-menu dropdown-menu-start">
-                        <li><a class="dropdown-item" href="/student"><i class="me-1 me-md-2 bi bi-grid-fill"></i>
+                    <ul class="dropdown-menu dropdown-menu-end">
+                        <li><a class="dropdown-item" href="{{ route('student.index') }}"><i
+                                    class="me-1 me-md-2 bi bi-grid-fill"></i>
                                 Sistem SPK</a></li>
+                        <li>
+                        <li><a class="dropdown-item" href="{{ route('student.edit_profile') }}"><i
+                                    class="me-1 me-md-2 bi bi-person-fill"></i>
+                                Edit Profile</a></li>
+                        <li>
+                        <li><a class="dropdown-item"
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . Auth::user()->username . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->username]) }}"><i
+                                    class="me-1 me-md-2 bi bi-qr-code"></i>
+                                Download Login QR</a></li>
                         <li>
                             <hr class="dropdown-divider">
                         </li>
@@ -100,6 +110,15 @@
                             <ul class="dropdown-menu dropdown-menu-start">
                                 <li><a class="dropdown-item" href="/student"><i
                                             class="me-1 me-md-2 bi bi-grid-fill"></i> Sistem SPK</a></li>
+                                <li>
+                                <li><a class="dropdown-item" href="{{ route('student.edit_profile') }}"><i
+                                            class="me-1 me-md-2 bi bi-person-fill"></i>
+                                        Edit Profile</a></li>
+                                <li>
+                                <li><a class="dropdown-item"
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . Auth::user()->username . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->username]) }}"><i
+                                            class="me-1 me-md-2 bi bi-qr-code"></i>
+                                        Download Login QR</a></li>
                                 <li>
                                     <hr class="dropdown-divider">
                                 </li>

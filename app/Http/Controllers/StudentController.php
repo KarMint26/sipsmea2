@@ -247,4 +247,13 @@ class StudentController extends Controller
         $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
         return $pdf->download($name . ' - ' . $nis . '.pdf');
     }
+
+    // Edit Profile
+    public function edit_profile_view(){
+        return view('siswa.edit_profile');
+    }
+
+    public function edit_profile(){
+        return null;
+    }
 }
