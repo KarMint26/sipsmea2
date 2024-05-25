@@ -32,6 +32,16 @@ class AdminController extends Controller
         return view('admin.manajemen_pengguna');
     }
 
+    public function hasil_spk()
+    {
+        $data_siswa = User::where(function ($query) {
+                        $query->where('w1', '!=', 0);
+                    })
+                    ->where('id', '>', 1)
+                    ->get();
+        return view('admin.hasil_spk', ['data_siswa' => $data_siswa]);
+    }
+
     public function barcode_generator(Request $request)
     {
         // $requestContent = $request->except(['name_file', 'nisn']);

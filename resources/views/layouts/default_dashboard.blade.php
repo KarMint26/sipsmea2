@@ -11,6 +11,38 @@
     <link rel="apple-touch-icon" href="{{ asset('src/assets/favicon.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
+    <!-- Datatables -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css"
+    />
+
+    <!-- Script -->
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.datatables.net/2.0.7/js/dataTables.js"
+    ></script>
+    <script
+      defer
+      src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"
+    ></script>
+
     <!-- Toaster -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
         integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ=="
@@ -42,6 +74,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
         integrity="sha512-6S2HWzVFxruDlZxI3sXOZZ4/eJ8AcxkQH1+JjSe/ONCEqR9L4Ysq5JdT5ipqtzU7WHalNwzwBv+iE51gNHJNqQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <!-- External Css -->
     <link rel="stylesheet" href="{{ asset('src/css/style.css') }}" />
 
@@ -61,6 +94,8 @@
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="600" />
     <meta property="og:image:height" content="400" />
+
+    @yield('css_custom')
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
@@ -115,7 +150,7 @@
                         <img src="{{ asset('src/assets/admin.png') }}" class="img-circle elevation-2" alt="User Image">
                     </div>
                     <div class="info">
-                        <a href="#" class="d-block">Admin</a>
+                        <a href="#" class="d-block">Administrator</a>
                     </div>
                 </div>
 
@@ -149,7 +184,7 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('dashboard.tempat_pkl') }}"
-                                class="nav-link {{ Request::is('admin/tempat_pkl') ? 'active' : '' }}">
+                                class="nav-link {{ Request::is('admin/tempat-pkl') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-briefcase"></i>
                                 <p>
                                     TEMPAT PKL
@@ -158,10 +193,19 @@
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('dashboard.manajemen_pengguna') }}"
-                                class="nav-link {{ Request::is('admin/manajemen_pengguna') ? 'active' : '' }}">
+                                class="nav-link {{ Request::is('admin/manajemen-pengguna') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-users"></i>
                                 <p>
                                     MANAJEMEN PENGGUNA
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dashboard.hasil_spk') }}"
+                                class="nav-link {{ Request::is('admin/hasil-spk') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-trophy"></i>
+                                <p>
+                                    HASIL SPK SISWA
                                 </p>
                             </a>
                         </li>
@@ -183,7 +227,7 @@
                         </div><!-- /.col -->
                         <div class="col-sm-6">
                             <ol class="breadcrumb float-sm-right">
-                                <li class="breadcrumb-item"><a href="#">Admin</a></li>
+                                <li class="breadcrumb-item"><a href="#">ADMIN</a></li>
                                 <li class="breadcrumb-item">@yield('subtitle')</li>
                             </ol>
                         </div><!-- /.col -->
@@ -275,6 +319,7 @@
             console.error("Service workers are not supported.");
         }
     </script>
+    @yield('script_add')
 </body>
 
 </html>

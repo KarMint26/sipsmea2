@@ -64,7 +64,9 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
 Route::middleware(['auth', 'role:admin'])->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard.index');
-        Route::get('/tempat_pkl', [AdminController::class, 'tempat_pkl'])->name('dashboard.tempat_pkl');
-        Route::get('/manajemen_pengguna', [AdminController::class, 'manajemen_pengguna'])->name('dashboard.manajemen_pengguna');
+        Route::get('/tempat-pkl', [AdminController::class, 'tempat_pkl'])->name('dashboard.tempat_pkl');
+        Route::get('/manajemen-pengguna', [AdminController::class, 'manajemen_pengguna'])->name('dashboard.manajemen_pengguna');
+        Route::get('/hasil-spk', [AdminController::class, 'hasil_spk'])->name('dashboard.hasil_spk');
+        Route::get('/download-pdf-admin', [StudentController::class, 'download_pdf_admin'])->name('download_pdf_admin');
     });
 });
