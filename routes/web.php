@@ -52,6 +52,9 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
         Route::get('/result', [StudentController::class, 'result_view'])->name('student.result_view');
         Route::get('/download-pdf', [StudentController::class, 'download_pdf'])->name('download_pdf');
 
+        // Reset SPK
+        Route::post('/reset-spk', [StudentController::class, 'reset_spk'])->name('student.reset_spk');
+
         // Edit Profile
         Route::get('/edit-profile', [StudentController::class, 'edit_profile_view'])->name('student.edit_profile');
         Route::post('/edit-profile', [StudentController::class, 'edit_profile'])->name('student.edit_profile_post');

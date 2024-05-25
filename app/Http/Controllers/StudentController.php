@@ -248,12 +248,46 @@ class StudentController extends Controller
         return $pdf->download($name . ' - ' . $nis . '.pdf');
     }
 
+    public function reset_spk()
+    {
+        // Decrement atau kurangi peminat pada tabel peminatan
+        $hasil = VSawHasil::where('user_id', Auth::user()->id)
+                ->whereNotNull('hasil')
+                ->orderBy('hasil', 'desc')
+                ->get();
+
+        for($i = 0; $i < 5; $i++) {
+            if(isset($hasil[$i])) {
+                $pkl_place = PklPlace::where('title', $hasil[$i]->title)->first();
+                if ($pkl_place) {
+                    Peminatan::where('pkl_place_id', $pkl_place->id)->decrement('peminat');
+                }
+            }
+        }
+
+        // Reset Bobot pada tabel user
+        User::where('id', Auth::user()->id)->update([
+            "w1" => 0,
+            "w2" => 0,
+            "w3" => 0,
+            "w4" => 0,
+            "w5" => 0,
+        ]);
+
+        // Hapus Alternatif pada tabel alternatif
+        Alternatif::where('user_id', Auth::user()->id)->delete();
+
+        return redirect()->route('student.index')->with('success', 'Berhasil Me-reset Hasil');
+    }
+
     // Edit Profile
-    public function edit_profile_view(){
+    public function edit_profile_view()
+    {
         return view('siswa.edit_profile');
     }
 
-    public function edit_profile(){
+    public function edit_profile()
+    {
         return null;
     }
 }

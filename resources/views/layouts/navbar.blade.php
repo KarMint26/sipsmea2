@@ -108,7 +108,7 @@
                                 {{ Auth::user()->name }}
                             </a>
                             <ul class="dropdown-menu dropdown-menu-start">
-                                <li><a class="dropdown-item" href="/student"><i
+                                <li><a class="dropdown-item" href="{{ route('student.index') }}"><i
                                             class="me-1 me-md-2 bi bi-grid-fill"></i> Sistem SPK</a></li>
                                 <li>
                                 <li><a class="dropdown-item" href="{{ route('student.edit_profile') }}"><i

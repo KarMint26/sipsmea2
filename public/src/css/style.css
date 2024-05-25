@@ -379,6 +379,30 @@ html {
     font-size: 1.2rem;
 }
 
+.reset_btn {
+    padding: 0.5rem 1rem;
+    background-color: var(--primaryColor);
+    color: #fff;
+    width: fit-content;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    margin-bottom: 3rem !important;
+    text-decoration: none;
+    font-weight: 500;
+    border: none;
+    outline: none;
+}
+
+.result_hero_desc h1 {
+    font-size: 1.8rem;
+}
+
+.result_hero_desc h5 {
+    font-size: 1.1rem;
+}
+
 @media screen and (min-width: 768px) {
     .title-siswa-1 {
         font-size: 2.5rem;
@@ -398,10 +422,19 @@ html {
     .btext {
         font-size: 1.75rem;
     }
+    .result_hero_desc h1 {
+        font-size: 2.2rem;
+    }
+    .result_hero_desc h5 {
+        font-size: 1.25rem;
+    }
 }
 
 @media screen and (min-width: 1024px) {
     .title-siswa-1 {
+        font-size: 3rem;
+    }
+    .result_hero_desc h1 {
         font-size: 3rem;
     }
 }
