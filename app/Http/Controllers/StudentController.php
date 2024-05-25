@@ -283,11 +283,32 @@ class StudentController extends Controller
     // Edit Profile
     public function edit_profile_view()
     {
-        return view('siswa.edit_profile');
+        $user_detail = User::where('id', Auth::user()->id)->first();
+        return view('siswa.edit_profile', ['user' => $user_detail]);
     }
 
-    public function edit_profile()
+    public function edit_profile(Request $request)
     {
-        return null;
+        $rules = [
+            "nama_siswa" => "required|min:3",
+            "nisn_siswa" => "required|numeric|digits_between:5,10",
+        ];
+        $validated = $request->validate($rules, [
+            "nama_siswa.required" => "Nama Wajib Diisi",
+            "nama_siswa.min" => "Nama Minimal Terdiri 3 Character",
+            "nisn_siswa.required" => "NISN Wajib Diisi",
+            "nisn_siswa.numeric" => "NISN harus berupa angka",
+            "nisn_siswa.digits_between" => "NISN harus terdiri dari minimal 5 digit angka",
+        ]);
+
+        $user_update = User::where('id', Auth::user()->id)->update([
+            "name" => $validated['nama_siswa'],
+            "username" => $validated['nisn_siswa']
+        ]);
+
+        if($user_update) {
+            return redirect()->back()->with('message', 'Berhasil Mengubah Profile');
+        }
+        return redirect()->back()->with('error', 'Gagal Mengubah Profile');
     }
 }

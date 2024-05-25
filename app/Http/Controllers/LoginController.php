@@ -52,6 +52,10 @@ class LoginController extends Controller
 
         $userDetail = User::where('username', $request->username)->first();
 
+        if ($userDetail == null) {
+            return redirect('/')->with('error', 'Gagal login, akun belum terdaftar');
+        }
+
         if ($userDetail->status != 'aktif') {
             return redirect('/')->with('error', 'Gagal login, akun tidak aktif');
         }
