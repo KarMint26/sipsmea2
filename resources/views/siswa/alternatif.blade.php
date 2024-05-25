@@ -86,8 +86,8 @@
                             @endforeach
                         </div>
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary">Submit</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+                            <button type="submit" class="btn btn-primary" style="background-color: var(--primaryColor) !important; outline-color: var(--primaryColor); border-color: var(--primaryColor)">Kirim</button>
                         </div>
                     </div>
                 </div>

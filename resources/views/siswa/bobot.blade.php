@@ -56,7 +56,7 @@
                     <option value="-4">Penting</option>
                     <option value="-5">Sangat Penting</option>
                 </select>
-                <button class="btn-sip mt-2" type="submit">Submit</button>
+                <button class="btn-sip mt-2" type="submit">Kirim</button>
             </form>
         </div>
     </div>
