@@ -55,8 +55,8 @@
     </div>
 
     <div>
-        <div class="text-name mb-3">Nama Siswa : {{ $name }}</div>
-        <div class="text-name">NIS Siswa : {{ $nis }}</div>
+        <div class="text-name mb-3">Nama : {{ $name }}</div>
+        <div class="text-name">NISN : {{ $nis }}</div>
     </div>
 
     <div class="text-left fw-semibold text-result mt-5">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>

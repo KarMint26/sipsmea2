@@ -241,7 +241,7 @@ class StudentController extends Controller
                         ->get();
 
         $name = Auth::user()->name;
-        $nis = Auth::user()->username;
+        $nis = Auth::user()->nisn;
         $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
 
         $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
@@ -266,7 +266,7 @@ class StudentController extends Controller
                         ->get();
 
         $name = $request->name;
-        $nis = $request->username;
+        $nis = $request->nisn;
         $timestamp = User::where('id', $request->id)->first()->updated_at;
 
         $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
@@ -328,7 +328,7 @@ class StudentController extends Controller
 
         $user_update = User::where('id', Auth::user()->id)->update([
             "name" => $validated['nama_siswa'],
-            "username" => $validated['nisn_siswa']
+            "nisn" => $validated['nisn_siswa']
         ]);
 
         if($user_update) {

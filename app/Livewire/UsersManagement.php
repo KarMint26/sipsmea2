@@ -14,7 +14,8 @@ class UsersManagement extends Component
     protected $paginationTheme = 'bootstrap';
 
     public $name = '';
-    public $username = '';
+    public $nisn = '';
+    public $email = '';
     public $user_id = '';
     public $keyword = '';
     public $sortColumn = 'name';
@@ -31,17 +32,22 @@ class UsersManagement extends Component
     {
         $rules = [
             "name" => "required",
-            "username" => "required",
+            "nisn" => "required|numeric",
+            "email" => "required|email",
         ];
         $validated = $this->validate($rules, [
             "name.required" => "Nama siswa wajib diisi",
-            "username.required" => "NISN Wajib diisi",
+            "nisn.required" => "NISN Wajib diisi",
+            "nisn.numeric" => "NISN Wajib dalam bentuk angka",
+            "email.required" => "Email Wajib diisi",
+            "email.email" => "Email Tidak Valid",
         ]);
 
         $password = $this->generateRandomPassword();
 
         $validated['password'] = Hash::make($password);
         $validated['pwd_nohash'] = $password;
+        $validated['email_verified_at'] = now();
 
         User::create($validated);
 
@@ -53,11 +59,15 @@ class UsersManagement extends Component
     {
         $rules = [
             "name" => "required",
-            "username" => "required",
+            "nisn" => "required|numeric",
+            "email" => "required|email",
         ];
         $validated = $this->validate($rules, [
-            "name.required" => "Nama tempat wajib diisi",
-            "username.required" => "Lokasi wajib diisi",
+            "name.required" => "Nama siswa wajib diisi",
+            "nisn.required" => "NISN Wajib diisi",
+            "nisn.numeric" => "NISN Wajib dalam bentuk angka",
+            "email.required" => "Email Wajib diisi",
+            "email.email" => "Email Tidak Valid",
         ]);
         $detailUser = User::find($this->user_id);
         $detailUser->update($validated);
@@ -71,7 +81,8 @@ class UsersManagement extends Component
         $detailUser = User::find($id);
 
         $this->name = $detailUser->name;
-        $this->username = $detailUser->username;
+        $this->nisn = $detailUser->nisn;
+        $this->email = $detailUser->email;
 
         $this->user_id = $id;
     }
@@ -89,7 +100,8 @@ class UsersManagement extends Component
     public function clear()
     {
         $this->name = '';
-        $this->username = '';
+        $this->nisn = '';
+        $this->email = '';
     }
 
     public function sort($columnName)

@@ -23,7 +23,7 @@
                     <div class="mb-3">
                         <label for="nisn" class="form-label">NISN Siswa</label>
                         <input type="number" name="nisn_siswa" class="form-control" id="nisn"
-                            value="{{ $user->username }}" placeholder="NISN Siswa...">
+                            value="{{ $user->nisn }}" placeholder="NISN Siswa...">
                     </div>
                     <button type="submit" class="reset_btn text-center mt-4 shadow-sm">
                         <i class="bi bi-person-vcard-fill"></i> Ubah Profile

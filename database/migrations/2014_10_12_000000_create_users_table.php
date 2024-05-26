@@ -14,9 +14,12 @@ return new class extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('username');
+            $table->string('nisn');
+            $table->string('email');
+            $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
             $table->string('pwd_nohash');
+            $table->string('google_id')->nullable();
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->enum('role', ['admin', 'siswa'])->default('siswa');
             $table->integer('w1')->default(0);

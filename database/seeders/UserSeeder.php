@@ -37,16 +37,20 @@ class UserSeeder extends Seeder
         User::insert([
             [
                 "name" => "admin",
-                "username" => "admin",
+                "nisn" => "11111",
+                "email" => "admin@sipsmea.my.id",
+                "email_verified_at" => now(),
                 "password" => Hash::make("glr413fv37"),
                 "pwd_nohash" => "glr413fv37",
                 "role" => "admin",
             ],
             [
-                "name" => "Demo5",
-                "username" => "16517",
-                "password" => Hash::make("hgu7lr9z"),
-                "pwd_nohash" => "hgu7lr9z",
+                "name" => "Demo1",
+                "nisn" => "16517",
+                "email" => "demo1@sipsmea.my.id",
+                "email_verified_at" => now(),
+                "password" => Hash::make("hgu7lr9zSa211K0zzk"),
+                "pwd_nohash" => "hgu7lr9zSa211K0zzk",
                 "role" => "siswa",
             ]
         ]);

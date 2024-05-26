@@ -25,13 +25,15 @@
                 <thead>
                     <tr class="text-center">
                         <th class="col col-md-1">No</th>
-                        <th class="col col-md-3 sort @if ($sortColumn == 'name') {{ $sortDirection }} @endif"
+                        <th class="col col-md-2 sort @if ($sortColumn == 'name') {{ $sortDirection }} @endif"
                             wire:click="sort('name')">Nama Siswa</th>
-                        <th class="col col-md-2 sort @if ($sortColumn == 'username') {{ $sortDirection }} @endif"
-                            wire:click="sort('username')">NISN Siswa</th>
-                        <th class="col col-md-2 sort @if ($sortColumn == 'status') {{ $sortDirection }} @endif"
+                        <th class="col col-md-2 sort @if ($sortColumn == 'nisn') {{ $sortDirection }} @endif"
+                            wire:click="sort('nisn')">NISN Siswa</th>
+                        <th class="col col-md-2 sort @if ($sortColumn == 'email') {{ $sortDirection }} @endif"
+                            wire:click="sort('email')">Email Siswa</th>
+                        <th class="col col-md-1 sort @if ($sortColumn == 'status') {{ $sortDirection }} @endif"
                             wire:click="sort('status')">Status</th>
-                        <th class="col col-md-3">Aksi</th>
+                        <th class="col col-md-4">Aksi</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -39,12 +41,13 @@
                         <tr>
                             <td class="text-center">{{ $dataSiswa->firstItem() + $key }}</td>
                             <td class="text-center">{{ $value->name }}</td>
-                            <td class="text-center">{{ $value->username }}</td>
+                            <td class="text-center">{{ $value->nisn }}</td>
+                            <td class="text-center">{{ $value->email }}</td>
                             <td class="text-center">{{ $value->status }}</td>
 
                             <td class="action-field">
                                 <a target="_blank"
-                                    href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->username, 'qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . $value->username . '&password=' . $value->pwd_nohash . '&role=siswa']) }}"
+                                    href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $value->email . '&password=' . $value->pwd_nohash . '&role=siswa']) }}"
                                     class="btn btn-sm" style="background-color: blueviolet; color: #fff">
                                     <i class="fas fa-qrcode mr-1"></i>
                                     Download QR
@@ -90,13 +93,23 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-12">
-                                    <label for="username">NISN Siswa</label>
+                                    <label for="nisn">NISN Siswa</label>
                                     <input placeholder="NISN Siswa..." type="number" class="form-control"
-                                        id="username" wire:model="username">
-                                    @if ($errors->has('username'))
+                                        id="nisn" wire:model="nisn">
+                                    @if ($errors->has('nisn'))
+                                        <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                            <i class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('nisn') }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="email">Email Siswa</label>
+                                    <input placeholder="Email Siswa..." type="email" class="form-control"
+                                        id="email" wire:model="email">
+                                    @if ($errors->has('email'))
                                         <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
                                             <i
-                                                class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('username') }}
+                                                class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('email') }}
                                         </div>
                                     @endif
                                 </div>
@@ -140,13 +153,23 @@
                                     @endif
                                 </div>
                                 <div class="form-group col-12">
-                                    <label for="username">NISN Siswa</label>
+                                    <label for="nisn">NISN Siswa</label>
                                     <input placeholder="NISN Siswa..." type="number" class="form-control"
-                                        id="username" wire:model="username">
-                                    @if ($errors->has('username'))
+                                        id="nisn" wire:model="nisn">
+                                    @if ($errors->has('nisn'))
+                                        <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
+                                            <i class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('nisn') }}
+                                        </div>
+                                    @endif
+                                </div>
+                                <div class="form-group col-12">
+                                    <label for="email">Email Siswa</label>
+                                    <input placeholder="Email Siswa..." type="number" class="form-control"
+                                        id="email" wire:model="email">
+                                    @if ($errors->has('email'))
                                         <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">
                                             <i
-                                                class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('username') }}
+                                                class="fas fa-exclamation-circle mr-1"></i>{{ $errors->first('email') }}
                                         </div>
                                     @endif
                                 </div>

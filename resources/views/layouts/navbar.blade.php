@@ -54,7 +54,7 @@
                                 Edit Profile</a></li>
                         <li>
                         <li><a class="dropdown-item"
-                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . Auth::user()->username . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->username]) }}"><i
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                     class="me-1 me-md-2 bi bi-qr-code"></i>
                                 Download Login QR</a></li>
                         <li>
@@ -66,7 +66,10 @@
                 </li>
             @else
                 <li class="nav-item">
-                    <a class="btn-sip" href="/login">Login</a>
+                    <a class="btn-sip" href="/login">Masuk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-sip btn-sip-outline" href="/register">Daftar</a>
                 </li>
             @endif
         </ul>
@@ -116,7 +119,7 @@
                                         Edit Profile</a></li>
                                 <li>
                                 <li><a class="dropdown-item"
-                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.techtitans.id/student-login?username=' . Auth::user()->username . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->username]) }}"><i
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                             class="me-1 me-md-2 bi bi-qr-code"></i>
                                         Download Login QR</a></li>
                                 <li>
@@ -128,7 +131,10 @@
                         </li>
                     @else
                         <li class="nav-item">
-                            <a class="btn-sip" href="/login">Login</a>
+                            <a class="btn-sip" href="/login">Masuk</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn-sip btn-sip-outline" href="/register">Daftar</a>
                         </li>
                     @endif
                 </ul>

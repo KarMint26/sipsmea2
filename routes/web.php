@@ -23,17 +23,33 @@ Route::get('/home', function () {
 });
 
 Route::middleware('guest')->group(function () {
-    Route::get('/login', [LoginController::class, 'index'])->name('login');
+    // Login
+    Route::get('/login', [LoginController::class, 'login_view'])->name('login');
     Route::post('/login', [LoginController::class, 'login'])->name('login_auth');
+
+    // Register
+    Route::get('/register', [LoginController::class, 'register_view'])->name('register');
+    Route::post('/register', [LoginController::class, 'register'])->name('register_auth');
+
+    // QR Code Login Siswa
     Route::get('/student-login', [LoginController::class, 'student_login'])->name('student_login');
 });
 
-Route::middleware('auth')->group(function () {
+Route::prefix('/email/verify')->group(function () {
+    // Auth Verification Email
+    Route::get('/need-verification', [LoginController::class, 'notice'])->name('verification.notice')->middleware('auth');
+    Route::get('/{id}/{hash}', [LoginController::class, 'verify'])->name('verification.verify')->middleware(['auth', 'signed']);
+
+    // resend email verification
+    Route::get('/resend-email-verification', [LoginController::class, 'resend_verification'])->name('verification.send')->middleware(['auth', 'throttle:6,1']);
+});
+
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::get('/generate-barcode', [AdminController::class, 'barcode_generator'])->name('barcode_generator');
     Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 });
 
-Route::middleware(['auth', 'role:siswa'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:siswa'])->group(function () {
     Route::prefix('/student')->group(function () {
         // Memilih Tempat PKL
         Route::get('/choose-pkl-places', [StudentController::class, 'index'])->name('student.index');
@@ -61,7 +77,7 @@ Route::middleware(['auth', 'role:siswa'])->group(function () {
     });
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
+Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
     Route::prefix('/admin')->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard.index');
         Route::get('/tempat-pkl', [AdminController::class, 'tempat_pkl'])->name('dashboard.tempat_pkl');

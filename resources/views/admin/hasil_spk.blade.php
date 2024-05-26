@@ -3,6 +3,19 @@
 @section('title', 'HASIL SPK SISWA')
 @section('subtitle', 'HASIL SPK SISWA')
 
+@section('datatables')
+    <!-- Datatables -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css" />
+    <link rel="stylesheet" href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css" />
+
+    <!-- Script -->
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script defer src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+    <script defer src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script defer src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"></script>
+@endsection
+
 @section('content')
     <div class="card">
         <div class="card-body">
@@ -13,6 +26,7 @@
                             <th class="text-center">No</th>
                             <th class="text-center">Nama Siswa</th>
                             <th class="text-center">NISN Siswa</th>
+                            <th class="text-center">Email</th>
                             <th class="text-center">Status</th>
                             <th class="text-center">Aksi</th>
                         </tr>
@@ -22,11 +36,13 @@
                             <tr>
                                 <td class="text-center">{{ $loop->iteration }}</td>
                                 <td class="text-center">{{ $value->name }}</td>
-                                <td class="text-center">{{ $value->username }}</td>
+                                <td class="text-center">{{ $value->nisn }}</td>
+                                <td class="text-center">{{ $value->email }}</td>
                                 <td class="text-center">{{ $value->status }}</td>
                                 <td class="text-center">
-                                    <a target="_blank" href="{{ route('download_pdf_admin', ['name' => $value->name, 'username' => $value->username, 'id' => $value->id]) }}" class="btn btn-sm"
-                                        style="background-color: rgb(1, 161, 94); color: #fff">
+                                    <a target="_blank"
+                                        href="{{ route('download_pdf_admin', ['name' => $value->name, 'nisn' => $value->nisn, 'id' => $value->id]) }}"
+                                        class="btn btn-sm" style="background-color: rgb(1, 161, 94); color: #fff">
                                         <i class="fas fa-file-pdf mr-1"></i>
                                         Download Hasil
                                     </a>

@@ -11,37 +11,7 @@
     <link rel="apple-touch-icon" href="{{ asset('src/assets/favicon.png') }}">
     <link rel="manifest" href="{{ asset('/manifest.json') }}">
 
-    <!-- Datatables -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/css/bootstrap.min.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/2.0.7/css/dataTables.bootstrap5.css"
-    />
-    <link
-      rel="stylesheet"
-      href="https://cdn.datatables.net/buttons/3.0.2/css/buttons.dataTables.css"
-    />
-
-    <!-- Script -->
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.3.0/js/bootstrap.bundle.min.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.datatables.net/2.0.7/js/dataTables.js"
-    ></script>
-    <script
-      defer
-      src="https://cdn.datatables.net/2.0.7/js/dataTables.bootstrap5.js"
-    ></script>
+    @yield('datatables')
 
     <!-- Toaster -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/2.1.4/toastr.min.css"
