@@ -12,9 +12,9 @@
                 lengkap dan NISN anda sebagai siswa.</h5>
 
             <div class="mt-4">
-                <form action="{{ route('student.edit_profile_post') }}" method="POST">
+                <form action="{{ route('student.edit_profile_put') }}" method="POST">
                     @csrf
-                    @method('post')
+                    @method('put')
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Lengkap</label>
                         <input type="text" name="nama_siswa" class="form-control" id="name"

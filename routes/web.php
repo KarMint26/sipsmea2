@@ -84,7 +84,7 @@ Route::middleware(['auth', 'verified', 'role:siswa'])->group(function () {
 
         // Edit Profile
         Route::get('/edit-profile', [StudentController::class, 'edit_profile_view'])->name('student.edit_profile');
-        Route::post('/edit-profile', [StudentController::class, 'edit_profile'])->name('student.edit_profile_post');
+        Route::put('/edit-profile', [StudentController::class, 'edit_profile'])->name('student.edit_profile_put');
     });
 });
 
@@ -93,7 +93,10 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::get('/dashboard', [AdminController::class, 'index'])->name('dashboard.index');
         Route::get('/tempat-pkl', [AdminController::class, 'tempat_pkl'])->name('dashboard.tempat_pkl');
         Route::get('/manajemen-pengguna', [AdminController::class, 'manajemen_pengguna'])->name('dashboard.manajemen_pengguna');
+        Route::get('/nilai-bobot', [AdminController::class, 'bobot_view'])->name('dashboard.nilai_bobot');
+        Route::get('/nilai-alternatif', [AdminController::class, 'alternatif_view'])->name('dashboard.nilai_alternatif');
         Route::get('/hasil-spk', [AdminController::class, 'hasil_spk'])->name('dashboard.hasil_spk');
-        Route::get('/download-pdf-admin', [StudentController::class, 'download_pdf_admin'])->name('download_pdf_admin');
+        Route::get('/download-pdf-admin', [AdminController::class, 'download_pdf_admin'])->name('download_pdf_admin');
+        Route::get('/delete-hasil-spk', [AdminController::class, 'reset_spk_admin'])->name('reset_hasil_spk');
     });
 });

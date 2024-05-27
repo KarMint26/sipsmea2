@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Alternatif;
+use App\Models\Peminatan;
 use App\Models\PklPlace;
 use App\Models\User;
+use App\Models\VSawHasil;
+use App\Models\VTopsisHasil;
+use App\Models\VWpHasil;
+use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -12,14 +18,13 @@ class AdminController extends Controller
     public function index()
     {
         $tempat_pkl_aktif = PklPlace::where('status', 'aktif')->count();
-        $tempat_pkl_nonaktif = PklPlace::where('status', 'nonaktif')->count();
+        $hasil_spk_siswa = User::where('w1', '!=', 0)->count();
         $users_aktif = User::where('status', 'aktif')
                         ->where(function ($query) {
                             $query->where('role', '!=', 'admin');
                         })
                     ->count();
-        $users_nonaktif = User::where('status', 'nonaktif')->count();
-        return view('admin.dashboard', ["tempat_pkl_aktif" => $tempat_pkl_aktif, "tempat_pkl_nonaktif" => $tempat_pkl_nonaktif, "users_aktif" => $users_aktif, "users_nonaktif" => $users_nonaktif]);
+        return view('admin.dashboard', ["tempat_pkl_aktif" => $tempat_pkl_aktif, "hasil_spk_siswa" => $hasil_spk_siswa, "users_aktif" => $users_aktif]);
     }
 
     public function tempat_pkl()
@@ -81,4 +86,72 @@ class AdminController extends Controller
             ->header('Content-Disposition', 'attachment; filename="' . $filename . '"');
     }
 
+    public function download_pdf_admin(Request $request)
+    {
+        $vsaw_hasils = VSawHasil::where('user_id', $request->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
+        $vwp_hasils = VWpHasil::where('id', $request->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
+        $topsis_hasils = VTopsisHasil::where('user_id', $request->id)
+                        ->whereNotNull('hasil')
+                        ->orderBy('hasil', 'desc')
+                        ->get();
+
+        $name = $request->name;
+        $nis = $request->nisn;
+        $timestamp = User::where('id', $request->id)->first()->updated_at;
+
+        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
+        return $pdf->download($name . ' - ' . $nis . '.pdf');
+    }
+
+    public function reset_spk_admin(Request $request)
+    {
+        // Decrement atau kurangi peminat pada tabel peminatan
+        $hasil = VSawHasil::where('user_id', $request->id)
+                ->whereNotNull('hasil')
+                ->orderBy('hasil', 'desc')
+                ->get();
+
+        for($i = 0; $i < 5; $i++) {
+            if(isset($hasil[$i])) {
+                $pkl_place = PklPlace::where('title', $hasil[$i]->title)->first();
+                if ($pkl_place) {
+                    Peminatan::where('pkl_place_id', $pkl_place->id)->decrement('peminat');
+                }
+            }
+        }
+
+        // Reset Bobot pada tabel user
+        User::where('id', $request->id)->update([
+            "w1" => 0,
+            "w2" => 0,
+            "w3" => 0,
+            "w4" => 0,
+            "w5" => 0,
+        ]);
+
+        // Hapus Alternatif pada tabel alternatif
+        Alternatif::where('user_id', $request->id)->delete();
+
+        return redirect()->back()->with('message', 'Berhasil Menghapus Hasil');
+    }
+
+    // Nilai Bobot
+    public function bobot_view()
+    {
+        return view('admin.nilai_bobot');
+    }
+
+    // Nilai Alternatif
+    public function alternatif_view()
+    {
+        return view('admin.nilai_alternatif');
+    }
 }

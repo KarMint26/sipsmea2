@@ -171,6 +171,24 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('dashboard.nilai_bobot') }}"
+                                class="nav-link {{ Request::is('admin/nilai-bobot') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-hourglass"></i>
+                                <p>
+                                    NILAI BOBOT
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dashboard.nilai_alternatif') }}"
+                                class="nav-link {{ Request::is('admin/nilai-alternatif') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-file-alt"></i>
+                                <p>
+                                    NILAI ALTERNATIF
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('dashboard.hasil_spk') }}"
                                 class="nav-link {{ Request::is('admin/hasil-spk') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-trophy"></i>
@@ -216,7 +234,7 @@
         </div>
         <!-- /.content-wrapper -->
         <footer class="main-footer">
-            <strong>Copyright &copy; 2024 <a href="https://sipsmea.techtitans.id"
+            <strong>Copyright &copy; 2024 <a href="https://sipsmea.my.id"
                     style="color: var(--primaryColor); text-decoration: none">SIP SMEA</a>.</strong>
             All rights reserved.
             <div class="float-right d-none d-sm-inline-block">

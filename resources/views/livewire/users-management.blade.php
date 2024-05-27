@@ -31,8 +31,7 @@
                             wire:click="sort('nisn')">NISN Siswa</th>
                         <th class="col col-md-2 sort @if ($sortColumn == 'email') {{ $sortDirection }} @endif"
                             wire:click="sort('email')">Email Siswa</th>
-                        <th class="col col-md-1 sort @if ($sortColumn == 'status') {{ $sortDirection }} @endif"
-                            wire:click="sort('status')">Status</th>
+                        <th class="col col-md-1">Status</th>
                         <th class="col col-md-4">Aksi</th>
                     </tr>
                 </thead>
@@ -164,7 +163,7 @@
                                 </div>
                                 <div class="form-group col-12">
                                     <label for="email">Email Siswa</label>
-                                    <input placeholder="Email Siswa..." type="number" class="form-control"
+                                    <input placeholder="Email Siswa..." type="email;" class="form-control"
                                         id="email" wire:model="email">
                                     @if ($errors->has('email'))
                                         <div class="error_message mt-1" style="font-size: 0.75rem; color: red;">

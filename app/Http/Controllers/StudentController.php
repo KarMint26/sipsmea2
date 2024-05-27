@@ -248,31 +248,6 @@ class StudentController extends Controller
         return $pdf->download($name . ' - ' . $nis . '.pdf');
     }
 
-    public function download_pdf_admin(Request $request)
-    {
-        $vsaw_hasils = VSawHasil::where('user_id', $request->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
-        $vwp_hasils = VWpHasil::where('id', $request->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
-        $topsis_hasils = VTopsisHasil::where('user_id', $request->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
-        $name = $request->name;
-        $nis = $request->nisn;
-        $timestamp = User::where('id', $request->id)->first()->updated_at;
-
-        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
-        return $pdf->download($name . ' - ' . $nis . '.pdf');
-    }
-
     public function reset_spk()
     {
         // Decrement atau kurangi peminat pada tabel peminatan

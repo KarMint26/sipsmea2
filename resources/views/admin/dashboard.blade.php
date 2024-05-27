@@ -24,12 +24,12 @@
             <!-- small box -->
             <div class="small-box bg-success">
                 <div class="inner">
-                    <h3>{{ $tempat_pkl_nonaktif }}</h3>
+                    <h3>{{ $hasil_spk_siswa }}</h3>
 
-                    <p>Tempat PKL Nonaktif</p>
+                    <p>Hasil SPK Siswa</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-power-off"></i>
+                    <i class="fas fa-trophy"></i>
                 </div>
             </div>
         </div>
@@ -52,12 +52,12 @@
             <!-- small box -->
             <div class="small-box bg-danger">
                 <div class="inner">
-                    <h3>{{ $users_nonaktif }}</h3>
+                    <h3>5</h3>
 
-                    <p>Pengguna Nonaktif</p>
+                    <p>Total Kriteria</p>
                 </div>
                 <div class="icon">
-                    <i class="fas fa-user-times"></i>
+                    <i class="fas fa-id-card"></i>
                 </div>
             </div>
         </div>
