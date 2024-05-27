@@ -31,7 +31,7 @@
                         <h1><span style="color: var(--primaryColor)">SIP</span> SMEA</h1>
                         <h5>
                             Sistem Pendukung Keputusan Pemilihan Tempat Praktek Kerja
-                            Lapangan
+                            Lapangan SMK Negeri 1 Slawi
                         </h5>
                     </div>
                     <form method="POST" action="{{ route('login_auth') }}">

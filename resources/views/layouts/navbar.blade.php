@@ -53,25 +53,39 @@
                                     class="me-1 me-md-2 bi bi-person-fill"></i>
                                 Edit Profile</a></li>
                         <li>
+                            @if (Auth::user()->google_id != null)
+                        <li><a class="dropdown-item"
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa&google_id=' . Auth::user()->google_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                    class="me-1 me-md-2 bi bi-qr-code"></i>
+                                Download Login QR</a></li>
+                        <li>
+                        @elseif(Auth::user()->facebook_id != null)
+                        <li><a class="dropdown-item"
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa&facebook_id=' . Auth::user()->facebook_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                    class="me-1 me-md-2 bi bi-qr-code"></i>
+                                Download Login QR</a></li>
+                        <li>
+                        @else
                         <li><a class="dropdown-item"
                                 href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                     class="me-1 me-md-2 bi bi-qr-code"></i>
                                 Download Login QR</a></li>
                         <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="{{ route('logout') }}"><i
-                                    class="me-1 me-md-2 bi bi-box-arrow-left"></i> Logout</a></li>
-                    </ul>
-                </li>
-            @else
-                <li class="nav-item">
-                    <a class="btn-sip" href="/login">Masuk</a>
-                </li>
-                <li class="nav-item">
-                    <a class="btn-sip btn-sip-outline" href="/register">Daftar</a>
-                </li>
             @endif
+            <hr class="dropdown-divider">
+            </li>
+            <li><a class="dropdown-item" href="{{ route('logout') }}"><i class="me-1 me-md-2 bi bi-box-arrow-left"></i>
+                    Logout</a></li>
+        </ul>
+        </li>
+    @else
+        <li class="nav-item">
+            <a class="btn-sip" href="/login">Masuk</a>
+        </li>
+        <li class="nav-item">
+            <a class="btn-sip btn-sip-outline" href="/register">Daftar</a>
+        </li>
+        @endif
         </ul>
         <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
             <div class="offcanvas-header">
@@ -118,25 +132,39 @@
                                             class="me-1 me-md-2 bi bi-person-fill"></i>
                                         Edit Profile</a></li>
                                 <li>
+                                    @if (Auth::user()->google_id != null)
+                                <li><a class="dropdown-item"
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa&google_id=' . Auth::user()->google_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                            class="me-1 me-md-2 bi bi-qr-code"></i>
+                                        Download Login QR</a></li>
+                                <li>
+                                @elseif(Auth::user()->facebook_id != null)
+                                <li><a class="dropdown-item"
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa&facebook_id=' . Auth::user()->facebook_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                            class="me-1 me-md-2 bi bi-qr-code"></i>
+                                        Download Login QR</a></li>
+                                <li>
+                                @else
                                 <li><a class="dropdown-item"
                                         href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . Auth::user()->pwd_nohash . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                             class="me-1 me-md-2 bi bi-qr-code"></i>
                                         Download Login QR</a></li>
                                 <li>
-                                    <hr class="dropdown-divider">
-                                </li>
-                                <li><a class="dropdown-item" href="{{ route('logout') }}"><i
-                                            class="me-1 me-md-2 bi bi-box-arrow-left"></i> Logout</a></li>
-                            </ul>
-                        </li>
-                    @else
-                        <li class="nav-item">
-                            <a class="btn-sip" href="/login">Masuk</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn-sip btn-sip-outline" href="/register">Daftar</a>
-                        </li>
                     @endif
+                    <hr class="dropdown-divider">
+                    </li>
+                    <li><a class="dropdown-item" href="{{ route('logout') }}"><i
+                                class="me-1 me-md-2 bi bi-box-arrow-left"></i> Logout</a></li>
+                </ul>
+                </li>
+            @else
+                <li class="nav-item">
+                    <a class="btn-sip" href="/login">Masuk</a>
+                </li>
+                <li class="nav-item">
+                    <a class="btn-sip btn-sip-outline" href="/register">Daftar</a>
+                </li>
+                @endif
                 </ul>
             </div>
         </div>

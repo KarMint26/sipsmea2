@@ -52,17 +52,6 @@ class LoginController extends Controller
     }
     public function student_login(Request $request)
     {
-        // https://sipsmea.techtitans.id/student-login?email=aditya@gmail.com&password=hgu7lr9z&role=siswa - Tidak Aktif
-        // http://127.0.0.1:8000/student-login?email=aditya@gmail.com&password=hgu7lr9z&role=siswa - Tidak Aktif
-
-        // https://sipsmea.techtitans.id/student-login?email=aditya@gmail.com&password=hgu7lr9z&role=siswa - Aktif
-        // http://127.0.0.1:8000/student-login?email=aditya@gmail.com&password=07VtQ2ebdY509Hbv262&role=siswa - Aktif
-
-        $credentials = [
-            'email' => $request->email,
-            'password' => $request->password,
-        ];
-
         $userDetail = User::where('email', $request->email)->first();
 
         if ($userDetail == null) {
@@ -76,6 +65,28 @@ class LoginController extends Controller
         if($request->role != 'siswa') {
             return redirect('/')->with('error', 'Login QR Code Hanya Untuk Siswa');
         }
+
+        // Pengecekan login dengan Google atau Facebook
+        if ($request->has('google_id')) {
+            $userGoogleExist = User::where('google_id', $request->google_id)->first();
+            if ($userGoogleExist) {
+                Auth::login($userGoogleExist);
+                return redirect('/')->with('message', 'Login Berhasil');
+            }
+        }
+
+        if ($request->has('facebook_id')) {
+            $userFacebookExist = User::where('facebook_id', $request->facebook_id)->first();
+            if ($userFacebookExist) {
+                Auth::login($userFacebookExist);
+                return redirect('/')->with('message', 'Login Berhasil');
+            }
+        }
+
+        $credentials = [
+            'email' => $request->email,
+            'password' => $request->password,
+        ];
 
         if(Auth::attempt($credentials)) {
             return redirect('/')->with('message', 'Login Berhasil');
@@ -149,10 +160,10 @@ class LoginController extends Controller
 
         if ($user->hasVerifiedEmail()) {
             Auth::login($user);
-            return redirect()->route('index');
+            return redirect()->route('index')->with('message', 'Email berhasil di verifikasi, Akun telah aktif');
         }
 
-        return redirect()->route('login')->with('message', 'Email berhasil di verifikasi, Akun telah aktif');
+        return redirect()->route('index')->with('message', 'Email berhasil di verifikasi, Akun telah aktif');
     }
 
     public function resend_verification(Request $request)
