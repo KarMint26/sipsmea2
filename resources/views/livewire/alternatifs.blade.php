@@ -44,7 +44,7 @@
                                 {{ $value->peminatan->pkl_place->akses_jalan }}
                             </td>
                             <td class="text-center">
-                                {{ $value->peminatan->peminat }}
+                                {{ $value->current_peminat }}
                             </td>
                         </tr>
                     @endforeach
