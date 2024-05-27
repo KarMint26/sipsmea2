@@ -24,7 +24,7 @@
         <div class="container py-5 px-4 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6 d-none d-lg-block">
-                    <img src="./src/assets/hero-login.png" class="hero-login" alt="Phone image" />
+                    <img src="{{ asset('./src/assets/hero-login.png') }}" class="hero-login" alt="login hero image" />
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <div class="head-login">
@@ -52,7 +52,8 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="text-login">Belum punya akun? <a href="{{ route('register') }}">daftar</a></div>
-                            <div class="text-login">Lupa password? <a href="#">klik disini</a></div>
+                            <div class="text-login">Lupa password? <a href="{{ route('forgot_password') }}">klik
+                                    disini</a></div>
                         </div>
 
                         <!-- Submit button -->
@@ -66,13 +67,15 @@
                         </div>
 
                         {{-- Login Google --}}
-                        <a href="{{ route('google_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center">
+                        <a href="{{ route('google_redirect') }}"
+                            class="social-login-field d-flex justify-content-center align-items-center">
                             <img src="{{ asset('src/assets/google.png') }}" alt="google-icon" width="50px">
                             <div class="login-with-google">Masuk Dengan Google</div>
                         </a>
 
                         {{-- Login Facebook --}}
-                        <a href="{{ route('facebook_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center mt-3">
+                        <a href="{{ route('facebook_redirect') }}"
+                            class="social-login-field d-flex justify-content-center align-items-center mt-3">
                             <img src="{{ asset('src/assets/facebook.png') }}" alt="facebook-icon" width="50px">
                             <div class="login-with-facebook">Masuk Dengan Facebook</div>
                         </a>
@@ -103,6 +106,16 @@
                 toastr.error("{{ $error }}")
             </script>
         @endforeach
+    @endif
+
+    @if (session('message'))
+        <script>
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true,
+            }
+            toastr.success("{{ session('message') }}")
+        </script>
     @endif
 </body>
 

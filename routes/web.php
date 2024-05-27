@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\RouteController;
 use App\Http\Controllers\StudentController;
 use Illuminate\Support\Facades\Route;
@@ -33,6 +34,14 @@ Route::middleware('guest')->group(function () {
 
     // QR Code Login Siswa
     Route::get('/student-login', [LoginController::class, 'student_login'])->name('student_login');
+
+    // Forgot Password
+    Route::get('/forgot-password', [ResetPasswordController::class, 'forgot_password'])->name('forgot_password');
+    Route::post('/forgot-password-act', [ResetPasswordController::class, 'forgot_password_act'])->name('forgot_password_act');
+
+    // Reset Password
+    Route::get('/reset-password/{token}', [ResetPasswordController::class, 'reset_password'])->name('reset_password');
+    Route::post('/reset-password', [ResetPasswordController::class, 'reset_password_act'])->name('reset_password_act');
 
     // Socialite Login
     Route::prefix('/auth')->group(function () {

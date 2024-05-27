@@ -10,6 +10,7 @@ class PasswordResetToken extends Model
     use HasFactory;
 
     public $timestamps = false;
+    protected $primaryKey = 'email';
 
     protected $fillable = [
         'email',

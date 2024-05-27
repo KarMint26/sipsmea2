@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIP SMEA - Daftar</title>
+    <title>SIP SMEA - Reset Password</title>
     <link rel="shortcut icon" href="{{ asset('src/assets/favicon.ico') }}" type="image/x-icon" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -20,11 +20,12 @@
 </head>
 
 <body>
-    <section class="register">
+    <section class="forgot-password">
         <div class="container py-5 px-4 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6 d-none d-lg-block">
-                    <img src="{{ asset('./src/assets/hero-register.png') }}" style="transform: scale(1.2)" class="hero-register" alt="register hero image" />
+                    <img src="{{ asset('./src/assets/hero-reset-pwd.png') }}" class="hero-register"
+                        alt="reset password hero image" />
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <div class="head-login">
@@ -34,57 +35,21 @@
                             Lapangan SMK Negeri 1 Slawi
                         </h5>
                     </div>
-                    <form method="POST" action="{{ route('register_auth') }}">
+                    <form method="POST" action="{{ route('reset_password_act') }}">
                         @csrf
                         @method('POST')
+                        <input type="hidden" name="token" value="{{ $token }}">
                         <div class="form-floating mb-3">
-                            <input type="text" class="form-control" id="name" name="name"
-                                placeholder="John Doe" />
-                            <label for="name">Nama Pengguna</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="number" class="form-control" id="nisn" name="nisn"
-                                placeholder="17782" />
-                            <label for="nisn">NISN (Nomor Induk Siswa Nasional)</label>
-                        </div>
-                        <div class="form-floating mb-3">
-                            <input type="email" class="form-control" id="email" name="email"
-                                placeholder="mail@gmail.com" />
-                            <label for="email">Email</label>
-                        </div>
-                        <div class="form-floating" style="position: relative !important;">
-                            <input type="password" class="form-control" id="floatingPassword" name="password"
-                                placeholder="Password" />
-                            <label for="password">Password</label>
-                            <div class="show-pwd">
-                                <i class="bi bi-eye-slash-fill" id="eye"></i>
-                            </div>
-                        </div>
-                        <div class="d-flex justify-content-between">
-                            <div class="text-login">Sudah punya akun? <a href="{{ route('login') }}">masuk</a></div>
+                            <input type="password" class="form-control" id="password" name="password"
+                                placeholder="password" />
+                            <label for="password">Password Baru</label>
                         </div>
 
                         <!-- Submit button -->
                         <button type="submit" data-mdb-button-init data-mdb-ripple-init
                             class="btn-sip-large ms-auto d-block mt-4">
-                            Daftar
+                            Kirim
                         </button>
-                        <div class="lg-g d-flex justify-content-center align-items-center">
-                            <div class="line-g"></div>
-                            <div class="login-g">Atau Masuk Dengan</div>
-                        </div>
-
-                        {{-- Login Google --}}
-                        <a href="{{ route('google_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center">
-                            <img src="{{ asset('src/assets/google.png') }}" alt="google-icon" width="50px">
-                            <div class="login-with-google">Masuk Dengan Google</div>
-                        </a>
-
-                        {{-- Login Facebook --}}
-                        <a href="{{ route('facebook_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center mt-3">
-                            <img src="{{ asset('src/assets/facebook.png') }}" alt="facebook-icon" width="50px">
-                            <div class="login-with-facebook">Masuk Dengan Facebook</div>
-                        </a>
                     </form>
                 </div>
             </div>
