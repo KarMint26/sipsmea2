@@ -7,6 +7,8 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Laravel\Socialite\Facades\Socialite;
+use Illuminate\Support\Str;
 
 class LoginController extends Controller
 {
@@ -14,10 +16,18 @@ class LoginController extends Controller
     {
         return view('pages.login');
     }
+
     public function register_view()
     {
         return view('pages.register');
     }
+
+    public function generateRandomPassword()
+    {
+        $randomPassword = Str::random(10) . mt_rand(100, 999) . Str::random(3) . mt_rand(100, 999);
+        return $randomPassword;
+    }
+
     public function login(Request $request)
     {
         $request->validate([
@@ -73,6 +83,8 @@ class LoginController extends Controller
             return redirect('/')->with('error', 'Login Gagal');
         }
     }
+
+    // Register with verify email
     public function register(Request $request)
     {
         // Validasi data input dari pengguna
@@ -115,7 +127,6 @@ class LoginController extends Controller
         return redirect()->route('verification.notice')->with('message', 'Akun berhasil dibuat, silahkan verifikasi Email anda');
     }
 
-
     public function notice()
     {
         if (Auth::user()->hasVerifiedEmail()) {
@@ -148,6 +159,49 @@ class LoginController extends Controller
     {
         $request->user()->sendEmailVerificationNotification();
         return redirect()->back()->with('message', 'Berhasil Mengirimkan Email Verifikasi');
+    }
+
+    // Google Login
+    public function google_redirect()
+    {
+        return Socialite::driver('google')->redirect();
+    }
+
+    public function google_callback()
+    {
+        $googleUser = Socialite::driver('google')->user();
+        $email = $googleUser->getEmail();
+
+        // Cek apakah email sudah terdaftar tetapi tidak memiliki google_id
+        $userWithEmail = User::where('email', $email)->first();
+
+        if ($userWithEmail && !$userWithEmail->google_id) {
+            // Jika email sudah terdaftar tapi tidak punya google_id, arahkan ke halaman login
+            return redirect()->route('login')->with('error', 'Email sudah terdaftar. Silakan login dengan email yang lain.');
+        }
+
+        // Lanjutkan dengan proses login atau pembuatan akun
+        $userExist = User::where('google_id', $googleUser->getId())->first();
+
+        if (!$userExist) {
+            $user = User::create([
+                'name' => $googleUser->getName(),
+                'nisn' => mt_rand(10000, 99999),
+                'email' => $email,
+                'password' => bcrypt($this->generateRandomPassword()),
+                'pwd_nohash' => $this->generateRandomPassword(),
+                'google_id' => $googleUser->getId(),
+                'email_verified_at' => now()
+            ]);
+
+            Auth::login($user);
+
+            return redirect()->route('index')->with('message', 'Login Dengan Google Berhasil');
+        }
+
+        Auth::login($userExist);
+
+        return redirect()->route('index')->with('message', 'Login Dengan Google Berhasil');
     }
 
     public function logout()

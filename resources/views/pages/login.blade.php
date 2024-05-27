@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIP SMEA - Login</title>
+    <title>SIP SMEA - Masuk</title>
     <link rel="shortcut icon" href="{{ asset('src/assets/favicon.ico') }}" type="image/x-icon" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -62,13 +62,13 @@
                         </button>
                         <div class="lg-g d-flex justify-content-center align-items-center">
                             <div class="line-g"></div>
-                            <div class="login-g">Atau Login Dengan</div>
+                            <div class="login-g">Atau Masuk Dengan</div>
                         </div>
 
                         {{-- Login Google --}}
-                        <a href="#" class="google-field d-flex justify-content-center align-items-center">
+                        <a href="{{ route('google_redirect') }}" class="google-field d-flex justify-content-center align-items-center">
                             <img src="{{ asset('src/assets/google.png') }}" alt="google-icon" width="50px">
-                            <div class="login-with-google">Login With Google</div>
+                            <div class="login-with-google">Masuk Dengan Google</div>
                         </a>
                     </form>
                 </div>

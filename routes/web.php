@@ -33,6 +33,12 @@ Route::middleware('guest')->group(function () {
 
     // QR Code Login Siswa
     Route::get('/student-login', [LoginController::class, 'student_login'])->name('student_login');
+
+    // Google OAUTH2 Login
+    Route::prefix('/auth/google')->group(function () {
+        Route::get('/redirect', [LoginController::class, 'google_redirect'])->name('google_redirect');
+        Route::get('/callback', [LoginController::class, 'google_callback'])->name('google_callback');
+    });
 });
 
 Route::prefix('/email/verify')->group(function () {
