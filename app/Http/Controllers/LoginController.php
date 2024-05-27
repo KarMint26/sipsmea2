@@ -14,12 +14,12 @@ class LoginController extends Controller
 {
     public function login_view()
     {
-        return view('pages.login');
+        return view('auth.login');
     }
 
     public function register_view()
     {
-        return view('pages.register');
+        return view('auth.register');
     }
 
     public function generateRandomPassword()
@@ -133,7 +133,7 @@ class LoginController extends Controller
             return redirect()->route('index');
         }
 
-        return view('pages.verify_email');
+        return view('auth.verify_email');
     }
 
     public function verify(EmailVerificationRequest $request, $id, $hash)
@@ -177,7 +177,7 @@ class LoginController extends Controller
 
         if ($userWithEmail && !$userWithEmail->google_id) {
             // Jika email sudah terdaftar tapi tidak punya google_id, arahkan ke halaman login
-            return redirect()->route('login')->with('error', 'Email sudah terdaftar. Silakan login dengan email yang lain.');
+            return redirect()->route('login')->withErrors('Email sudah terdaftar. Silakan login google dengan email yang lain.');
         }
 
         // Lanjutkan dengan proses login atau pembuatan akun
@@ -202,6 +202,49 @@ class LoginController extends Controller
         Auth::login($userExist);
 
         return redirect()->route('index')->with('message', 'Login Dengan Google Berhasil');
+    }
+
+    // Facebook Login
+    public function facebook_redirect()
+    {
+        return Socialite::driver('facebook')->redirect();
+    }
+
+    public function facebook_callback()
+    {
+        $facebookUser = Socialite::driver('facebook')->user();
+        $email = $facebookUser->getEmail();
+
+        // Cek apakah email sudah terdaftar tetapi tidak memiliki facebook_id
+        $userWithEmail = User::where('email', $email)->first();
+
+        if ($userWithEmail && !$userWithEmail->facebook_id) {
+            // Jika email sudah terdaftar tapi tidak punya facebook_id, arahkan ke halaman login
+            return redirect()->route('login')->withErrors('Email sudah terdaftar. Silakan login facebook dengan email yang lain.');
+        }
+
+        // Lanjutkan dengan proses login atau pembuatan akun
+        $userExist = User::where('facebook_id', $facebookUser->getId())->first();
+
+        if (!$userExist) {
+            $user = User::create([
+                'name' => $facebookUser->getName(),
+                'nisn' => mt_rand(10000, 99999),
+                'email' => $email,
+                'password' => bcrypt($this->generateRandomPassword()),
+                'pwd_nohash' => $this->generateRandomPassword(),
+                'facebook_id' => $facebookUser->getId(),
+                'email_verified_at' => now()
+            ]);
+
+            Auth::login($user);
+
+            return redirect()->route('index')->with('message', 'Login Dengan Facebook Berhasil');
+        }
+
+        Auth::login($userExist);
+
+        return redirect()->route('index')->with('message', 'Login Dengan Facebook Berhasil');
     }
 
     public function logout()

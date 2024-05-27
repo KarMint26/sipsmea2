@@ -470,7 +470,7 @@ html {
     font-size: 0.8rem;
 }
 
-.google-field {
+.social-login-field {
     width: 100%;
     margin-top: 2rem;
     text-decoration: none;
@@ -484,12 +484,12 @@ html {
     transition: 300ms ease-in-out;
 }
 
-.google-field:hover {
+.social-login-field:hover {
     background-color: #fff;
     letter-spacing: 0.08rem;
 }
 
-.google-field img {
+.social-login-field img {
     width: 28px;
 }
 

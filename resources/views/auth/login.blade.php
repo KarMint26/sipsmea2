@@ -66,9 +66,15 @@
                         </div>
 
                         {{-- Login Google --}}
-                        <a href="{{ route('google_redirect') }}" class="google-field d-flex justify-content-center align-items-center">
+                        <a href="{{ route('google_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center">
                             <img src="{{ asset('src/assets/google.png') }}" alt="google-icon" width="50px">
                             <div class="login-with-google">Masuk Dengan Google</div>
+                        </a>
+
+                        {{-- Login Facebook --}}
+                        <a href="{{ route('facebook_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center mt-3">
+                            <img src="{{ asset('src/assets/facebook.png') }}" alt="facebook-icon" width="50px">
+                            <div class="login-with-facebook">Masuk Dengan Facebook</div>
                         </a>
                     </form>
                 </div>

@@ -23,6 +23,7 @@ class User extends Authenticatable implements MustVerifyEmail
         'pwd_nohash',
         'email_verified_at',
         'google_id',
+        'facebook_id',
         'role',
         'status',
         'w1',
