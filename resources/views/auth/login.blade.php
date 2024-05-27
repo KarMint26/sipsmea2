@@ -52,7 +52,7 @@
                         </div>
                         <div class="d-flex justify-content-between">
                             <div class="text-login">Belum punya akun? <a href="{{ route('register') }}">daftar</a></div>
-                            <div class="text-login">Lupa Password? <a href="#">klik disini</a></div>
+                            <div class="text-login">Lupa password? <a href="#">klik disini</a></div>
                         </div>
 
                         <!-- Submit button -->
