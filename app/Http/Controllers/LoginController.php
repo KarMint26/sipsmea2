@@ -258,6 +258,9 @@ class LoginController extends Controller
         return redirect()->route('index')->with('message', 'Login Dengan Facebook Berhasil');
     }
 
+    // Reset Password
+
+
     public function logout()
     {
         Auth::logout();

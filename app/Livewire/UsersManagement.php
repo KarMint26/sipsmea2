@@ -115,7 +115,7 @@ class UsersManagement extends Component
         if($this->keyword != null) {
             $data = User::where(function ($query) {
                 $query->where('name', 'like', '%' . $this->keyword . '%')
-                      ->orWhere('username', 'like', '%' . $this->keyword . '%');
+                      ->orWhere('nisn', 'like', '%' . $this->keyword . '%');
             })
             ->where(function ($query) {
                 if($this->filter != 'all') {
