@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>SIP SMEA - Forgot Password</title>
+    <title>SIP SMEA - Validasi Token</title>
     <link rel="shortcut icon" href="{{ asset('src/assets/favicon.ico') }}" type="image/x-icon" />
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -17,12 +17,47 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
 
     <link rel="stylesheet" href="{{ asset('src/css/style.css') }}" />
+
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #f8f9fa;
+        }
+
+        .forgot-password {
+            text-align: center;
+            width: 320px;
+            padding: 2rem;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            background-color: #fff;
+        }
+
+        .forgot-password a {
+            color: #fff;
+            background-color: rgb(206, 28, 114);
+            padding: 0.5rem 1rem;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .forgot-password a:hover {
+            background-color: #a00a52;
+        }
+    </style>
 </head>
 
 <body>
     <section class="forgot-password">
-        <div>Klik Link Dibawah ini untuk me-reset password</div>
-        <br>
+        <img src="https://sipsmea.techtitans.id/src/assets/favicon.png" alt="icon" width="100px" class="mb-3">
+        <div class="fw-semibold text-center fs-4">SIPSMEA</div>
+        <div>Klik link dibawah ini untuk me-reset password</div>
         <br>
         <a href="{{ route('reset_password', ['token' => $token]) }}">Klik Disini</a>
     </section>

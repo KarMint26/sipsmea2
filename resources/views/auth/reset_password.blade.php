@@ -41,8 +41,8 @@
                         <input type="hidden" name="token" value="{{ $token }}">
                         <div class="form-floating" style="position: relative !important;">
                             <input type="password" class="form-control" id="floatingPassword" name="password"
-                                placeholder="Password" />
-                            <label for="floatingPassword">Password</label>
+                                placeholder="Password Baru" />
+                            <label for="floatingPassword">Password Baru</label>
                             <div class="show-pwd">
                                 <i class="bi bi-eye-slash-fill" id="eye"></i>
                             </div>
