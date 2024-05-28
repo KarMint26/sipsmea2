@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: May 27, 2024 at 10:00 AM
+-- Generation Time: May 28, 2024 at 12:33 PM
 -- Server version: 8.0.35-0ubuntu0.22.04.1
 -- PHP Version: 8.1.2-1ubuntu2.15
 
@@ -68,7 +68,42 @@ INSERT INTO `alternatifs` (`id`, `jarak`, `current_peminat`, `peminatan_id`, `us
 (7, 9, 1, 3, 2, '2024-05-26 10:23:02', '2024-05-26 10:23:07'),
 (8, 8, 1, 4, 2, '2024-05-26 10:23:02', '2024-05-26 10:23:07'),
 (9, 9, 1, 5, 2, '2024-05-26 10:23:02', '2024-05-26 10:23:07'),
-(10, 8, 1, 6, 2, '2024-05-26 10:23:02', '2024-05-26 10:23:07');
+(10, 8, 1, 6, 2, '2024-05-26 10:23:02', '2024-05-26 10:23:07'),
+(46, 8, 3, 6, 21, '2024-05-27 09:43:44', '2024-05-27 09:43:51'),
+(47, 9, 2, 7, 21, '2024-05-27 09:43:44', '2024-05-27 09:43:51'),
+(48, 6, 1, 8, 21, '2024-05-27 09:43:44', '2024-05-27 09:43:51'),
+(49, 7, 1, 10, 21, '2024-05-27 09:43:44', '2024-05-27 09:43:51'),
+(50, 10, 1, 11, 21, '2024-05-27 09:43:44', '2024-05-27 09:43:51'),
+(51, 7, 3, 2, 22, '2024-05-27 09:44:35', '2024-05-27 09:44:41'),
+(52, 8, 2, 4, 22, '2024-05-27 09:44:35', '2024-05-27 09:44:41'),
+(53, 9, 4, 6, 22, '2024-05-27 09:44:35', '2024-05-27 09:44:41'),
+(54, 10, 1, 12, 22, '2024-05-27 09:44:35', '2024-05-27 09:44:41'),
+(55, 8, 2, 13, 22, '2024-05-27 09:44:35', '2024-05-27 09:44:41'),
+(56, 8, 2, 3, 23, '2024-05-27 09:45:30', '2024-05-27 09:45:36'),
+(57, 7, 5, 6, 23, '2024-05-27 09:45:30', '2024-05-27 09:45:36'),
+(58, 6, 2, 8, 23, '2024-05-27 09:45:30', '2024-05-27 09:45:36'),
+(59, 9, 2, 9, 23, '2024-05-27 09:45:30', '2024-05-27 09:45:36'),
+(60, 7, 2, 10, 23, '2024-05-27 09:45:30', '2024-05-27 09:45:36'),
+(61, 7, 4, 2, 24, '2024-05-27 09:46:23', '2024-05-27 09:46:28'),
+(62, 8, 6, 6, 24, '2024-05-27 09:46:23', '2024-05-27 09:46:28'),
+(63, 7, 3, 7, 24, '2024-05-27 09:46:23', '2024-05-27 09:46:28'),
+(64, 8, 3, 9, 24, '2024-05-27 09:46:23', '2024-05-27 09:46:28'),
+(65, 7, 3, 13, 24, '2024-05-27 09:46:23', '2024-05-27 09:46:28'),
+(66, 8, 5, 2, 25, '2024-05-27 09:49:59', '2024-05-27 09:50:07'),
+(67, 9, 3, 4, 25, '2024-05-27 09:49:59', '2024-05-27 09:50:07'),
+(68, 6, 2, 5, 25, '2024-05-27 09:49:59', '2024-05-27 09:50:07'),
+(69, 7, 7, 6, 25, '2024-05-27 09:49:59', '2024-05-27 09:50:07'),
+(70, 7, 4, 7, 25, '2024-05-27 09:49:59', '2024-05-27 09:50:07'),
+(71, 10, 6, 2, 26, '2024-05-27 09:50:40', '2024-05-27 09:50:54'),
+(72, 12, 3, 3, 26, '2024-05-27 09:50:40', '2024-05-27 09:50:54'),
+(73, 9, 8, 6, 26, '2024-05-27 09:50:40', '2024-05-27 09:50:54'),
+(74, 8, 5, 7, 26, '2024-05-27 09:50:40', '2024-05-27 09:50:54'),
+(75, 11, 4, 13, 26, '2024-05-27 09:50:40', '2024-05-27 09:50:54'),
+(81, 8, 6, 2, 11, '2024-05-28 02:55:33', '2024-05-28 02:55:40'),
+(82, 8, 8, 6, 11, '2024-05-28 02:55:33', '2024-05-28 02:55:40'),
+(83, 8, 5, 7, 11, '2024-05-28 02:55:33', '2024-05-28 02:55:40'),
+(84, 8, 3, 8, 11, '2024-05-28 02:55:33', '2024-05-28 02:55:40'),
+(85, 8, 4, 13, 11, '2024-05-28 02:55:33', '2024-05-28 02:55:40');
 
 -- --------------------------------------------------------
 
@@ -116,6 +151,7 @@ INSERT INTO `migrations` (`id`, `migration`, `batch`) VALUES
 --
 
 CREATE TABLE `password_reset_tokens` (
+  `id` int NOT NULL,
   `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
   `created_at` timestamp NULL DEFAULT NULL
@@ -141,18 +177,18 @@ CREATE TABLE `peminatans` (
 --
 
 INSERT INTO `peminatans` (`id`, `peminat`, `pkl_place_id`, `academic_year_id`, `created_at`, `updated_at`) VALUES
-(2, 1, 2, 1, '2024-05-26 09:56:52', '2024-05-26 16:37:36'),
-(3, 1, 3, 1, '2024-05-26 09:59:35', '2024-05-26 16:37:36'),
-(4, 1, 4, 1, '2024-05-26 10:00:49', '2024-05-26 16:37:36'),
-(5, 1, 5, 1, '2024-05-26 10:02:32', '2024-05-26 16:37:36'),
-(6, 1, 6, 1, '2024-05-26 10:11:13', '2024-05-26 16:37:36'),
-(7, 0, 7, 1, '2024-05-26 10:12:23', '2024-05-26 10:12:23'),
-(8, 0, 8, 1, '2024-05-26 10:14:47', '2024-05-26 10:14:47'),
-(9, 0, 9, 1, '2024-05-26 10:15:37', '2024-05-26 10:15:37'),
-(10, 0, 10, 1, '2024-05-26 10:16:45', '2024-05-26 10:16:45'),
-(11, 0, 11, 1, '2024-05-26 10:17:29', '2024-05-26 10:17:29'),
-(12, 0, 12, 1, '2024-05-26 10:18:43', '2024-05-26 10:18:43'),
-(13, 0, 13, 1, '2024-05-26 10:19:40', '2024-05-26 10:19:40');
+(2, 6, 2, 1, '2024-05-26 09:56:52', '2024-05-28 02:55:33'),
+(3, 3, 3, 1, '2024-05-26 09:59:35', '2024-05-28 02:55:13'),
+(4, 3, 4, 1, '2024-05-26 10:00:49', '2024-05-28 02:55:13'),
+(5, 2, 5, 1, '2024-05-26 10:02:32', '2024-05-28 02:55:13'),
+(6, 8, 6, 1, '2024-05-26 10:11:13', '2024-05-28 02:55:33'),
+(7, 5, 7, 1, '2024-05-26 10:12:23', '2024-05-28 02:55:33'),
+(8, 3, 8, 1, '2024-05-26 10:14:47', '2024-05-28 02:55:33'),
+(9, 2, 9, 1, '2024-05-26 10:15:37', '2024-05-28 02:50:03'),
+(10, 2, 10, 1, '2024-05-26 10:16:45', '2024-05-27 09:45:30'),
+(11, 1, 11, 1, '2024-05-26 10:17:29', '2024-05-27 09:43:44'),
+(12, 1, 12, 1, '2024-05-26 10:18:43', '2024-05-27 09:44:35'),
+(13, 4, 13, 1, '2024-05-26 10:19:40', '2024-05-28 02:55:33');
 
 -- --------------------------------------------------------
 
@@ -245,9 +281,16 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `nisn`, `email`, `email_verified_at`, `password`, `pwd_nohash`, `google_id`, `facebook_id`, `status`, `role`, `w1`, `w2`, `w3`, `w4`, `w5`, `created_at`, `updated_at`) VALUES
-(1, 'admin', '11111', 'admin@sipsmea.my.id', '2024-05-26 09:30:53', '$2y$12$eHKjerZ0rNqe8ENvs1eFO.KOfmO5xv0ZTR9ls7yWv5NLgt5Ho65.O', 'glr413fv37', NULL, NULL, 'aktif', 'admin', 0, 0, 0, 0, 0, NULL, NULL),
+(1, 'admin', '11111', 'admin@sipsmea.my.id', '2024-05-26 09:30:53', '$2y$12$C4kOn0JLuh6ktvEKcQQZP.H7Q9EE/j95k/JVIZVUAXQ2HMYFD8LmW', '12345qwert', NULL, NULL, 'aktif', 'admin', 0, 0, 0, 0, 0, NULL, '2024-05-28 01:29:44'),
 (2, 'Akun Demo', '12345', 'demo1@sipsmea.my.id', '2024-05-26 09:30:53', '$2y$12$o1VgxQVQgYObaKZQ8i3VEO6732.rmwjbQDZXM4UlVp258CI6OOuTS', 'hgu7lr9zSa211K0zzk', NULL, NULL, 'aktif', 'siswa', -4, 3, 5, 5, -3, NULL, '2024-05-26 12:05:37'),
-(11, 'Akun Demo 2', '17822', 'demo2@sipsmea.my.id', '2024-05-26 14:49:27', '$2y$12$NbyiTjgRmqNC0Nnyc/cM7u9yfBHSBweOsx4Sqldj29dh.Hjeu3eVO', '26november2003', NULL, NULL, 'aktif', 'siswa', 0, 0, 0, 0, 0, '2024-05-26 14:48:54', '2024-05-26 14:49:27');
+(11, 'AKUN DEMO 2', '16672', 'demo2@sipsmea.my.id', '2024-05-26 14:49:27', '$2y$12$NbyiTjgRmqNC0Nnyc/cM7u9yfBHSBweOsx4Sqldj29dh.Hjeu3eVO', '26november2003', NULL, NULL, 'aktif', 'siswa', -4, 3, 5, 4, -5, '2024-05-26 14:48:54', '2024-05-28 02:55:52'),
+(21, 'Budi Hartono', '17422', 'budhar88@gmail.com', '2024-05-27 08:20:30', '$2y$12$ORbXHAeabuR7SXKzs.W9wO0j43DT9hJbkzTB4PwdZ2FzcsL7/j.Ci', 'xQeKQ1z6AO8714gq894', NULL, NULL, 'aktif', 'siswa', -4, 2, 2, 5, -3, '2024-05-27 08:20:30', '2024-05-27 09:44:03'),
+(22, 'Putri Riansyah', '17721', 'putriansyah62@gmail.com', '2024-05-27 09:18:50', '$2y$12$zsyukM4QXBbQbSGgrQdWrOZi84kBE.qa1kKckvWW4iC2SSGglYT86', 'F34onmvde1478DHk564', NULL, NULL, 'aktif', 'siswa', -3, 4, 4, 3, -4, '2024-05-27 09:18:50', '2024-05-27 09:44:51'),
+(23, 'Danu Vinanda', '17521', 'danuvinand22@gmail.com', '2024-05-27 09:19:37', '$2y$12$fwKsyeQKaGO7IPAtpnb2o.4hjGtLVNWwuhdYDrotjjoCYX3nkmIjm', '8Gdd2DwNuU10890h806', NULL, NULL, 'aktif', 'siswa', -3, 5, 4, 2, -4, '2024-05-27 09:19:37', '2024-05-27 09:45:43'),
+(24, 'Galih Pratama', '17782', 'galihpratama540@gmail.com', '2024-05-27 09:41:16', '$2y$12$DyOZnVt6uB2WZtV3csj70.ZzcfJbpUYQW0ILjx2.Ic3sdXnVb7isa', 'VDTQ9IOViY772frR594', NULL, NULL, 'aktif', 'siswa', -5, 3, 5, 5, -3, '2024-05-27 09:41:16', '2024-05-27 09:46:38'),
+(25, 'Muhammad Dani', '17791', 'mhmmaddarusman@gmail.com', '2024-05-27 09:48:47', '$2y$12$rMqZyMc4.dHyrrYRDyh7G.p75cKIMyau41/QzvbeT7gaBQScp0uMu', 'xsitLQhyPo546Zqq166', NULL, NULL, 'aktif', 'siswa', -3, 5, 5, 3, -5, '2024-05-27 09:48:47', '2024-05-27 15:25:34'),
+(26, 'Laely Fadhillah', '17711', 'laelyfadhillah222@gmail.com', '2024-05-27 09:49:21', '$2y$12$UqTHjE1LmyBEeDLZ37vVqO1/ccsu3squ1qdgiZ2gYfTlov0BHoTcG', '9MAUwev6A7684bW9823', NULL, NULL, 'aktif', 'siswa', -4, 1, 5, 4, -3, '2024-05-27 09:49:21', '2024-05-27 09:51:06'),
+(27, 'Karel Trisnanto Utomo', '17821', 'kareltrisnanto26@gmail.com', '2024-05-27 16:42:28', '$2y$12$VLDig88ARnmthZetrYDnIO7ku0eu9jVusvL07PLA/07kU3pRXiN.K', '12345qwert', NULL, NULL, 'aktif', 'siswa', 0, 0, 0, 0, 0, '2024-05-27 16:42:08', '2024-05-28 05:32:07');
 
 -- --------------------------------------------------------
 
@@ -256,12 +299,12 @@ INSERT INTO `users` (`id`, `name`, `nisn`, `email`, `email_verified_at`, `passwo
 -- (See below for the actual view)
 --
 CREATE TABLE `v_alternatifs` (
-`c1` int
+`title` varchar(255)
+,`c1` int
 ,`c2` int
 ,`c3` int
 ,`c4` int
 ,`c5` int
-,`title` varchar(255)
 ,`user_id` bigint unsigned
 );
 
@@ -287,9 +330,9 @@ CREATE TABLE `v_bobot` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_saw_hasils` (
-`hasil` decimal(32,8)
+`user_id` bigint unsigned
 ,`title` varchar(255)
-,`user_id` bigint unsigned
+,`hasil` decimal(32,8)
 );
 
 -- --------------------------------------------------------
@@ -314,12 +357,12 @@ CREATE TABLE `v_saw_min_maxes` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_saw_normalisasis` (
-`r1` decimal(14,4)
+`title` varchar(255)
+,`r1` decimal(14,4)
 ,`r2` decimal(14,4)
 ,`r3` decimal(14,4)
 ,`r4` decimal(14,4)
 ,`r5` decimal(14,4)
-,`title` varchar(255)
 ,`user_id` bigint unsigned
 );
 
@@ -330,10 +373,10 @@ CREATE TABLE `v_saw_normalisasis` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_topsis_alternatif_solusi_ideals` (
-`dm` double
-,`dp` double
+`user_id` bigint unsigned
 ,`title` varchar(255)
-,`user_id` bigint unsigned
+,`dp` double
+,`dm` double
 );
 
 -- --------------------------------------------------------
@@ -343,9 +386,9 @@ CREATE TABLE `v_topsis_alternatif_solusi_ideals` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_topsis_hasils` (
-`hasil` double
+`user_id` bigint unsigned
 ,`title` varchar(255)
-,`user_id` bigint unsigned
+,`hasil` double
 );
 
 -- --------------------------------------------------------
@@ -355,13 +398,13 @@ CREATE TABLE `v_topsis_hasils` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_topsis_normalisasis` (
-`r1` double
+`user_id` bigint unsigned
+,`title` varchar(255)
+,`r1` double
 ,`r2` double
 ,`r3` double
 ,`r4` double
 ,`r5` double
-,`title` varchar(255)
-,`user_id` bigint unsigned
 );
 
 -- --------------------------------------------------------
@@ -385,17 +428,17 @@ CREATE TABLE `v_topsis_pembagis` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_topsis_solusi_ideals` (
-`am_tb1` double
-,`am_tb2` double
-,`am_tb3` double
-,`am_tb4` double
-,`am_tb5` double
+`user_id` bigint unsigned
 ,`ap_tb1` double
 ,`ap_tb2` double
 ,`ap_tb3` double
 ,`ap_tb4` double
 ,`ap_tb5` double
-,`user_id` bigint unsigned
+,`am_tb1` double
+,`am_tb2` double
+,`am_tb3` double
+,`am_tb4` double
+,`am_tb5` double
 );
 
 -- --------------------------------------------------------
@@ -405,13 +448,13 @@ CREATE TABLE `v_topsis_solusi_ideals` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_topsis_ternormalisasi_terbobots` (
-`tb1` double
+`user_id` bigint unsigned
+,`title` varchar(255)
+,`tb1` double
 ,`tb2` double
 ,`tb3` double
 ,`tb4` double
 ,`tb5` double
-,`title` varchar(255)
-,`user_id` bigint unsigned
 );
 
 -- --------------------------------------------------------
@@ -421,9 +464,9 @@ CREATE TABLE `v_topsis_ternormalisasi_terbobots` (
 -- (See below for the actual view)
 --
 CREATE TABLE `v_wp_hasils` (
-`hasil` double
-,`id` bigint unsigned
+`id` bigint unsigned
 ,`title` varchar(255)
+,`hasil` double
 );
 
 -- --------------------------------------------------------
@@ -434,13 +477,13 @@ CREATE TABLE `v_wp_hasils` (
 --
 CREATE TABLE `v_wp_preferensis` (
 `id` bigint unsigned
-,`s` double
+,`title` varchar(255)
 ,`s1` double
 ,`s2` double
 ,`s3` double
 ,`s4` double
 ,`s5` double
-,`title` varchar(255)
+,`s` double
 );
 
 -- --------------------------------------------------------
@@ -461,7 +504,7 @@ CREATE TABLE `v_wp_sum_preferensis` (
 --
 DROP TABLE IF EXISTS `v_alternatifs`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_alternatifs`  AS SELECT `pkl_places`.`title` AS `title`, `alternatifs`.`jarak` AS `c1`, `pkl_places`.`rating` AS `c2`, `pkl_places`.`daya_tampung` AS `c3`, `pkl_places`.`akses_jalan` AS `c4`, `alternatifs`.`current_peminat` AS `c5`, `alternatifs`.`user_id` AS `user_id` FROM (((`pkl_places` join `peminatans` on((`peminatans`.`pkl_place_id` = `pkl_places`.`id`))) join `alternatifs` on((`alternatifs`.`peminatan_id` = `peminatans`.`id`))) join `academic_years` on((`academic_years`.`id` = `peminatans`.`academic_year_id`))) WHERE ((`academic_years`.`start_date` <= now()) AND (`academic_years`.`end_date` >= now())) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_alternatifs`  AS SELECT `pkl_places`.`title` AS `title`, `alternatifs`.`jarak` AS `c1`, `pkl_places`.`rating` AS `c2`, `pkl_places`.`daya_tampung` AS `c3`, `pkl_places`.`akses_jalan` AS `c4`, `alternatifs`.`current_peminat` AS `c5`, `alternatifs`.`user_id` AS `user_id` FROM (((`pkl_places` join `peminatans` on((`peminatans`.`pkl_place_id` = `pkl_places`.`id`))) join `alternatifs` on((`alternatifs`.`peminatan_id` = `peminatans`.`id`))) join `academic_years` on((`academic_years`.`id` = `peminatans`.`academic_year_id`))) WHERE ((`academic_years`.`start_date` <= now()) AND (`academic_years`.`end_date` >= now())) ;
 
 -- --------------------------------------------------------
 
@@ -470,7 +513,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_bobot`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_bobot`  AS SELECT `users`.`id` AS `id`, (`users`.`w1` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w1`, (`users`.`w2` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w2`, (`users`.`w3` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w3`, (`users`.`w4` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w4`, (`users`.`w5` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w5` FROM `users` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_bobot`  AS SELECT `users`.`id` AS `id`, (`users`.`w1` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w1`, (`users`.`w2` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w2`, (`users`.`w3` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w3`, (`users`.`w4` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w4`, (`users`.`w5` / ((((abs(`users`.`w1`) + abs(`users`.`w2`)) + abs(`users`.`w3`)) + abs(`users`.`w4`)) + abs(`users`.`w5`))) AS `w5` FROM `users` ;
 
 -- --------------------------------------------------------
 
@@ -479,7 +522,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_saw_hasils`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_saw_hasils`  AS SELECT `v_saw_normalisasis`.`user_id` AS `user_id`, `v_saw_normalisasis`.`title` AS `title`, (((((abs(`v_bobot`.`w1`) * `v_saw_normalisasis`.`r1`) + (abs(`v_bobot`.`w2`) * `v_saw_normalisasis`.`r2`)) + (abs(`v_bobot`.`w3`) * `v_saw_normalisasis`.`r3`)) + (abs(`v_bobot`.`w4`) * `v_saw_normalisasis`.`r4`)) + (abs(`v_bobot`.`w5`) * `v_saw_normalisasis`.`r5`)) AS `hasil` FROM (`v_saw_normalisasis` join `v_bobot` on((`v_saw_normalisasis`.`user_id` = `v_bobot`.`id`))) ORDER BY (((((abs(`v_bobot`.`w1`) * `v_saw_normalisasis`.`r1`) + (abs(`v_bobot`.`w2`) * `v_saw_normalisasis`.`r2`)) + (abs(`v_bobot`.`w3`) * `v_saw_normalisasis`.`r3`)) + (abs(`v_bobot`.`w4`) * `v_saw_normalisasis`.`r4`)) + (abs(`v_bobot`.`w5`) * `v_saw_normalisasis`.`r5`)) ASC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_saw_hasils`  AS SELECT `v_saw_normalisasis`.`user_id` AS `user_id`, `v_saw_normalisasis`.`title` AS `title`, (((((abs(`v_bobot`.`w1`) * `v_saw_normalisasis`.`r1`) + (abs(`v_bobot`.`w2`) * `v_saw_normalisasis`.`r2`)) + (abs(`v_bobot`.`w3`) * `v_saw_normalisasis`.`r3`)) + (abs(`v_bobot`.`w4`) * `v_saw_normalisasis`.`r4`)) + (abs(`v_bobot`.`w5`) * `v_saw_normalisasis`.`r5`)) AS `hasil` FROM (`v_saw_normalisasis` join `v_bobot` on((`v_saw_normalisasis`.`user_id` = `v_bobot`.`id`))) ORDER BY (((((abs(`v_bobot`.`w1`) * `v_saw_normalisasis`.`r1`) + (abs(`v_bobot`.`w2`) * `v_saw_normalisasis`.`r2`)) + (abs(`v_bobot`.`w3`) * `v_saw_normalisasis`.`r3`)) + (abs(`v_bobot`.`w4`) * `v_saw_normalisasis`.`r4`)) + (abs(`v_bobot`.`w5`) * `v_saw_normalisasis`.`r5`)) ASC ;
 
 -- --------------------------------------------------------
 
@@ -488,7 +531,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_saw_min_maxes`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_saw_min_maxes`  AS SELECT min(`v_alternatifs`.`c1`) AS `m1`, max(`v_alternatifs`.`c2`) AS `m2`, max(`v_alternatifs`.`c3`) AS `m3`, max(`v_alternatifs`.`c4`) AS `m4`, min(`v_alternatifs`.`c5`) AS `m5`, `v_alternatifs`.`user_id` AS `user_id` FROM `v_alternatifs` GROUP BY `v_alternatifs`.`user_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_saw_min_maxes`  AS SELECT min(`v_alternatifs`.`c1`) AS `m1`, max(`v_alternatifs`.`c2`) AS `m2`, max(`v_alternatifs`.`c3`) AS `m3`, max(`v_alternatifs`.`c4`) AS `m4`, min(`v_alternatifs`.`c5`) AS `m5`, `v_alternatifs`.`user_id` AS `user_id` FROM `v_alternatifs` GROUP BY `v_alternatifs`.`user_id` ;
 
 -- --------------------------------------------------------
 
@@ -497,7 +540,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_saw_normalisasis`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_saw_normalisasis`  AS SELECT `v_alternatifs`.`title` AS `title`, (`v_saw_min_maxes`.`m1` / `v_alternatifs`.`c1`) AS `r1`, (`v_alternatifs`.`c2` / `v_saw_min_maxes`.`m2`) AS `r2`, (`v_alternatifs`.`c3` / `v_saw_min_maxes`.`m3`) AS `r3`, (`v_alternatifs`.`c4` / `v_saw_min_maxes`.`m4`) AS `r4`, (`v_saw_min_maxes`.`m5` / `v_alternatifs`.`c5`) AS `r5`, `v_alternatifs`.`user_id` AS `user_id` FROM (`v_alternatifs` join `v_saw_min_maxes` on((`v_alternatifs`.`user_id` = `v_saw_min_maxes`.`user_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_saw_normalisasis`  AS SELECT `v_alternatifs`.`title` AS `title`, (`v_saw_min_maxes`.`m1` / `v_alternatifs`.`c1`) AS `r1`, (`v_alternatifs`.`c2` / `v_saw_min_maxes`.`m2`) AS `r2`, (`v_alternatifs`.`c3` / `v_saw_min_maxes`.`m3`) AS `r3`, (`v_alternatifs`.`c4` / `v_saw_min_maxes`.`m4`) AS `r4`, (`v_saw_min_maxes`.`m5` / `v_alternatifs`.`c5`) AS `r5`, `v_alternatifs`.`user_id` AS `user_id` FROM (`v_alternatifs` join `v_saw_min_maxes` on((`v_alternatifs`.`user_id` = `v_saw_min_maxes`.`user_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -506,7 +549,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_topsis_alternatif_solusi_ideals`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_alternatif_solusi_ideals`  AS SELECT `v_topsis_ternormalisasi_terbobots`.`user_id` AS `user_id`, `v_topsis_ternormalisasi_terbobots`.`title` AS `title`, sqrt(((((pow((`v_topsis_solusi_ideals`.`ap_tb1` - `v_topsis_ternormalisasi_terbobots`.`tb1`),2) + pow((`v_topsis_solusi_ideals`.`ap_tb2` - `v_topsis_ternormalisasi_terbobots`.`tb2`),2)) + pow((`v_topsis_solusi_ideals`.`ap_tb3` - `v_topsis_ternormalisasi_terbobots`.`tb3`),2)) + pow((`v_topsis_solusi_ideals`.`ap_tb4` - `v_topsis_ternormalisasi_terbobots`.`tb4`),2)) + pow((`v_topsis_solusi_ideals`.`ap_tb5` - `v_topsis_ternormalisasi_terbobots`.`tb5`),2))) AS `dp`, sqrt(((((pow((`v_topsis_ternormalisasi_terbobots`.`tb1` - `v_topsis_solusi_ideals`.`am_tb1`),2) + pow((`v_topsis_ternormalisasi_terbobots`.`tb2` - `v_topsis_solusi_ideals`.`am_tb2`),2)) + pow((`v_topsis_ternormalisasi_terbobots`.`tb3` - `v_topsis_solusi_ideals`.`am_tb3`),2)) + pow((`v_topsis_ternormalisasi_terbobots`.`tb4` - `v_topsis_solusi_ideals`.`am_tb4`),2)) + pow((`v_topsis_ternormalisasi_terbobots`.`tb5` - `v_topsis_solusi_ideals`.`am_tb5`),2))) AS `dm` FROM (`v_topsis_ternormalisasi_terbobots` join `v_topsis_solusi_ideals` on((`v_topsis_ternormalisasi_terbobots`.`user_id` = `v_topsis_solusi_ideals`.`user_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_alternatif_solusi_ideals`  AS SELECT `v_topsis_ternormalisasi_terbobots`.`user_id` AS `user_id`, `v_topsis_ternormalisasi_terbobots`.`title` AS `title`, sqrt(((((pow((`v_topsis_solusi_ideals`.`ap_tb1` - `v_topsis_ternormalisasi_terbobots`.`tb1`),2) + pow((`v_topsis_solusi_ideals`.`ap_tb2` - `v_topsis_ternormalisasi_terbobots`.`tb2`),2)) + pow((`v_topsis_solusi_ideals`.`ap_tb3` - `v_topsis_ternormalisasi_terbobots`.`tb3`),2)) + pow((`v_topsis_solusi_ideals`.`ap_tb4` - `v_topsis_ternormalisasi_terbobots`.`tb4`),2)) + pow((`v_topsis_solusi_ideals`.`ap_tb5` - `v_topsis_ternormalisasi_terbobots`.`tb5`),2))) AS `dp`, sqrt(((((pow((`v_topsis_ternormalisasi_terbobots`.`tb1` - `v_topsis_solusi_ideals`.`am_tb1`),2) + pow((`v_topsis_ternormalisasi_terbobots`.`tb2` - `v_topsis_solusi_ideals`.`am_tb2`),2)) + pow((`v_topsis_ternormalisasi_terbobots`.`tb3` - `v_topsis_solusi_ideals`.`am_tb3`),2)) + pow((`v_topsis_ternormalisasi_terbobots`.`tb4` - `v_topsis_solusi_ideals`.`am_tb4`),2)) + pow((`v_topsis_ternormalisasi_terbobots`.`tb5` - `v_topsis_solusi_ideals`.`am_tb5`),2))) AS `dm` FROM (`v_topsis_ternormalisasi_terbobots` join `v_topsis_solusi_ideals` on((`v_topsis_ternormalisasi_terbobots`.`user_id` = `v_topsis_solusi_ideals`.`user_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -515,7 +558,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_topsis_hasils`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_hasils`  AS SELECT `v_topsis_alternatif_solusi_ideals`.`user_id` AS `user_id`, `v_topsis_alternatif_solusi_ideals`.`title` AS `title`, (`v_topsis_alternatif_solusi_ideals`.`dm` / (`v_topsis_alternatif_solusi_ideals`.`dm` + `v_topsis_alternatif_solusi_ideals`.`dp`)) AS `hasil` FROM `v_topsis_alternatif_solusi_ideals` ORDER BY (`v_topsis_alternatif_solusi_ideals`.`dm` / (`v_topsis_alternatif_solusi_ideals`.`dm` + `v_topsis_alternatif_solusi_ideals`.`dp`)) ASC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_hasils`  AS SELECT `v_topsis_alternatif_solusi_ideals`.`user_id` AS `user_id`, `v_topsis_alternatif_solusi_ideals`.`title` AS `title`, (`v_topsis_alternatif_solusi_ideals`.`dm` / (`v_topsis_alternatif_solusi_ideals`.`dm` + `v_topsis_alternatif_solusi_ideals`.`dp`)) AS `hasil` FROM `v_topsis_alternatif_solusi_ideals` ORDER BY (`v_topsis_alternatif_solusi_ideals`.`dm` / (`v_topsis_alternatif_solusi_ideals`.`dm` + `v_topsis_alternatif_solusi_ideals`.`dp`)) ASC ;
 
 -- --------------------------------------------------------
 
@@ -524,7 +567,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_topsis_normalisasis`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_normalisasis`  AS SELECT `v_alternatifs`.`user_id` AS `user_id`, `v_alternatifs`.`title` AS `title`, (`v_alternatifs`.`c1` / `v_topsis_pembagis`.`pb_c1`) AS `r1`, (`v_alternatifs`.`c2` / `v_topsis_pembagis`.`pb_c2`) AS `r2`, (`v_alternatifs`.`c3` / `v_topsis_pembagis`.`pb_c3`) AS `r3`, (`v_alternatifs`.`c4` / `v_topsis_pembagis`.`pb_c4`) AS `r4`, (`v_alternatifs`.`c5` / `v_topsis_pembagis`.`pb_c5`) AS `r5` FROM (`v_alternatifs` join `v_topsis_pembagis`) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_normalisasis`  AS SELECT `v_alternatifs`.`user_id` AS `user_id`, `v_alternatifs`.`title` AS `title`, (`v_alternatifs`.`c1` / `v_topsis_pembagis`.`pb_c1`) AS `r1`, (`v_alternatifs`.`c2` / `v_topsis_pembagis`.`pb_c2`) AS `r2`, (`v_alternatifs`.`c3` / `v_topsis_pembagis`.`pb_c3`) AS `r3`, (`v_alternatifs`.`c4` / `v_topsis_pembagis`.`pb_c4`) AS `r4`, (`v_alternatifs`.`c5` / `v_topsis_pembagis`.`pb_c5`) AS `r5` FROM (`v_alternatifs` join `v_topsis_pembagis`) ;
 
 -- --------------------------------------------------------
 
@@ -533,7 +576,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_topsis_pembagis`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_pembagis`  AS SELECT sqrt(sum(pow(`v_alternatifs`.`c1`,2))) AS `pb_c1`, sqrt(sum(pow(`v_alternatifs`.`c2`,2))) AS `pb_c2`, sqrt(sum(pow(`v_alternatifs`.`c3`,2))) AS `pb_c3`, sqrt(sum(pow(`v_alternatifs`.`c4`,2))) AS `pb_c4`, sqrt(sum(pow(`v_alternatifs`.`c5`,2))) AS `pb_c5` FROM `v_alternatifs` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_pembagis`  AS SELECT sqrt(sum(pow(`v_alternatifs`.`c1`,2))) AS `pb_c1`, sqrt(sum(pow(`v_alternatifs`.`c2`,2))) AS `pb_c2`, sqrt(sum(pow(`v_alternatifs`.`c3`,2))) AS `pb_c3`, sqrt(sum(pow(`v_alternatifs`.`c4`,2))) AS `pb_c4`, sqrt(sum(pow(`v_alternatifs`.`c5`,2))) AS `pb_c5` FROM `v_alternatifs` ;
 
 -- --------------------------------------------------------
 
@@ -542,7 +585,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_topsis_solusi_ideals`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_solusi_ideals`  AS SELECT `v_topsis_ternormalisasi_terbobots`.`user_id` AS `user_id`, min(`v_topsis_ternormalisasi_terbobots`.`tb1`) AS `ap_tb1`, max(`v_topsis_ternormalisasi_terbobots`.`tb2`) AS `ap_tb2`, max(`v_topsis_ternormalisasi_terbobots`.`tb3`) AS `ap_tb3`, max(`v_topsis_ternormalisasi_terbobots`.`tb4`) AS `ap_tb4`, min(`v_topsis_ternormalisasi_terbobots`.`tb5`) AS `ap_tb5`, max(`v_topsis_ternormalisasi_terbobots`.`tb1`) AS `am_tb1`, min(`v_topsis_ternormalisasi_terbobots`.`tb2`) AS `am_tb2`, min(`v_topsis_ternormalisasi_terbobots`.`tb3`) AS `am_tb3`, min(`v_topsis_ternormalisasi_terbobots`.`tb4`) AS `am_tb4`, max(`v_topsis_ternormalisasi_terbobots`.`tb5`) AS `am_tb5` FROM `v_topsis_ternormalisasi_terbobots` GROUP BY `v_topsis_ternormalisasi_terbobots`.`user_id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_solusi_ideals`  AS SELECT `v_topsis_ternormalisasi_terbobots`.`user_id` AS `user_id`, min(`v_topsis_ternormalisasi_terbobots`.`tb1`) AS `ap_tb1`, max(`v_topsis_ternormalisasi_terbobots`.`tb2`) AS `ap_tb2`, max(`v_topsis_ternormalisasi_terbobots`.`tb3`) AS `ap_tb3`, max(`v_topsis_ternormalisasi_terbobots`.`tb4`) AS `ap_tb4`, min(`v_topsis_ternormalisasi_terbobots`.`tb5`) AS `ap_tb5`, max(`v_topsis_ternormalisasi_terbobots`.`tb1`) AS `am_tb1`, min(`v_topsis_ternormalisasi_terbobots`.`tb2`) AS `am_tb2`, min(`v_topsis_ternormalisasi_terbobots`.`tb3`) AS `am_tb3`, min(`v_topsis_ternormalisasi_terbobots`.`tb4`) AS `am_tb4`, max(`v_topsis_ternormalisasi_terbobots`.`tb5`) AS `am_tb5` FROM `v_topsis_ternormalisasi_terbobots` GROUP BY `v_topsis_ternormalisasi_terbobots`.`user_id` ;
 
 -- --------------------------------------------------------
 
@@ -551,7 +594,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_topsis_ternormalisasi_terbobots`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_ternormalisasi_terbobots`  AS SELECT `v_topsis_normalisasis`.`user_id` AS `user_id`, `v_topsis_normalisasis`.`title` AS `title`, (abs(`users`.`w1`) * `v_topsis_normalisasis`.`r1`) AS `tb1`, (abs(`users`.`w2`) * `v_topsis_normalisasis`.`r2`) AS `tb2`, (abs(`users`.`w3`) * `v_topsis_normalisasis`.`r3`) AS `tb3`, (abs(`users`.`w4`) * `v_topsis_normalisasis`.`r4`) AS `tb4`, (abs(`users`.`w5`) * `v_topsis_normalisasis`.`r5`) AS `tb5` FROM (`v_topsis_normalisasis` join `users` on((`v_topsis_normalisasis`.`user_id` = `users`.`id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_topsis_ternormalisasi_terbobots`  AS SELECT `v_topsis_normalisasis`.`user_id` AS `user_id`, `v_topsis_normalisasis`.`title` AS `title`, (abs(`users`.`w1`) * `v_topsis_normalisasis`.`r1`) AS `tb1`, (abs(`users`.`w2`) * `v_topsis_normalisasis`.`r2`) AS `tb2`, (abs(`users`.`w3`) * `v_topsis_normalisasis`.`r3`) AS `tb3`, (abs(`users`.`w4`) * `v_topsis_normalisasis`.`r4`) AS `tb4`, (abs(`users`.`w5`) * `v_topsis_normalisasis`.`r5`) AS `tb5` FROM (`v_topsis_normalisasis` join `users` on((`v_topsis_normalisasis`.`user_id` = `users`.`id`))) ;
 
 -- --------------------------------------------------------
 
@@ -560,7 +603,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_wp_hasils`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_wp_hasils`  AS SELECT `v_wp_preferensis`.`id` AS `id`, `v_wp_preferensis`.`title` AS `title`, (`v_wp_preferensis`.`s` / `v_wp_sum_preferensis`.`sum`) AS `hasil` FROM (`v_wp_preferensis` join `v_wp_sum_preferensis` on((`v_wp_preferensis`.`id` = `v_wp_sum_preferensis`.`id`))) ORDER BY (`v_wp_preferensis`.`s` / `v_wp_sum_preferensis`.`sum`) ASC ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_wp_hasils`  AS SELECT `v_wp_preferensis`.`id` AS `id`, `v_wp_preferensis`.`title` AS `title`, (`v_wp_preferensis`.`s` / `v_wp_sum_preferensis`.`sum`) AS `hasil` FROM (`v_wp_preferensis` join `v_wp_sum_preferensis` on((`v_wp_preferensis`.`id` = `v_wp_sum_preferensis`.`id`))) ORDER BY (`v_wp_preferensis`.`s` / `v_wp_sum_preferensis`.`sum`) ASC ;
 
 -- --------------------------------------------------------
 
@@ -569,7 +612,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_wp_preferensis`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_wp_preferensis`  AS SELECT `v_bobot`.`id` AS `id`, `v_alternatifs`.`title` AS `title`, pow(`v_alternatifs`.`c1`,`v_bobot`.`w1`) AS `s1`, pow(`v_alternatifs`.`c2`,`v_bobot`.`w2`) AS `s2`, pow(`v_alternatifs`.`c3`,`v_bobot`.`w3`) AS `s3`, pow(`v_alternatifs`.`c4`,`v_bobot`.`w4`) AS `s4`, pow(`v_alternatifs`.`c5`,`v_bobot`.`w5`) AS `s5`, ((((pow(`v_alternatifs`.`c1`,`v_bobot`.`w1`) * pow(`v_alternatifs`.`c2`,`v_bobot`.`w2`)) * pow(`v_alternatifs`.`c3`,`v_bobot`.`w3`)) * pow(`v_alternatifs`.`c4`,`v_bobot`.`w4`)) * pow(`v_alternatifs`.`c5`,`v_bobot`.`w5`)) AS `s` FROM (`v_alternatifs` join `v_bobot` on((`v_bobot`.`id` = `v_alternatifs`.`user_id`))) ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_wp_preferensis`  AS SELECT `v_bobot`.`id` AS `id`, `v_alternatifs`.`title` AS `title`, pow(`v_alternatifs`.`c1`,`v_bobot`.`w1`) AS `s1`, pow(`v_alternatifs`.`c2`,`v_bobot`.`w2`) AS `s2`, pow(`v_alternatifs`.`c3`,`v_bobot`.`w3`) AS `s3`, pow(`v_alternatifs`.`c4`,`v_bobot`.`w4`) AS `s4`, pow(`v_alternatifs`.`c5`,`v_bobot`.`w5`) AS `s5`, ((((pow(`v_alternatifs`.`c1`,`v_bobot`.`w1`) * pow(`v_alternatifs`.`c2`,`v_bobot`.`w2`)) * pow(`v_alternatifs`.`c3`,`v_bobot`.`w3`)) * pow(`v_alternatifs`.`c4`,`v_bobot`.`w4`)) * pow(`v_alternatifs`.`c5`,`v_bobot`.`w5`)) AS `s` FROM (`v_alternatifs` join `v_bobot` on((`v_bobot`.`id` = `v_alternatifs`.`user_id`))) ;
 
 -- --------------------------------------------------------
 
@@ -578,7 +621,7 @@ CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER V
 --
 DROP TABLE IF EXISTS `v_wp_sum_preferensis`;
 
-CREATE ALGORITHM=UNDEFINED DEFINER=`karr4123`@`localhost` SQL SECURITY DEFINER VIEW `v_wp_sum_preferensis`  AS SELECT `v_wp_preferensis`.`id` AS `id`, sum(`v_wp_preferensis`.`s`) AS `sum` FROM `v_wp_preferensis` GROUP BY `v_wp_preferensis`.`id` ;
+CREATE ALGORITHM=UNDEFINED DEFINER=`karel`@`localhost` SQL SECURITY DEFINER VIEW `v_wp_sum_preferensis`  AS SELECT `v_wp_preferensis`.`id` AS `id`, sum(`v_wp_preferensis`.`s`) AS `sum` FROM `v_wp_preferensis` GROUP BY `v_wp_preferensis`.`id` ;
 
 --
 -- Indexes for dumped tables
@@ -602,6 +645,12 @@ ALTER TABLE `alternatifs`
 -- Indexes for table `migrations`
 --
 ALTER TABLE `migrations`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indexes for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -646,13 +695,19 @@ ALTER TABLE `academic_years`
 -- AUTO_INCREMENT for table `alternatifs`
 --
 ALTER TABLE `alternatifs`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=86;
 
 --
 -- AUTO_INCREMENT for table `migrations`
 --
 ALTER TABLE `migrations`
   MODIFY `id` int UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=22;
+
+--
+-- AUTO_INCREMENT for table `password_reset_tokens`
+--
+ALTER TABLE `password_reset_tokens`
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `peminatans`
@@ -676,7 +731,7 @@ ALTER TABLE `pkl_places`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=21;
+  MODIFY `id` bigint UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Constraints for dumped tables
