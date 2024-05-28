@@ -104,6 +104,7 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::get('/manajemen-pengguna', [AdminController::class, 'manajemen_pengguna'])->name('dashboard.manajemen_pengguna');
         Route::get('/nilai-bobot', [AdminController::class, 'bobot_view'])->name('dashboard.nilai_bobot');
         Route::get('/nilai-alternatif', [AdminController::class, 'alternatif_view'])->name('dashboard.nilai_alternatif');
+        Route::get('/nilai-perankingan', [AdminController::class, 'perankingan_view'])->name('dashboard.nilai_perankingan');
         Route::get('/hasil-spk', [AdminController::class, 'hasil_spk'])->name('dashboard.hasil_spk');
         Route::get('/download-pdf-admin', [AdminController::class, 'download_pdf_admin'])->name('download_pdf_admin');
         Route::get('/delete-hasil-spk', [AdminController::class, 'reset_spk_admin'])->name('reset_hasil_spk');

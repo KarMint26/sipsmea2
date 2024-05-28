@@ -189,6 +189,15 @@
                             </a>
                         </li>
                         <li class="nav-item">
+                            <a href="{{ route('dashboard.nilai_perankingan') }}"
+                                class="nav-link {{ Request::is('admin/nilai-perankingan') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-star"></i>
+                                <p>
+                                    NILAI PERANKINGAN
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
                             <a href="{{ route('dashboard.hasil_spk') }}"
                                 class="nav-link {{ Request::is('admin/hasil-spk') ? 'active' : '' }}">
                                 <i class="nav-icon fas fa-trophy"></i>

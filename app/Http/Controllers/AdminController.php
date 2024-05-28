@@ -154,4 +154,9 @@ class AdminController extends Controller
     {
         return view('admin.nilai_alternatif');
     }
+
+    public function perankingan_view()
+    {
+        return view('admin.nilai_perankingan');
+    }
 }
