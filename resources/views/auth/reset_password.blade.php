@@ -39,10 +39,13 @@
                         @csrf
                         @method('POST')
                         <input type="hidden" name="token" value="{{ $token }}">
-                        <div class="form-floating mb-3">
-                            <input type="password" class="form-control" id="password" name="password"
-                                placeholder="password" />
-                            <label for="password">Password Baru</label>
+                        <div class="form-floating" style="position: relative !important;">
+                            <input type="password" class="form-control" id="floatingPassword" name="password"
+                                placeholder="Password" />
+                            <label for="floatingPassword">Password</label>
+                            <div class="show-pwd">
+                                <i class="bi bi-eye-slash-fill" id="eye"></i>
+                            </div>
                         </div>
 
                         <!-- Submit button -->

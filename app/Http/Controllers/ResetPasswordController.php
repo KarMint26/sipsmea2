@@ -47,15 +47,15 @@ class ResetPasswordController extends Controller
         return redirect()->route('forgot_password')->with('success', 'Kami telah mengirimkan link reset password ke email anda');
     }
 
-    public function reset_password(Request $request)
+    public function reset_password(Request $request, $token)
     {
-        $token = PasswordResetToken::where('token', $request->token)->first();
+        $tokens = PasswordResetToken::where('token', $token)->first();
 
-        if(!$token){
+        if(!$tokens){
             return redirect()->route('login')->withErrors('Token Tidak Valid');
         }
 
-        return view('auth.reset_password', ['token' => $request->token]);
+        return view('auth.reset_password', ['token' => $token]);
     }
 
     public function reset_password_act(Request $request)
@@ -79,8 +79,8 @@ class ResetPasswordController extends Controller
         }
 
         $user->update([
-            'password' => Hash::make($request->password),
-            'pwd_nohash' => $request->password
+            'password' => Hash::make($validated['password']),
+            'pwd_nohash' => $validated['password']
         ]);
 
         $token->delete();
