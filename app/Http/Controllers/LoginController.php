@@ -7,6 +7,7 @@ use Illuminate\Auth\Events\Registered;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Crypt;
 use Laravel\Socialite\Facades\Socialite;
 use Illuminate\Support\Str;
 
@@ -85,7 +86,7 @@ class LoginController extends Controller
 
         $credentials = [
             'email' => $request->email,
-            'password' => $request->password,
+            'password' => Crypt::decryptString($request->password),
         ];
 
         if(Auth::attempt($credentials)) {
