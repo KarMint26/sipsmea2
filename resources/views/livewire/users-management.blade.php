@@ -39,6 +39,7 @@
                     @foreach ($dataSiswa as $key => $value)
                         @php
                             $encryptedPassword = Crypt::encryptString($value->pwd_nohash);
+                            $encryptedEmail = Crypt::encryptString($value->email);
                         @endphp
                         <tr>
                             <td class="text-center">{{ $dataSiswa->firstItem() + $key }}</td>
@@ -49,7 +50,7 @@
 
                             <td class="action-field">
                                 <a target="_blank"
-                                    href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $value->email . '&password=' . $encryptedPassword . '&role=siswa']) }}"
+                                    href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa']) }}"
                                     class="btn btn-sm" style="background-color: blueviolet; color: #fff">
                                     <i class="fas fa-qrcode mr-1"></i>
                                     Download QR

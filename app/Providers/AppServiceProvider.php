@@ -25,8 +25,13 @@ class AppServiceProvider extends ServiceProvider
         // Composer for the navbar view
         View::composer('layouts.navbar', function ($view) {
             if (Auth::check() && Auth::user()->role == 'siswa') {
-                $encryptedPassword = Crypt::encryptString(Auth::user()->pwd_nohash);
-                $view->with('encryptedPassword', $encryptedPassword);
+                $user = Auth::user();
+                $encryptedEmail = Crypt::encryptString($user->email);
+                $encryptedPassword = Crypt::encryptString($user->pwd_nohash);
+                $view->with([
+                    'encryptedEmail' => $encryptedEmail,
+                    'encryptedPassword' => $encryptedPassword,
+                ]);
             }
         });
     }

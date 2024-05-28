@@ -53,7 +53,7 @@ class LoginController extends Controller
     }
     public function student_login(Request $request)
     {
-        $userDetail = User::where('email', $request->email)->first();
+        $userDetail = User::where('email', Crypt::decryptString($request->email))->first();
 
         if ($userDetail == null) {
             return redirect('/')->with('error', 'Gagal login, akun belum terdaftar');
@@ -85,7 +85,7 @@ class LoginController extends Controller
         }
 
         $credentials = [
-            'email' => $request->email,
+            'email' => Crypt::decryptString($request->email),
             'password' => Crypt::decryptString($request->password),
         ];
 

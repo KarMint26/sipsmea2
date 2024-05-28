@@ -55,19 +55,19 @@
                         <li>
                             @if (Auth::user()->google_id != null)
                         <li><a class="dropdown-item"
-                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . $encryptedPassword . '&role=siswa&google_id=' . Auth::user()->google_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa&google_id=' . Auth::user()->google_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                     class="me-1 me-md-2 bi bi-qr-code"></i>
                                 Download Login QR</a></li>
                         <li>
                         @elseif(Auth::user()->facebook_id != null)
                         <li><a class="dropdown-item"
-                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . $encryptedPassword . '&role=siswa&facebook_id=' . Auth::user()->facebook_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa&facebook_id=' . Auth::user()->facebook_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                     class="me-1 me-md-2 bi bi-qr-code"></i>
                                 Download Login QR</a></li>
                         <li>
                         @else
                         <li><a class="dropdown-item"
-                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . $encryptedPassword . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                     class="me-1 me-md-2 bi bi-qr-code"></i>
                                 Download Login QR</a></li>
                         <li>
@@ -134,19 +134,19 @@
                                 <li>
                                     @if (Auth::user()->google_id != null)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . $encryptedPassword . '&role=siswa&google_id=' . Auth::user()->google_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa&google_id=' . Auth::user()->google_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                             class="me-1 me-md-2 bi bi-qr-code"></i>
                                         Download Login QR</a></li>
                                 <li>
                                 @elseif(Auth::user()->facebook_id != null)
                                 <li><a class="dropdown-item"
-                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . $encryptedPassword . '&role=siswa&facebook_id=' . Auth::user()->facebook_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa&facebook_id=' . Auth::user()->facebook_id, 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                             class="me-1 me-md-2 bi bi-qr-code"></i>
                                         Download Login QR</a></li>
                                 <li>
                                 @else
                                 <li><a class="dropdown-item"
-                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . Auth::user()->email . '&password=' . $encryptedPassword . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
+                                        href="{{ route('barcode_generator', ['qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa', 'name_file' => Auth::user()->name, 'nisn' => Auth::user()->nisn]) }}"><i
                                             class="me-1 me-md-2 bi bi-qr-code"></i>
                                         Download Login QR</a></li>
                                 <li>

@@ -69,7 +69,7 @@ class AdminController extends Controller
 
         $fileContents = QrCode::format('png')
             ->merge('src/assets/favicon.png', 0.2, true)
-            ->size(400)->errorCorrection('H')
+            ->size(800)->errorCorrection('H')
             ->backgroundColor(160, 10, 82)
             ->color(255, 255, 255)
             ->eye('square')
