@@ -5,7 +5,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>SIP SMEA - @yield('title')</title>
-    <link rel="shortcut icon" href="{{ asset('src/assets/favicon.ico') }}" type="image/x-icon" />
+    <link rel="shortcut icon" href="{{ asset('src/assets/favicon.svg') }}" type="image/svg" />
     <!-- PWA  -->
     <meta name="theme-color" content="#a00a52" />
     <link rel="apple-touch-icon" href="{{ asset('src/assets/favicon.png') }}">

@@ -55,7 +55,7 @@
 
 <body>
     <section class="forgot-password">
-        <img src="https://sipsmea.techtitans.id/src/assets/favicon.png" alt="icon" width="100px" class="mb-3">
+        <img src="https://wonderful-yogyakarta.netlify.app/src/assets/favicon.png" alt="icon" width="100px" class="mb-3">
         <div class="fw-semibold text-center fs-4">SIPSMEA</div>
         <div>Klik link dibawah ini untuk me-reset password</div>
         <br>
