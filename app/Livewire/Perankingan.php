@@ -24,13 +24,13 @@ class Perankingan extends Component
         $dataSpk = [];
         switch($this->spkMethod) {
             case 'SAW':
-                $dataSpk = VSawHasil::where('user_id', $this->userId)->get();
+                $dataSpk = VSawHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
                 break;
             case 'WP':
-                $dataSpk = VWpHasil::where('id', $this->userId)->get();
+                $dataSpk = VWpHasil::where('id', $this->userId)->orderBy('hasil', 'desc')->get();
                 break;
             case 'TOPSIS':
-                $dataSpk = VTopsisHasil::where('user_id', $this->userId)->get();
+                $dataSpk = VTopsisHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
                 break;
         }
 

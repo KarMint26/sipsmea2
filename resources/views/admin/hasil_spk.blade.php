@@ -39,7 +39,7 @@
                                 <td class="text-center">{{ $value->nisn }}</td>
                                 <td class="text-center">{{ $value->email }}</td>
                                 <td class="text-center">{{ $value->status }}</td>
-                                <td class="text-center">
+                                <td class="action-field">
                                     <a target="_blank"
                                         href="{{ route('download_pdf_admin', ['name' => $value->name, 'nisn' => $value->nisn, 'id' => $value->id]) }}"
                                         class="btn btn-sm" style="background-color: rgb(1, 150, 161); color: #fff;">
