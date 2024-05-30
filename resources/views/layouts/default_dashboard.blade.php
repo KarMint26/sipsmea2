@@ -84,7 +84,7 @@
                     <a href="/" class="nav-link">BERANDA</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
-                    <a href="/#list_pkl" class="nav-link">DAFTAR TEMPAT PKL</a>
+                    <a href="/#list_pkl" class="nav-link">TEMPAT PKL</a>
                 </li>
             </ul>
 

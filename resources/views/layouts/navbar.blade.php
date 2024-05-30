@@ -20,7 +20,7 @@
                 <a class="nav-link" href="/">Beranda</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="/#list_pkl">Daftar Tempat PKL</a>
+                <a class="nav-link" href="/#list_pkl">Tempat PKL</a>
             </li>
             @if (Auth::user() && Auth::user()->role == 'admin')
                 <li class="nav-item dropdown">
