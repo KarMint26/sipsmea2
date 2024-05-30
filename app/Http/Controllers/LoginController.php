@@ -44,6 +44,11 @@ class LoginController extends Controller
             'email' => $request->email,
             'password' => $request->password,
         ];
+        $userDetail = User::where('email', $request->email)->first();
+
+        if ($userDetail->status != 'aktif') {
+            return redirect('/login')->with('error', 'Gagal login, akun tidak aktif');
+        }
 
         if(Auth::attempt($credentials)) {
             return redirect('/')->with('message', 'Login Berhasil');
@@ -56,11 +61,11 @@ class LoginController extends Controller
         $userDetail = User::where('email', Crypt::decryptString($request->email))->first();
 
         if ($userDetail == null) {
-            return redirect('/')->with('error', 'Gagal login, akun belum terdaftar');
+            return redirect('/login')->with('error', 'Gagal login, akun belum terdaftar');
         }
 
         if ($userDetail->status != 'aktif') {
-            return redirect('/')->with('error', 'Gagal login, akun tidak aktif');
+            return redirect('/login')->with('error', 'Gagal login, akun tidak aktif');
         }
 
         if($request->role != 'siswa') {
