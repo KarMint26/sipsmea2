@@ -21,6 +21,7 @@ return new class extends Migration
             $table->string('pwd_nohash');
             $table->string('google_id')->nullable();
             $table->string('facebook_id')->nullable();
+            $table->enum('verifikasi_siswa', ['terima', 'tolak'])->default('tolak');
             $table->enum('status', ['aktif', 'nonaktif'])->default('aktif');
             $table->enum('role', ['admin', 'siswa'])->default('siswa');
             $table->integer('w1')->default(0);

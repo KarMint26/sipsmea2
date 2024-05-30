@@ -106,6 +106,11 @@ Route::middleware(['auth', 'verified', 'role:admin'])->group(function () {
         Route::get('/nilai-alternatif', [AdminController::class, 'alternatif_view'])->name('dashboard.nilai_alternatif');
         Route::get('/nilai-perankingan', [AdminController::class, 'perankingan_view'])->name('dashboard.nilai_perankingan');
         Route::get('/hasil-spk', [AdminController::class, 'hasil_spk'])->name('dashboard.hasil_spk');
+
+        Route::get('/verifikasi-pengguna', [AdminController::class, 'verifikasi_pengguna'])->name('dashboard.verifikasi_pengguna');
+        Route::get('/verifikasi-pengguna/decline', [AdminController::class, 'decline_user'])->name('decline_user');
+        Route::get('/verifikasi-pengguna/accept', [AdminController::class, 'acc_user'])->name('acc_user');
+
         Route::get('/download-pdf-admin', [AdminController::class, 'download_pdf_admin'])->name('download_pdf_admin');
         Route::get('/delete-hasil-spk', [AdminController::class, 'reset_spk_admin'])->name('reset_hasil_spk');
     });

@@ -122,19 +122,26 @@ class UsersManagement extends Component
                     $query->where('status', 'like', $this->filter . '%');
                 }
             })
+            ->where('verifikasi_siswa', 'terima')
             ->where('id', '<>', 1)
             ->paginate(10);
         } else {
             if($this->filter != null && $this->filter != '') {
                 if($this->filter != 'all') {
-                    $data = User::where('id', '>', 1)->where('status', 'like', $this->filter . '%')
+                    $data = User::where('id', '>', 1)
+                            ->where('verifikasi_siswa', 'terima')
+                            ->where('status', 'like', $this->filter . '%')
                             ->orderBy($this->sortColumn, $this->sortDirection)
                             ->paginate(10);
                 } else {
-                    $data = User::where('id', '>', 1)->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
+                    $data = User::where('id', '>', 1)
+                                ->where('verifikasi_siswa', 'terima')
+                                ->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
                 }
             } else {
-                $data = User::where('id', '>', 1)->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
+                $data = User::where('id', '>', 1)
+                            ->where('verifikasi_siswa', 'terima')
+                            ->orderBy($this->sortColumn, $this->sortDirection)->paginate(10);
             }
         }
 

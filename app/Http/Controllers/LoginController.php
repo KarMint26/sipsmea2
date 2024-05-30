@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Auth\Events\Registered;
+use Illuminate\Contracts\Encryption\DecryptException;
 use Illuminate\Foundation\Auth\EmailVerificationRequest;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -46,6 +47,10 @@ class LoginController extends Controller
         ];
         $userDetail = User::where('email', $request->email)->first();
 
+        if ($userDetail->verifikasi_siswa != 'terima') {
+            return redirect('/login')->with('warn', 'Belum Dapat Login, Akun Belum Di Verifikasi Oleh Operator');
+        }
+
         if ($userDetail->status != 'aktif') {
             return redirect('/login')->with('error', 'Gagal login, akun tidak aktif');
         }
@@ -58,46 +63,54 @@ class LoginController extends Controller
     }
     public function student_login(Request $request)
     {
-        $userDetail = User::where('email', Crypt::decryptString($request->email))->first();
+        try {
+            $userDetail = User::where('email', Crypt::decryptString($request->email))->first();
 
-        if ($userDetail == null) {
-            return redirect('/login')->with('error', 'Gagal login, akun belum terdaftar');
-        }
-
-        if ($userDetail->status != 'aktif') {
-            return redirect('/login')->with('error', 'Gagal login, akun tidak aktif');
-        }
-
-        if($request->role != 'siswa') {
-            return redirect('/')->with('error', 'Login QR Code Hanya Untuk Siswa');
-        }
-
-        // Pengecekan login dengan Google atau Facebook
-        if ($request->has('google_id')) {
-            $userGoogleExist = User::where('google_id', $request->google_id)->first();
-            if ($userGoogleExist) {
-                Auth::login($userGoogleExist);
-                return redirect('/')->with('message', 'Login Berhasil');
+            if ($userDetail == null) {
+                return redirect('/login')->with('error', 'Gagal login, akun belum terdaftar');
             }
-        }
 
-        if ($request->has('facebook_id')) {
-            $userFacebookExist = User::where('facebook_id', $request->facebook_id)->first();
-            if ($userFacebookExist) {
-                Auth::login($userFacebookExist);
-                return redirect('/')->with('message', 'Login Berhasil');
+            if ($userDetail->verifikasi_siswa != 'terima') {
+                return redirect('/login')->with('warn', 'Belum dapat login, akun belum diverifikasi oleh operator');
             }
-        }
 
-        $credentials = [
-            'email' => Crypt::decryptString($request->email),
-            'password' => Crypt::decryptString($request->password),
-        ];
+            if ($userDetail->status != 'aktif') {
+                return redirect('/login')->with('error', 'Gagal login, akun tidak aktif');
+            }
 
-        if(Auth::attempt($credentials)) {
-            return redirect('/')->with('message', 'Login Berhasil');
-        } else {
-            return redirect('/')->with('error', 'Login Gagal');
+            if($request->role != 'siswa') {
+                return redirect('/')->with('error', 'Login QR Code Hanya Untuk Siswa');
+            }
+
+            // Pengecekan login dengan Google atau Facebook
+            if ($request->has('google_id')) {
+                $userGoogleExist = User::where('google_id', $request->google_id)->first();
+                if ($userGoogleExist) {
+                    Auth::login($userGoogleExist);
+                    return redirect('/')->with('message', 'Login Berhasil');
+                }
+            }
+
+            if ($request->has('facebook_id')) {
+                $userFacebookExist = User::where('facebook_id', $request->facebook_id)->first();
+                if ($userFacebookExist) {
+                    Auth::login($userFacebookExist);
+                    return redirect('/')->with('message', 'Login Berhasil');
+                }
+            }
+
+            $credentials = [
+                'email' => Crypt::decryptString($request->email),
+                'password' => Crypt::decryptString($request->password),
+            ];
+
+            if(Auth::attempt($credentials)) {
+                return redirect('/')->with('message', 'Login Berhasil');
+            } else {
+                return redirect('/')->with('error', 'Login Gagal');
+            }
+        } catch (DecryptException $e) {
+            return redirect()->route('login')->with('error', 'Gagal login karena mencoba manipulasi url login');
         }
     }
 
@@ -146,7 +159,7 @@ class LoginController extends Controller
 
     public function notice()
     {
-        if (Auth::user()->hasVerifiedEmail()) {
+        if (Auth::user()->hasVerifiedEmail() && Auth::user()->verifikasi_siswa != 'tolak') {
             return redirect()->route('index');
         }
 
@@ -157,19 +170,21 @@ class LoginController extends Controller
     {
         $user = User::findOrFail($id);
 
-        if ($user->hasVerifiedEmail()) {
+        if ($user->hasVerifiedEmail() && $user->verifikasi_siswa != 'tolak') {
             Auth::login($user);
-            return redirect()->route('index');
+            return redirect()->route('index')->with('message', 'Login berhasil');
         }
 
         $request->fulfill();
 
-        if ($user->hasVerifiedEmail()) {
+        Auth::logout();
+
+        if ($user->hasVerifiedEmail() && $user->verifikasi_email != 'tolak') {
             Auth::login($user);
-            return redirect()->route('index')->with('message', 'Email berhasil di verifikasi, Akun telah aktif');
+            return redirect()->route('index')->with('message', 'Login berhasil');
         }
 
-        return redirect()->route('index')->with('message', 'Email berhasil di verifikasi, Akun telah aktif');
+        return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun oleh operator');
     }
 
     public function resend_verification(Request $request)
@@ -211,14 +226,14 @@ class LoginController extends Controller
                 'email_verified_at' => now()
             ]);
 
-            Auth::login($user);
-
-            return redirect()->route('index')->with('message', 'Login Dengan Google Berhasil');
+            return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
         }
 
-        Auth::login($userExist);
-
-        return redirect()->route('index')->with('message', 'Login Dengan Google Berhasil');
+        if($userExist->verifikasi_siswa != 'tolak'){
+            Auth::login($userExist);
+            return redirect()->route('index')->with('message', 'Login berhasil');
+        }
+        return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
     }
 
     // Facebook Login
@@ -254,18 +269,15 @@ class LoginController extends Controller
                 'email_verified_at' => now()
             ]);
 
-            Auth::login($user);
-
-            return redirect()->route('index')->with('message', 'Login Dengan Facebook Berhasil');
+            return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
         }
 
-        Auth::login($userExist);
-
-        return redirect()->route('index')->with('message', 'Login Dengan Facebook Berhasil');
+        if($userExist->verifikasi_siswa != 'tolak'){
+            Auth::login($userExist);
+            return redirect()->route('index')->with('message', 'Login berhasil');
+        }
+        return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
     }
-
-    // Reset Password
-
 
     public function logout()
     {

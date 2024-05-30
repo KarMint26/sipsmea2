@@ -40,8 +40,8 @@ class AdminController extends Controller
     public function hasil_spk()
     {
         $data_siswa = User::where(function ($query) {
-                        $query->where('w1', '!=', 0);
-                    })
+            $query->where('w1', '!=', 0);
+        })
                     ->where('id', '>', 1)
                     ->get();
         return view('admin.hasil_spk', ['data_siswa' => $data_siswa]);
@@ -68,7 +68,6 @@ class AdminController extends Controller
         // curl_close($ch);
 
         $fileContents = QrCode::format('png')
-            ->merge('src/assets/favicon.png', 0.2, true)
             ->size(800)->errorCorrection('H')
             ->backgroundColor(160, 10, 82)
             ->color(255, 255, 255)
@@ -141,6 +140,30 @@ class AdminController extends Controller
         Alternatif::where('user_id', $request->id)->delete();
 
         return redirect()->back()->with('message', 'Berhasil Menghapus Hasil');
+    }
+
+    // Verifikasi pengguna
+    public function verifikasi_pengguna()
+    {
+        $data_siswa = User::where('verifikasi_siswa', 'tolak')->get();
+
+        return view('admin.verifikasi_pengguna', ['data_siswa' => $data_siswa]);
+    }
+
+    public function acc_user(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        $user->update([
+            "verifikasi_siswa" => 'terima'
+        ]);
+        return redirect()->back()->with('message', 'Berhasil melakukan verifikasi pengguna');
+    }
+
+    public function decline_user(Request $request)
+    {
+        $user = User::where('id', $request->id)->first();
+        $user->delete();
+        return redirect()->back()->with('message', 'Berhasil menolak dan menghapus verifikasi pengguna');
     }
 
     // Nilai Bobot

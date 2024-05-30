@@ -127,6 +127,16 @@
             toastr.error("{{ session('error') }}")
         </script>
     @endif
+
+    @if (session('warn'))
+        <script>
+            toastr.options = {
+                "progressBar": true,
+                "closeButton": true,
+            }
+            toastr.warning("{{ session('warn') }}")
+        </script>
+    @endif
 </body>
 
 </html>

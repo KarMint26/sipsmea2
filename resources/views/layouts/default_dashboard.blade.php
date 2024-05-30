@@ -108,7 +108,7 @@
             <!-- Brand Logo -->
             <a href="/admin/dashboard" class="brand-link">
                 <img src="{{ asset('src/assets/favicon.png') }}" alt="SIP SMEA Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: .8">
+                    class="brand-image img-circle elevation-3" style="opacity: 1;">
                 <span>SIP SMEA</span>
             </a>
 
@@ -158,6 +158,15 @@
                                 <i class="nav-icon fas fa-briefcase"></i>
                                 <p>
                                     TEMPAT PKL
+                                </p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('dashboard.verifikasi_pengguna') }}"
+                                class="nav-link {{ Request::is('admin/verifikasi-pengguna') ? 'active' : '' }}">
+                                <i class="nav-icon fas fa-user-plus"></i>
+                                <p>
+                                    VERIFIKASI PENGGUNA
                                 </p>
                             </a>
                         </li>
