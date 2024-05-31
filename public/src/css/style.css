@@ -508,9 +508,9 @@ html {
 }
 
 #myChart {
-    width: 340px !important;
+    width: 100% !important;
     height: 300px !important;
-    transform: translateX(-1.3rem);
+    transform: translateX(-1rem);
 }
 
 @media screen and (min-width: 768px) {

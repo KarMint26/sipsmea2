@@ -100,10 +100,8 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/admin/dashboard" class="brand-link">
-                <img src="{{ asset('src/assets/favicon.png') }}" alt="SIP SMEA Logo"
-                    class="brand-image img-circle elevation-3" style="opacity: 1;">
-                <span>SIP SMEA</span>
+            <a href="/admin/dashboard" class="brand-link text-center text-white" style="font-weight: bold; font-size: 1.5rem !important">
+                <span style="color: #d8086d;">SIP</span> SMEA
             </a>
 
             <!-- Sidebar -->
