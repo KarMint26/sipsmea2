@@ -63,6 +63,11 @@
 </head>
 
 <body class="hold-transition sidebar-mini layout-fixed">
+    {{-- Loading Screen --}}
+    <div id="loading">
+        <div class="custom-loader"></div>
+        <div style="font-size: 0.8rem">Sedang mengunduh konten...</div>
+    </div>
     <div class="wrapper">
 
         <!-- Navbar -->
@@ -100,7 +105,7 @@
         <!-- Main Sidebar Container -->
         <aside class="main-sidebar sidebar-dark-primary elevation-4">
             <!-- Brand Logo -->
-            <a href="/admin/dashboard" class="brand-link text-center text-white" style="font-weight: bold; font-size: 1.5rem !important">
+            <a href="/" class="brand-link text-center text-white" style="font-weight: bold; font-size: 1.5rem !important">
                 <span style="color: #d8086d;">SIP</span> SMEA
             </a>
 
@@ -317,6 +322,31 @@
         } else {
             console.error("Service workers are not supported.");
         }
+    </script>
+
+    {{-- Loading Screen --}}
+    <script>
+        $(window).on('load', function() {
+            var images = $('img'),
+                totalImages = images.length,
+                imagesLoaded = 0;
+
+            function imageLoaded() {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    $('#loading').fadeOut('slow');
+                }
+            }
+
+            images.each(function() {
+                if (this.complete) {
+                    imageLoaded();
+                } else {
+                    $(this).on('load', imageLoaded);
+                    $(this).on('error', imageLoaded);
+                }
+            });
+        });
     </script>
     @yield('script_add')
 </body>

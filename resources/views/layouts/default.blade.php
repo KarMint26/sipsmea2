@@ -43,6 +43,16 @@
 </head>
 
 <body>
+    <!-- Button back to top -->
+    <div class="button-backtop">
+        <i class="bi bi-arrow-down"></i>
+    </div>
+
+    {{-- Loading Screen --}}
+    <div id="loading">
+        <div class="custom-loader"></div>
+        <div style="font-size: 0.8rem">Sedang mengunduh konten...</div>
+    </div>
 
     <!-- Navbar -->
     @include('layouts.navbar')
@@ -63,6 +73,7 @@
     <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js">
     </script>
     <script src="{{ asset('src/js/index.js') }}"></script>
+    <script src="{{ asset('src/js/btntop.js') }}"></script>
 
     {{-- PWA --}}
     <script src="{{ asset('/sw.js') }}"></script>
@@ -81,6 +92,31 @@
         } else {
             console.error("Service workers are not supported.");
         }
+    </script>
+
+     {{-- Loading Screen --}}
+     <script>
+        $(window).on('load', function() {
+            var images = $('img'),
+                totalImages = images.length,
+                imagesLoaded = 0;
+
+            function imageLoaded() {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    $('#loading').fadeOut('slow');
+                }
+            }
+
+            images.each(function() {
+                if (this.complete) {
+                    imageLoaded();
+                } else {
+                    $(this).on('load', imageLoaded);
+                    $(this).on('error', imageLoaded);
+                }
+            });
+        });
     </script>
 
     @yield('script_add')
