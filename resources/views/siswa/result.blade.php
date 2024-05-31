@@ -7,7 +7,7 @@
         <img src="{{ asset('src/assets/hero-result.png') }}" alt="hero-result" class="m-sm-auto m-lg-0">
         <div class="result_hero_desc d-flex flex-column">
             <h1 class="title-siswa-1 text-uppercase fw-semibold"><span class="text-primary-sip">Selamat!</span> Berhasil
-                Menampilkan Hasil Perhitungan</h1>
+                Menampilkan Hasil Perhitungan SPK</h1>
             <h5 class="fw-normal">Hasil perhitungan yang ditampilkan merupakan hasil perhitungan dari Sistem Pendukung
                 Keputusan yang sudah teruji benar perhitungannya.</h5>
             <button type="submit" class="reset_btn text-center mt-3 shadow-sm" data-bs-toggle="modal"
@@ -16,63 +16,7 @@
             </button>
         </div>
     </div>
-    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE SAW (Simple Additive Weighting)</div>
-    <div class="table-responsive mt-2 mb-4">
-        <table class="table table-striped table-bordered table-sortable table-hover">
-            <thead>
-                <tr class="text-center">
-                    <th class="col col-md-1">No</th>
-                    <th class="col col-md-3">Nama Tempat PKL</th>
-                    <th class="col col-md-3">Hasil Perhitungan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($saw as $key => $value)
-                    <tr class="text-center">
-                        <td>
-                            {{ $key + 1 }}
-                        </td>
-                        <td>
-                            {{ $value->title }}
-                        </td>
-                        <td>
-                            {{ number_format($value->hasil, 5, '.', '') }}
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
-    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE WP (Weighted Product)</div>
-    <div class="table-responsive mt-2 mb-4">
-        <table class="table table-striped table-bordered table-sortable table-hover">
-            <thead>
-                <tr class="text-center">
-                    <th class="col col-md-1">No</th>
-                    <th class="col col-md-3">Nama Tempat PKL</th>
-                    <th class="col col-md-3">Hasil Perhitungan</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($wp as $key => $value)
-                    <tr class="text-center">
-                        <td>
-                            {{ $key + 1 }}
-                        </td>
-                        <td>
-                            {{ $value->title }}
-                        </td>
-                        <td>
-                            {{ number_format($value->hasil, 5, '.', '') }}
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    </div>
-
-    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN METODE TOPSIS</div>
+    <div class="text-left fw-semibold text-result">HASIL PERHITUNGAN SPK METODE TOPSIS</div>
     <div class="table-responsive mt-2 mb-4">
         <table class="table table-striped table-bordered table-sortable table-hover">
             <thead>

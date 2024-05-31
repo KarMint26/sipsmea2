@@ -50,15 +50,9 @@
 
     {{-- Open Graph --}}
     <meta property="og:title" content="SIP SMEA" />
-    <meta
-      property="og:description"
-      content="Website Sistem Informasi PKL Untuk Pendukung Keputusan Pemilihan Tempat PKL."
-    />
-    <meta
-      property="og:image"
-      itemprop="image"
-      content="https://sipsmea.techtitans.id/src/assets/preview.png"
-    />
+    <meta property="og:description"
+        content="Website Sistem Informasi PKL Untuk Pendukung Keputusan Pemilihan Tempat PKL." />
+    <meta property="og:image" itemprop="image" content="https://sipsmea.techtitans.id/src/assets/preview.png" />
     <meta property="og:url" content="https://sipsmea.techtitans.id" />
     <meta property="og:type" content="website" />
     <meta property="og:image:type" content="image/png" />
@@ -117,7 +111,8 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel mt-3 pb-3 mb-3 d-flex">
                     <div class="image">
-                        <img src="{{ asset('src/assets/admin.png') }}" class="img-circle elevation-2" alt="User Image">
+                        <img src="{{ asset('src/assets/admin.png') }}" class="img-circle elevation-2"
+                            alt="User Image">
                     </div>
                     <div class="info">
                         <a href="#" class="d-block">Administrator</a>

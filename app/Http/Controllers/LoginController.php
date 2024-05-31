@@ -47,6 +47,10 @@ class LoginController extends Controller
         ];
         $userDetail = User::where('email', $request->email)->first();
 
+        if ($userDetail == null) {
+            return redirect('/login')->with('error', 'Gagal login, akun belum terdaftar');
+        }
+
         if ($userDetail->verifikasi_siswa != 'terima') {
             return redirect('/login')->with('warn', 'Belum Dapat Login, Akun Belum Di Verifikasi Oleh Operator');
         }

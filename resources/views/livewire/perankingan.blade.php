@@ -12,7 +12,7 @@
                     </select>
                 </div>
             </div>
-            <div class="d-flex align-items-center flex-column flex-sm-row" style="gap: 0.5rem;">
+            {{-- <div class="d-flex align-items-center flex-column flex-sm-row" style="gap: 0.5rem;">
                 <div>Metode SPK : </div>
                 <div wire:ignore>
                     <select class="custom-select" id="spkMethod" wire:model="spkMethod" style="width: 200px;" name="spkMethod">
@@ -22,14 +22,14 @@
                         <option value="TOPSIS">TOPSIS</option>
                     </select>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="table-responsive mt-3">
             <table class="table table-striped table-sortable table-hover">
                 <thead>
                     <tr class="text-center">
                         <th class="col col-md-1">No</th>
-                        <th class="col col-md-3">Nama Mitra</th>
+                        <th class="col col-md-3">Nama Mitra PKL</th>
                         <th class="col col-md-2">Hasil Perankingan</th>
                     </tr>
                 </thead>
@@ -61,12 +61,12 @@
                 @this.set('userId', userId);
             });
 
-            $('#spkMethod').select2({
-                theme: 'bootstrap-5'
-            }).on('change', function(e) {
-                let spkMethod = e.target.value;
-                @this.set('spkMethod', spkMethod);
-            });
+            // $('#spkMethod').select2({
+            //     theme: 'bootstrap-5'
+            // }).on('change', function(e) {
+            //     let spkMethod = e.target.value;
+            //     @this.set('spkMethod', spkMethod);
+            // });
         });
     </script>
 @endscript

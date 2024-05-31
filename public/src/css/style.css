@@ -507,6 +507,12 @@ html {
     border-radius: 0.5rem;
 }
 
+#myChart {
+    width: 340px !important;
+    height: 300px !important;
+    transform: translateX(-1.3rem);
+}
+
 @media screen and (min-width: 768px) {
     .title-siswa-1 {
         font-size: 2.5rem;
@@ -538,6 +544,11 @@ html {
     .login-g {
         font-size: 0.9rem;
     }
+    #myChart {
+        width: 100% !important;
+        height: 400px !important;
+        transform: translateX(0);
+    }
 }
 
 @media screen and (min-width: 1024px) {
@@ -546,5 +557,9 @@ html {
     }
     .result_hero_desc h1 {
         font-size: 3rem;
+    }
+    #myChart {
+        width: 100% !important;
+        height: 500px !important;
     }
 }

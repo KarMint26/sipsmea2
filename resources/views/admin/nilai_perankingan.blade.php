@@ -1,7 +1,7 @@
 @extends('layouts.default_dashboard')
 
-@section('title', 'NILAI PERANKINGAN')
-@section('subtitle', 'NILAI PERANKINGAN')
+@section('title', 'NILAI HASIL PERANKINGAN')
+@section('subtitle', 'NILAI HASIL PERANKINGAN')
 
 @section('datatables')
     {{-- Select2 css --}}

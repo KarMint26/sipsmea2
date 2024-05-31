@@ -8,7 +8,6 @@ use App\Models\PklPlace;
 use App\Models\User;
 use App\Models\VSawHasil;
 use App\Models\VTopsisHasil;
-use App\Models\VWpHasil;
 use Barryvdh\DomPDF\Facade\Pdf;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -199,16 +198,6 @@ class StudentController extends Controller
     public function result_view(Request $request)
     {
         // proteksi halaman jika belum ada hasil
-        $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
-        $vwp_hasils = VWpHasil::where('id', Auth::user()->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
         $topsis_hasils = VTopsisHasil::where('user_id', Auth::user()->id)
                         ->whereNotNull('hasil')
                         ->orderBy('hasil', 'desc')
@@ -216,25 +205,15 @@ class StudentController extends Controller
 
         $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
 
-        if ($vsaw_hasils->isEmpty()) {
+        if ($topsis_hasils->isEmpty()) {
             return redirect()->back()->with('message', 'Hasil belum dapat dimunculkan');
         }
 
-        return view('siswa.result', ["saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
+        return view('siswa.result', ["topsis" => $topsis_hasils, "timestamp" => $timestamp]);
     }
 
     public function download_pdf(Request $request)
     {
-        $vsaw_hasils = VSawHasil::where('user_id', Auth::user()->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
-        $vwp_hasils = VWpHasil::where('id', Auth::user()->id)
-                        ->whereNotNull('hasil')
-                        ->orderBy('hasil', 'desc')
-                        ->get();
-
         $topsis_hasils = VTopsisHasil::where('user_id', Auth::user()->id)
                         ->whereNotNull('hasil')
                         ->orderBy('hasil', 'desc')
@@ -244,14 +223,14 @@ class StudentController extends Controller
         $nis = Auth::user()->nisn;
         $timestamp = User::where('id', Auth::user()->id)->first()->updated_at;
 
-        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "saw" => $vsaw_hasils, "wp" => $vwp_hasils, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
+        $pdf = Pdf::loadView('siswa.result_pdf', ["name" => $name, "nis" => $nis, "topsis" => $topsis_hasils, "timestamp" => $timestamp]);
         return $pdf->download($name . ' - ' . $nis . '.pdf');
     }
 
     public function reset_spk()
     {
         // Decrement atau kurangi peminat pada tabel peminatan
-        $hasil = VSawHasil::where('user_id', Auth::user()->id)
+        $hasil = VTopsisHasil::where('user_id', Auth::user()->id)
                 ->whereNotNull('hasil')
                 ->orderBy('hasil', 'desc')
                 ->get();

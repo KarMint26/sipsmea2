@@ -11,28 +11,28 @@ use Livewire\Component;
 class Perankingan extends Component
 {
     public $userId;
-    public $spkMethod;
 
     public function mount()
     {
         $this->userId = User::where('w1', '!=', 0)->orderBy('id')->value('id');
-        $this->spkMethod = 'SAW';
     }
 
     public function render()
     {
         $dataSpk = [];
-        switch($this->spkMethod) {
-            case 'SAW':
-                $dataSpk = VSawHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
-                break;
-            case 'WP':
-                $dataSpk = VWpHasil::where('id', $this->userId)->orderBy('hasil', 'desc')->get();
-                break;
-            case 'TOPSIS':
-                $dataSpk = VTopsisHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
-                break;
-        }
+        // switch($this->spkMethod) {
+        //     case 'SAW':
+        //         $dataSpk = VSawHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
+        //         break;
+        //     case 'WP':
+        //         $dataSpk = VWpHasil::where('id', $this->userId)->orderBy('hasil', 'desc')->get();
+        //         break;
+        //     case 'TOPSIS':
+        //         $dataSpk = VTopsisHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
+        //         break;
+        // }
+
+        $dataSpk = VTopsisHasil::where('user_id', $this->userId)->orderBy('hasil', 'desc')->get();
 
         $user = User::where('w1', '!=', 0)->get();
 

@@ -45,7 +45,7 @@
                                     </a>
                                     <button type="submit" class="text-center btn btn-danger btn-sm" data-bs-toggle="modal"
                                         data-bs-target="#hapusSpk-{{ $value->id }}">
-                                        <i class="fas fa-trash mr-1"></i>
+                                        <i class="fas fa-times mr-1"></i>
                                         Tolak
                                     </button>
                                 </td>

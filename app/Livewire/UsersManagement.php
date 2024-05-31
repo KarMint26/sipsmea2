@@ -45,6 +45,7 @@ class UsersManagement extends Component
 
         $password = $this->generateRandomPassword();
 
+        $validated['verifikasi_siswa'] = 'terima';
         $validated['password'] = Hash::make($password);
         $validated['pwd_nohash'] = $password;
         $validated['email_verified_at'] = now();
