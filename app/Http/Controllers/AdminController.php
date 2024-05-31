@@ -38,7 +38,8 @@ class AdminController extends Controller
         $data = [];
 
         foreach ($peminat as $value) {
-            array_push($data, $value->peminat);
+            $jumlah_peminat = (int) $value->peminat;
+            array_push($data, $jumlah_peminat);
         }
 
         return view('admin.dashboard', [
