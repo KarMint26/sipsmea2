@@ -198,6 +198,12 @@ html {
 
 .nav-link {
     text-transform: uppercase;
+    transition: 300ms ease-in-out;
+    font-weight: 500;
+}
+
+.nav-link:hover {
+    color: var(--primaryColor);
 }
 
 .divider:after,
@@ -633,7 +639,7 @@ html {
 
 /* Mobile View Responsive */
 #features .landing-default {
-    padding: 4rem 2rem;
+    padding: 4rem 2rem 1rem;
 }
 
 #features .title-features {
@@ -702,7 +708,7 @@ html {
 /* Tablet View Responsive */
 @media (min-width: 768px) {
     #features .landing-default {
-        padding: 4rem 3rem;
+        padding: 4rem 3rem 2rem;
     }
 
     #features .title-features h1 {
@@ -719,7 +725,7 @@ html {
 /* Desktop View Responsive */
 @media (min-width: 1024px) {
     #features .landing-default {
-        padding: 5rem 4rem;
+        padding: 5rem 4rem 2rem;
     }
     #features .title-features h1 {
         font-size: 2.5rem;
@@ -992,5 +998,200 @@ html {
     }
     #footer .content .link-boxes .input-box {
         width: 100%;
+    }
+}
+
+/* FAQ Section */
+#faq {
+    padding: 1.5rem 2rem;
+    display: flex;
+    justify-content: center;
+    flex-direction: column-reverse;
+}
+
+#faq .faq-content .faq-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+}
+
+#faq .faq-content .faq-desc {
+    font-size: 0.9rem;
+}
+
+#faq .faq-content .faq-title span {
+    color: var(--primaryColor);
+}
+
+#faq .accordion {
+    margin-top: 1rem;
+}
+
+#faq .accordion-button {
+    font-size: 0.9rem;
+}
+
+#faq .accordion-body {
+    font-size: 0.9rem;
+}
+
+#faq .faq-hero {
+    width: 100%;
+}
+
+.accordion-button:focus {
+    box-shadow: 0 0 0 0.25rem #ffa3cf !important;
+}
+
+.accordion-button:not(.collapsed) {
+    color: var(--primaryColor) !important;
+    background-color: #ffa3cf !important;
+}
+
+@media screen and (min-width: 768px) {
+    #faq {
+        padding: 1.75rem 3rem;
+    }
+
+    #faq .faq-content .faq-title {
+        font-size: 2.5rem;
+    }
+
+    #faq .faq-content .faq-desc {
+        font-size: 1.25rem;
+    }
+
+    #faq .accordion {
+        margin-top: 1.5rem;
+    }
+
+    #faq .accordion-button {
+        font-size: 1.1rem;
+    }
+
+    #faq .accordion-body {
+        font-size: 1.1rem;
+    }
+
+    #faq .faq-hero {
+        width: 80%;
+        height: 80%;
+    }
+}
+
+@media screen and (min-width: 1024px) {
+    #faq {
+        padding: 2rem 4rem;
+        flex-direction: row;
+        justify-content: space-around;
+    }
+
+    #faq .accordion-item {
+        width: 500px;
+    }
+
+    #faq .accordion {
+        margin-top: 2rem;
+    }
+
+    #faq .faq-hero {
+        width: 40%;
+        height: 40%;
+    }
+}
+
+/* About Section */
+#about .landing-default {
+    padding: 1rem 2rem 3rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+#about img {
+    width: 100%;
+}
+
+#about .content-about {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    gap: 0.7rem;
+    margin-top: 1rem;
+}
+
+#about .desc_about {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#about .content-about .title-content h3 {
+    font-weight: 600;
+    font-size: 1rem;
+    transform: translateY(2px);
+}
+
+#about .content-about .title-content h1 {
+    font-weight: 700;
+}
+
+#about .content-about .title-content h1 span {
+    color: var(--primaryColor);
+}
+
+#about .content-about p {
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+}
+
+@media (min-width: 768px) {
+    #about .landing-default {
+        padding: 2rem 3rem 4rem;
+    }
+    #about img {
+        width: 100%;
+    }
+
+    #about .content-about .title-content h3 {
+        font-size: 1.3rem;
+        transform: translateY(5px);
+    }
+
+    #about .content-about .title-content h1 {
+        font-size: 2.5rem;
+    }
+
+    #about .content-about p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 1024px) {
+    #about .landing-default {
+        padding: 2rem 4rem 4rem;
+    }
+
+    #about .content-about {
+        flex-direction: row;
+    }
+
+    #about img {
+        width: 100%;
+    }
+
+    #about .content-about .title-content h3 {
+        font-size: 1.5rem;
+    }
+
+    #about .content-about .title-content h1 {
+        font-size: 2.8rem;
+    }
+
+    #about .content-about p {
+        font-size: 1.2rem;
     }
 }

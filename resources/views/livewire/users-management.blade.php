@@ -49,12 +49,28 @@
                             <td class="text-center">{{ $value->status }}</td>
 
                             <td class="action-field">
-                                <a target="_blank"
-                                    href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa']) }}"
-                                    class="btn btn-sm" style="background-color: blueviolet; color: #fff">
-                                    <i class="fas fa-qrcode mr-1"></i>
-                                    Download QR
-                                </a>
+                                @if ($value->google_id != null)
+                                    <a target="_blank"
+                                        href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa&google_id=' . $value->google_id]) }}"
+                                        class="btn btn-sm" style="background-color: blueviolet; color: #fff">
+                                        <i class="fas fa-qrcode mr-1"></i>
+                                        Download QR
+                                    </a>
+                                @elseif($value->facebook_id != null)
+                                    <a target="_blank"
+                                        href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa&facebook_id=' . $value->facebook_id]) }}"
+                                        class="btn btn-sm" style="background-color: blueviolet; color: #fff">
+                                        <i class="fas fa-qrcode mr-1"></i>
+                                        Download QR
+                                    </a>
+                                @else
+                                    <a target="_blank"
+                                        href="{{ route('barcode_generator', ['name_file' => $value->name, 'nisn' => $value->nisn, 'qr_code_text' => 'https://sipsmea.my.id/student-login?email=' . $encryptedEmail . '&password=' . $encryptedPassword . '&role=siswa']) }}"
+                                        class="btn btn-sm" style="background-color: blueviolet; color: #fff">
+                                        <i class="fas fa-qrcode mr-1"></i>
+                                        Download QR
+                                    </a>
+                                @endif
                                 <a wire:click="edit({{ $value->id }})" data-toggle="modal" data-target="#editModal"
                                     class="btn btn-warning btn-sm"><i class="fas fa-edit mr-1"></i> Edit</a>
                                 <button wire:click="switch_status({{ $value->id }}, '{{ $value->status }}')"

@@ -57,27 +57,29 @@
         <div
             class="wrapper-landing w-100 d-flex justify-content-between align-items-center flex-column flex-lg-row gap-5">
             <div class="content">
-                <h1>SELAMAT DATANG</h1>
-                <p>
+                <h1 id="welcome">SELAMAT DATANG</h1>
+                <p id="desc_landing">
                     Mulai Mempertimbangkan dan Memutuskan Tempat Praktek Kerja
                     Lapanganmu Lewat Website SIP SMEA Dengan Daftar Tempat Praktek Kerja
                     Lapangan Yang Disediakan.
                 </p>
-                @if (Auth::user() && Auth::user()->role == 'siswa')
-                    <a href="{{ route('student.index') }}" class="btn-sip-wide">
-                        <i class="bi bi-backpack4-fill me-2"></i> Mulai Sekarang
-                    </a>
-                @elseif(Auth::user() && Auth::user()->role == 'admin')
-                    <a href="{{ route('dashboard.index') }}" class="btn-sip-wide">
-                        <i class="bi bi-speedometer me-2"></i> Dashboard
-                    </a>
-                @else
-                    <a href="/login" class="btn-sip-wide">
-                        <i class="bi bi-skip-start-circle-fill me-2"></i> Mulai Sekarang
-                    </a>
-                @endif
+                <div id="landing_btn">
+                    @if (Auth::user() && Auth::user()->role == 'siswa')
+                        <a href="{{ route('student.index') }}" class="btn-sip-wide">
+                            <i class="bi bi-backpack4-fill me-2"></i> Mulai Sekarang
+                        </a>
+                    @elseif(Auth::user() && Auth::user()->role == 'admin')
+                        <a href="{{ route('dashboard.index') }}" class="btn-sip-wide">
+                            <i class="bi bi-speedometer me-2"></i> Dashboard
+                        </a>
+                    @else
+                        <a href="/login" class="btn-sip-wide">
+                            <i class="bi bi-skip-start-circle-fill me-2"></i> Mulai Sekarang
+                        </a>
+                    @endif
+                </div>
             </div>
-            <img src="{{ asset('src/assets/hero-landing.png') }}" alt="hero-landing" />
+            <img id="img_landing" src="{{ asset('src/assets/hero-landing.png') }}" alt="hero-landing" />
         </div>
     </section>
 
@@ -92,7 +94,7 @@
                     <img src="./src/assets/features/decision.svg" alt="features image" />
                     <div class="title">Perhitungan SPK</div>
                     <p>
-                        Website ini terdapat perhitungan SPK dengan metode TOPSIS
+                        Website ini terdapat perhitungan SPK metode TOPSIS
                         (<i>Technique For Others Reference by Similarity to Ideal Solution</i>).
                     </p>
                 </div>
@@ -116,6 +118,31 @@
             </d>
     </section>
 
+    <!-- About Section -->
+    <section id="about">
+        <div class="landing-default mt-5">
+            <div class="content-about">
+                <img id="hero_about" src="{{ asset('src/assets/about.png') }}" alt="image-about" />
+                <div class="desc-about">
+                    <div class="title-content">
+                        <h3>SIP SMEA untuk Siswa SMK</h3>
+                        <h1>Tentang <span>SIP SMEA</span></h1>
+                    </div>
+                    <p class="about_desc">
+                        SIP SMEA merupakan website Sistem Informasi PKL untuk mendukung keputusan siswa dalam memilih
+                        tempat PKL(Praktek Kerja Lapangan) sesuai yang diinginkannya dengan melakukan perhitungan SPK
+                        (Sistem Pendukung Keputusan).
+                    </p>
+                    <a href="#list_pkl" id="see_list_pkl" class="btn-sip" style="margin-top: 0.5rem !important;"> <i
+                            class="bi bi-eye-fill me-1"></i> Lihat Tempat PKL</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Guide Section -->
+    <section id="guide"></section>
+
     <!-- Daftar Tempat PKL -->
     <section id="list_pkl">
         <h1><span style="color: var(--primaryColor)">DAFTAR</span> TEMPAT PKL</h1>
@@ -134,7 +161,8 @@
                         </div>
                         <p><i class="bi bi-telephone-fill me-2"></i> {{ $pkl->telephone }}</p>
                         <p><i class="bi bi-clock-fill me-2"></i> {{ $pkl->open_time }}</p>
-                        <p><i class="bi bi-heart-fill me-2"></i> {{ $pkl->peminatans()->first()->peminat }} Peminat</p>
+                        <p><i class="bi bi-heart-fill me-2"></i> {{ $pkl->peminatans()->first()->peminat }} Peminat
+                        </p>
                         <p><i class="bi bi-people-fill me-2"></i> {{ $pkl->daya_tampung }} Daya Tampung</p>
                         <p><i class="bi bi-star-fill me-2"></i> {{ $pkl->rating }}</p>
                         <a href="{{ $pkl->link_gmaps }}" target="_blank" class="btn-sip mt-2"><i
@@ -144,6 +172,94 @@
                 </div>
             @endforeach
         </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq">
+        <div class="faq-content">
+            <h1 class="faq-title">
+                <span>Pertanyaan Tentang</span> <br />
+                Website SIP SMEA
+            </h1>
+            <p class="faq-desc">Pertanyaan yang sering ditanyakan.</p>
+            <div class="accordion" id="accordionExample">
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
+                            Apa itu SIP SMEA?
+                        </button>
+                    </h2>
+                    <div id="collapseOne" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            SIP SMEA merupakan website yang dibuat untuk membantu siswa SMK (Sekolah Menengah
+                            Kejuruan) dalam mengambil keputusan menentukan pilihannya pada tempat PKL (Praktek Kerja
+                            Lapangan), terkhusus pada SMK Negeri 1 Slawi.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            Apa saja fitur unggulan SIP SMEA?
+                        </button>
+                    </h2>
+                    <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            SIP SMEA mempunyai beberapa fitur unggulan seperti edit profile, login dengan QR Code, lalu
+                            juga melakukan perhitungan SPK (Sistem Pendukung Keputusan) dengan metode TOPSIS dalam
+                            membantu menentukan tempat PKL (Praktek Kerja Lapangan).
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            Apakah bisa mengulangi kembali perhitungan SPK?
+                        </button>
+                    </h2>
+                    <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Ya, tentu saja bisa. SIP SMEA menyediakan fitur untuk reset atau ulangi perhitungan SPK
+                            ketika kamu sudah mendapatkan hasil SPK-nya, jika dirasa tidak yakin maka tinggal klik saja
+                            tombol ulangi pada halaman hasil.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            Apakah hasil dari perhitungan SPK dapat didownload?
+                        </button>
+                    </h2>
+                    <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Tentu saja, SIP SMEA menyediakan fitur download file pdf yang isinya adalah hasil
+                            perhitungan SPK yang telah muncul pada halaman hasil.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Dimanakah fitur untuk download QR Login?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Kamu dapat mendownload QR Login saat akun kamu sudah terdaftar dan terverifikasi, serta
+                            dalam keadaan sudah masuk ke akun lewat login manual terlebih dahulu dengan memasukkan email
+                            dan password.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <img src="{{ asset('src/assets/faq.png') }}" class="faq-hero" />
     </section>
 
     <!-- Footer Start -->
@@ -166,6 +282,7 @@
                     <li class="link-name">Navigasi</li>
                     <li><a href="#features">Fitur</a></li>
                     <li><a href="#about">Tentang</a></li>
+                    <li><a href="#guide">Panduan</a></li>
                     <li><a href="#list_pkl">Tempat PKL</a></li>
                     <li><a href="#faq">FAQ</a></li>
                 </ul>

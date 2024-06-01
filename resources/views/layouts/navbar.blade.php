@@ -15,13 +15,27 @@
                 <i class="bi bi-list"></i>
             </span>
         </button>
-        <ul class="navbar-nav w-100 d-none d-lg-flex justify-content-end align-items-center gap-3">
-            <li class="nav-item">
-                <a class="nav-link" href="/">Beranda</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="/#list_pkl">Tempat PKL</a>
-            </li>
+        <ul class="navbar-nav w-100 d-none d-lg-flex justify-content-end align-items-center gap-2">
+            <div class="w-100 d-none d-lg-flex justify-content-center align-items-center flex-row gap-3">
+                <li class="nav-item">
+                    <a class="dtp nav-link" href="/">Beranda</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dtp nav-link" href="/#features">Fitur</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dtp nav-link" href="/#about">Tentang</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dtp nav-link" href="/#guide">Panduan</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dtp nav-link" href="/#list_pkl">Tempat PKL</a>
+                </li>
+                <li class="nav-item">
+                    <a class="dtp nav-link" href="/#faq">FAQ</a>
+                </li>
+            </div>
             @if (Auth::user() && Auth::user()->role == 'admin')
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle btn-custom-dropdown" href="#" role="button"
@@ -97,10 +111,22 @@
             <div class="offcanvas-body px-4 d-lg-none">
                 <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                     <li class="nav-item">
-                        <a class="nav-link" href="/">Beranda</a>
+                        <a class="dtp nav-link" href="/">Beranda</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link dtp" href="/#list_pkl">Tempat PKL</a>
+                        <a class="dtp nav-link" href="/#features">Fitur</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dtp nav-link" href="/#about">Tentang</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dtp nav-link" href="/#guide">Panduan</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dtp nav-link" href="/#list_pkl">Tempat PKL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="dtp nav-link" href="/#faq">FAQ</a>
                     </li>
                     @if (Auth::user() && Auth::user()->role == 'admin')
                         <li class="nav-item dropdown mt-2">
