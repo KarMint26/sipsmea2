@@ -141,7 +141,7 @@
     </section>
 
     <!-- Guide Section -->
-    <section id="guide">
+    <section id="guide" style="margin-bottom: 5rem !important;">
         <div class="landing-default mt-5">
             <div class="title-guide">
                 <h1 class="fw-semibold"><span>Panduan</span> SIP SMEA</h1>
@@ -330,74 +330,8 @@
         <img src="{{ asset('src/assets/faq.png') }}" class="faq-hero" />
     </section>
 
-    <!-- Footer Start -->
-    <section id="footer">
-        <div class="content">
-            <div class="top">
-                <a href="#" class="logo-details">
-                    <h1 class="logo-name"><span>SIP</span> SMEA</h1>
-                </a>
-                <div class="media-icons">
-                    <a href="#"><i class="bi bi-facebook"></i></a>
-                    <a href="#"><i class="bi bi-github"></i></a>
-                    <a href="#"><i class="bi bi-instagram"></i></a>
-                    <a href="#"><i class="bi bi-linkedin"></i></a>
-                    <a href="#"><i class="bi bi-youtube"></i></a>
-                </div>
-            </div>
-            <div class="link-boxes">
-                <ul class="box">
-                    <li class="link-name">Navigasi</li>
-                    <li><a href="/#features">Fitur</a></li>
-                    <li><a href="/#about">Tentang</a></li>
-                    <li><a href="/#guide">Panduan</a></li>
-                    <li><a href="/#list_pkl">Tempat PKL</a></li>
-                    <li><a href="/#faq">FAQ</a></li>
-                </ul>
-                <ul class="box">
-                    <li class="link-name">Daftar Fitur</li>
-                    <li><a href="#">Perhitungan SPK</a></li>
-                    <li><a href="#">Edit Profile</a></li>
-                    <li><a href="#">Login QR Code</a></li>
-                </ul>
-                <ul class="box">
-                    <li class="link-name">Kelebihan</li>
-                    <li><a href="#">Modern UI</a></li>
-                    <li><a href="#">Responsive UI</a></li>
-                    <li><a href="#">Interactive UI</a></li>
-                    <li><a href="#">HD Image</a></li>
-                </ul>
-                <ul class="box">
-                    <li class="link-name">Developer</li>
-                    <li>
-                        <a href="https://www.instagram.com/foxy_foxh/" target="_blank">Instagram</a>
-                    </li>
-                    <li>
-                        <a href="https://id.linkedin.com/in/karel-trisnanto-utomo-8564ba259"
-                            target="_blank">LinkedIn</a>
-                    </li>
-                    <li>
-                        <a href="https://github.com/KarMint26" target="_blank">Github</a>
-                    </li>
-                    <li>
-                        <a href="https://www.facebook.com/profile.php?id=100013436564340" target="_blank">Facebook</a>
-                    </li>
-                </ul>
-                <ul class="box input-box">
-                    <li class="link-name">Kontak Kami</li>
-                    <li><input type="text" placeholder="Masukkan Email Anda" /></li>
-                    <li><a href="mailto:admin@sipsmea.my.id">Kirim Email</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="bottom-details">
-            <div class="bottom-text">
-                <span class="copyright-text">Copyright © 2024 <a href="#">SIP SMEA.</a>All rights
-                    reserved</span>
-            </div>
-        </div>
-    </section>
-
+    <!-- Footer -->
+    @include('layouts.footer')
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous">

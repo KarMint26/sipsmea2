@@ -83,7 +83,19 @@
                     <a href="/" class="nav-link">BERANDA</a>
                 </li>
                 <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/#features" class="nav-link">FITUR</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/#about" class="nav-link">TENTANG</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/#guide" class="nav-link">PANDUAN</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
                     <a href="/#list_pkl" class="nav-link">TEMPAT PKL</a>
+                </li>
+                <li class="nav-item d-none d-sm-inline-block">
+                    <a href="/#faq" class="nav-link">FAQ</a>
                 </li>
             </ul>
 

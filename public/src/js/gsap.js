@@ -84,7 +84,7 @@ gsap.from(".about_desc", 1.1, {
     delay: 0.9,
     scrollTrigger: {
         trigger: ".about_desc",
-        start: "top 70%",
+        start: "top 85%",
     },
 });
 gsap.from("#see_list_pkl", 1.1, {
@@ -93,7 +93,7 @@ gsap.from("#see_list_pkl", 1.1, {
     delay: 1,
     scrollTrigger: {
         trigger: ".about_desc",
-        start: "top 70%",
+        start: "top 85%",
     },
 });
 
