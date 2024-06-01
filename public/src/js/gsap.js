@@ -81,9 +81,9 @@ gsap.from(".title-content", 1.1, {
 gsap.from(".about_desc", 1.1, {
     opacity: 0,
     y: 150,
-    delay: 1,
+    delay: 0.9,
     scrollTrigger: {
-        trigger: ".title-content",
+        trigger: ".about_desc",
         start: "top 70%",
     },
 });
@@ -92,7 +92,7 @@ gsap.from("#see_list_pkl", 1.1, {
     y: 150,
     delay: 1,
     scrollTrigger: {
-        trigger: ".title-content",
+        trigger: ".about_desc",
         start: "top 70%",
     },
 });

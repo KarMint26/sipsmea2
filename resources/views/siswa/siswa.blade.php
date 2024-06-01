@@ -20,7 +20,7 @@
                         </label>
                     </div>
                 @endforeach
-                <button class="btn-sip mt-4" type="submit">Submit</button>
+                <button class="btn-sip mt-4" type="submit">Kirim</button>
             </form>
         </div>
     </div>

@@ -133,15 +133,83 @@
                         tempat PKL(Praktek Kerja Lapangan) sesuai yang diinginkannya dengan melakukan perhitungan SPK
                         (Sistem Pendukung Keputusan).
                     </p>
-                    <a href="#list_pkl" id="see_list_pkl" class="btn-sip" style="margin-top: 0.5rem !important;"> <i
-                            class="bi bi-eye-fill me-1"></i> Lihat Tempat PKL</a>
+                    <a href="#guide" id="see_list_pkl" class="btn-sip" style="margin-top: 0.5rem !important;"> <i
+                            class="bi bi-eye-fill me-1"></i> Lihat Panduan</a>
                 </div>
             </div>
         </div>
     </section>
 
     <!-- Guide Section -->
-    <section id="guide"></section>
+    <section id="guide">
+        <div class="landing-default mt-5">
+            <div class="title-guide">
+                <h1 class="fw-semibold"><span>Panduan</span> SIP SMEA</h1>
+            </div>
+            <!-- Timeline -->
+            <div class="containers">
+                <div class="rows">
+                    <div class="desc_time"><span>Langkah Pertama</span></div>
+                    <div class="line">
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <h2>Pilih Tempat PKL</h2>
+                        <p>Setelah berhasil masuk atau login sebagai siswa, maka selanjutnya adalah klik tombol mulai
+                            sekarang pada landing page atau klik dropdown navigasi bar diatas lalu pilih 'Sistem SPK'.
+                            Sesudah itu pilihlah 5 tempat PKL yang diinginkan dengan melihat referensi pada halaman
+                            beranda, setelah selesai memilih maka klik tombol 'Kirim'.</p>
+                    </div>
+                </div>
+
+                <div class="rows">
+                    <div class="desc_time"><span>Langkah Kedua</span></div>
+                    <div class="line">
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <h2>Memasukkan Jarak</h2>
+                        <p>Sesudah memilih 5 tempat PKL yang diinginkan, maka selanjutnya adalah memasukkan jarak dari
+                            rumah ke tempat PKL tersebut dalam kilometer (km) yang dibulatkan, jika diatas koma 5 maka
+                            bulatkan keatas, jika dibawah maka bulatkan kebawah, setelah mengisi semuanya maka klik
+                            tombol 'Kirim'.</p>
+                    </div>
+                </div>
+
+                <div class="rows">
+                    <div class="desc_time"><span>Langkah Ketiga</span></div>
+                    <div class="line">
+                        <span></span>
+                    </div>
+                    <div class="content">
+                        <h2>Masukkan Nilai Bobot</h2>
+                        <p>Setelah mengisikan jarak, langkah selanjutnya yaitu memasukkan nilai bobot tiap kriteria
+                            seperti jarak, akses jalan, daya tampung, rating, peminat. Tiap kriteria memiliki skala
+                            bobot 1-5, diantaranya adalah 1 untuk 'sangat tidak penting', 2 yaitu 'tidak penting', 3
+                            yaitu 'cukup penting', 4 yaitu 'penting', dan 5 adalah 'sangat penting'. Setalah semuanya
+                            selesai maka klik tombol 'Kirim'</p>
+                    </div>
+                </div>
+
+                <div class="rows">
+                    <div class="desc_time last"><span>Langkah Keempat</span></div>
+                    <div class="line">
+                        <span></span>
+                        <span class="last-point"></span>
+                    </div>
+                    <div class="content last">
+                        <h2>Memunculkan Hasil</h2>
+                        <p>Setelah langkah sebelumnya selesai maka sistem otomatis akan melakukan perhitungan SPK
+                            (Sistem Pendukung Keputusan) dengan metode TOPSIS. Hasil perhitungan akan diberikan dalam
+                            bentuk data tabel yang dapat dilihat secara langsung. Selain itu, bisa juga melakukan reset
+                            / ulangi
+                            perhitungan dengan klik tombol 'Ulangi Perhitungan' dan juga download hasil pdf dengan klik
+                            tombol 'Download PDF'.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Daftar Tempat PKL -->
     <section id="list_pkl">
@@ -280,11 +348,11 @@
             <div class="link-boxes">
                 <ul class="box">
                     <li class="link-name">Navigasi</li>
-                    <li><a href="#features">Fitur</a></li>
-                    <li><a href="#about">Tentang</a></li>
-                    <li><a href="#guide">Panduan</a></li>
-                    <li><a href="#list_pkl">Tempat PKL</a></li>
-                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="/#features">Fitur</a></li>
+                    <li><a href="/#about">Tentang</a></li>
+                    <li><a href="/#guide">Panduan</a></li>
+                    <li><a href="/#list_pkl">Tempat PKL</a></li>
+                    <li><a href="/#faq">FAQ</a></li>
                 </ul>
                 <ul class="box">
                     <li class="link-name">Daftar Fitur</li>
