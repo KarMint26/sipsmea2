@@ -26,15 +26,9 @@
 
     {{-- Open Graph --}}
     <meta property="og:title" content="SIP SMEA" />
-    <meta
-      property="og:description"
-      content="Website Sistem Informasi PKL Untuk Pendukung Keputusan Pemilihan Tempat PKL."
-    />
-    <meta
-      property="og:image"
-      itemprop="image"
-      content="https://sipsmea.my.id/src/assets/preview.png"
-    />
+    <meta property="og:description"
+        content="Website Sistem Informasi PKL Untuk Pendukung Keputusan Pemilihan Tempat PKL." />
+    <meta property="og:image" itemprop="image" content="https://sipsmea.my.id/src/assets/preview.png" />
     <meta property="og:url" content="https://sipsmea.my.id" />
     <meta property="og:type" content="website" />
     <meta property="og:image:type" content="image/png" />
@@ -55,6 +49,14 @@
     <div class="wrapper-landing">
         @yield('content')
     </div>
+
+    <!-- download pdf -->
+    @if (Auth::user()->w1 != 0)
+        <a href="{{ route('download_pdf') }}" target="_blank" class="floating_btn">
+            <i class="bi bi-download"></i>
+            Download PDF
+        </a>
+    @endif
 
     <!-- Footer -->
     @include('layouts.footer')
@@ -92,8 +94,8 @@
         }
     </script>
 
-     {{-- Loading Screen --}}
-     <script>
+    {{-- Loading Screen --}}
+    <script>
         $(window).on('load', function() {
             var images = $('img'),
                 totalImages = images.length,
