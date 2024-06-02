@@ -471,6 +471,7 @@ html {
     font-size: 0.85rem;
     font-weight: bold;
     cursor: pointer;
+    z-index: 99;
 }
 
 .btext {
