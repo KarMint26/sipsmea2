@@ -134,3 +134,155 @@ gsap.from(".accordion", 1.2, {
         start: "top 70%",
     },
 });
+
+// Guide
+gsap.from("#guide_title", 1.2, {
+    opacity: 0,
+    y: 150,
+    delay: 0.5,
+    scrollTrigger: {
+        trigger: "#guide_title",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#desc_time1", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.7,
+    scrollTrigger: {
+        trigger: "#desc_time1",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#desc_time2", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.7,
+    scrollTrigger: {
+        trigger: "#desc_time2",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#desc_time3", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.7,
+    scrollTrigger: {
+        trigger: "#desc_time3",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#desc_time4", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.7,
+    scrollTrigger: {
+        trigger: "#desc_time4",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#guide_content1", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.9,
+    scrollTrigger: {
+        trigger: "#guide_content1",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#guide_content2", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.9,
+    scrollTrigger: {
+        trigger: "#guide_content2",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#guide_content3", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.9,
+    scrollTrigger: {
+        trigger: "#guide_content3",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#guide_content4", 1.2, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.9,
+    scrollTrigger: {
+        trigger: "#guide_content4",
+        start: "top 80%",
+    },
+});
+
+gsap.from("#line1", 1, {
+    opacity: 0,
+    y: -150,
+    delay: 0.5,
+    scrollTrigger: {
+        trigger: "#line1",
+        start: "top 70%",
+    },
+});
+
+gsap.from("#line2", 1, {
+    opacity: 0,
+    y: -150,
+    delay: 0.5,
+    scrollTrigger: {
+        trigger: "#line2",
+        start: "top 70%",
+    },
+});
+
+gsap.from("#line3", 1, {
+    opacity: 0,
+    y: -150,
+    delay: 0.5,
+    scrollTrigger: {
+        trigger: "#line3",
+        start: "top 70%",
+    },
+});
+
+gsap.from("#line4", 1, {
+    opacity: 0,
+    y: -150,
+    delay: 0.5,
+    scrollTrigger: {
+        trigger: "#line4",
+        start: "top 70%",
+    },
+});
+
+// List PKL
+gsap.from("#list_pkl_title", 1, {
+    opacity: 0,
+    scale: 0,
+    delay: 0.5,
+    scrollTrigger: {
+        trigger: "#list_pkl_title",
+        start: "top 70%",
+    },
+});
+
+gsap.from(".card", 1, {
+    opacity: 0,
+    y: 100,
+    delay: 0.8,
+    scrollTrigger: {
+        trigger: ".card",
+        start: "top 70%",
+    },
+});

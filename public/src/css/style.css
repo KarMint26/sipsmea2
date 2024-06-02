@@ -679,10 +679,22 @@ html {
     padding: 1rem;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
     transition: 300ms ease-in-out;
+    margin-top: 1rem;
+}
+
+.box-grid .field-features::before {
+    content: '';
+    position: absolute;
+    left: -4%;
+    top: -6%;
+    width: 108%;
+    height: 160px;
+    z-index: -1;
+    background-color: var(--primaryColor);
+    border-radius: 1rem;
 }
 
 .box-grid .field-features:hover {
-    transform: translateY(-5px);
     cursor: default;
 }
 
@@ -1255,6 +1267,9 @@ html {
     background-color: #fff;
     border-radius: 10px;
     box-shadow: 0 0 6px 0 rgba(0, 0, 0, 0.3);
+}
+
+#guide .rows .guide_content {
     grid-area: theContent;
 }
 
