@@ -43,11 +43,6 @@
 </head>
 
 <body>
-    <!-- Button back to top -->
-    <div class="button-backtop">
-        <i class="bi bi-arrow-down"></i>
-    </div>
-
     {{-- Loading Screen --}}
     <div id="loading">
         <div class="custom-loader"></div>
