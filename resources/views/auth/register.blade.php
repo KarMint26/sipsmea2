@@ -20,11 +20,18 @@
 </head>
 
 <body>
+    {{-- Loading Screen --}}
+    <div id="loading">
+        <div class="custom-loader"></div>
+        <div style="font-size: 0.8rem">Sedang mengunduh konten...</div>
+    </div>
+
     <section class="register">
         <div class="container py-5 px-4 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6 d-none d-lg-block">
-                    <img src="{{ asset('./src/assets/hero-register.png') }}" style="transform: scale(1.2)" class="hero-register" alt="register hero image" />
+                    <img src="{{ asset('./src/assets/hero-register.png') }}" style="transform: scale(1.2)"
+                        class="hero-register" alt="register hero image" />
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <div class="head-login">
@@ -75,13 +82,15 @@
                         </div>
 
                         {{-- Login Google --}}
-                        <a href="{{ route('google_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center">
+                        <a href="{{ route('google_redirect') }}"
+                            class="social-login-field d-flex justify-content-center align-items-center">
                             <img src="{{ asset('src/assets/google.png') }}" alt="google-icon" width="50px">
                             <div class="login-with-google">Masuk Dengan Google</div>
                         </a>
 
                         {{-- Login Facebook --}}
-                        <a href="{{ route('facebook_redirect') }}" class="social-login-field d-flex justify-content-center align-items-center mt-3">
+                        <a href="{{ route('facebook_redirect') }}"
+                            class="social-login-field d-flex justify-content-center align-items-center mt-3">
                             <img src="{{ asset('src/assets/facebook.png') }}" alt="facebook-icon" width="50px">
                             <div class="login-with-facebook">Masuk Dengan Facebook</div>
                         </a>
@@ -113,6 +122,31 @@
             </script>
         @endforeach
     @endif
+
+    {{-- Loading Screen --}}
+    <script>
+        $(window).on('load', function() {
+            var images = $('img'),
+                totalImages = images.length,
+                imagesLoaded = 0;
+
+            function imageLoaded() {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    $('#loading').fadeOut('slow');
+                }
+            }
+
+            images.each(function() {
+                if (this.complete) {
+                    imageLoaded();
+                } else {
+                    $(this).on('load', imageLoaded);
+                    $(this).on('error', imageLoaded);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

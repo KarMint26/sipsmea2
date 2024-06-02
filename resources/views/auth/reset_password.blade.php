@@ -20,6 +20,12 @@
 </head>
 
 <body>
+    {{-- Loading Screen --}}
+    <div id="loading">
+        <div class="custom-loader"></div>
+        <div style="font-size: 0.8rem">Sedang mengunduh konten...</div>
+    </div>
+
     <section class="forgot-password">
         <div class="container py-5 px-4 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
@@ -81,6 +87,31 @@
             </script>
         @endforeach
     @endif
+
+    {{-- Loading Screen --}}
+    <script>
+        $(window).on('load', function() {
+            var images = $('img'),
+                totalImages = images.length,
+                imagesLoaded = 0;
+
+            function imageLoaded() {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    $('#loading').fadeOut('slow');
+                }
+            }
+
+            images.each(function() {
+                if (this.complete) {
+                    imageLoaded();
+                } else {
+                    $(this).on('load', imageLoaded);
+                    $(this).on('error', imageLoaded);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

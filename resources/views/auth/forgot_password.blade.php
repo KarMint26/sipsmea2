@@ -20,11 +20,18 @@
 </head>
 
 <body>
+    {{-- Loading Screen --}}
+    <div id="loading">
+        <div class="custom-loader"></div>
+        <div style="font-size: 0.8rem">Sedang mengunduh konten...</div>
+    </div>
+
     <section class="forgot-password">
         <div class="container py-5 px-4 h-100">
             <div class="row d-flex align-items-center justify-content-center h-100">
                 <div class="col-md-8 col-lg-7 col-xl-6 d-none d-lg-block">
-                    <img src="{{ asset('./src/assets/hero-forgot-pwd.png') }}" class="hero-register" alt="forgot password hero image" />
+                    <img src="{{ asset('./src/assets/hero-forgot-pwd.png') }}" class="hero-register"
+                        alt="forgot password hero image" />
                 </div>
                 <div class="col-md-7 col-lg-5 col-xl-5 offset-xl-1">
                     <div class="head-login">
@@ -86,6 +93,31 @@
             toastr.success("{{ session('success') }}")
         </script>
     @endif
+
+    {{-- Loading Screen --}}
+    <script>
+        $(window).on('load', function() {
+            var images = $('img'),
+                totalImages = images.length,
+                imagesLoaded = 0;
+
+            function imageLoaded() {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    $('#loading').fadeOut('slow');
+                }
+            }
+
+            images.each(function() {
+                if (this.complete) {
+                    imageLoaded();
+                } else {
+                    $(this).on('load', imageLoaded);
+                    $(this).on('error', imageLoaded);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>

@@ -27,6 +27,11 @@
 </head>
 
 <body>
+    {{-- Loading Screen --}}
+    <div id="loading">
+        <div class="custom-loader"></div>
+        <div style="font-size: 0.8rem">Sedang mengunduh konten...</div>
+    </div>
 
     <section class="email_verify d-flex justify-content-center align-items-center flex-columns"
         style="min-height: 100vh;">
@@ -43,7 +48,8 @@
 
                 <a href="{{ route('verification.send') }}" class="resend_email_btn" style="background-color: grey;">
                     <i class="bi bi-arrow-repeat"></i>
-                    <div id="text_resend_email" class="d-flex justify-content-center align-items-center" style="gap: 0.5rem;">Verifikasi Ulang</div>
+                    <div id="text_resend_email" class="d-flex justify-content-center align-items-center"
+                        style="gap: 0.5rem;">Verifikasi Ulang</div>
                 </a>
             </div>
         </div>
@@ -81,6 +87,31 @@
             toastr.success("{{ session('message') }}")
         </script>
     @endif
+
+    {{-- Loading Screen --}}
+    <script>
+        $(window).on('load', function() {
+            var images = $('img'),
+                totalImages = images.length,
+                imagesLoaded = 0;
+
+            function imageLoaded() {
+                imagesLoaded++;
+                if (imagesLoaded === totalImages) {
+                    $('#loading').fadeOut('slow');
+                }
+            }
+
+            images.each(function() {
+                if (this.complete) {
+                    imageLoaded();
+                } else {
+                    $(this).on('load', imageLoaded);
+                    $(this).on('error', imageLoaded);
+                }
+            });
+        });
+    </script>
 </body>
 
 </html>
