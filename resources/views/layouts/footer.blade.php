@@ -24,16 +24,16 @@
             </ul>
             <ul class="box">
                 <li class="link-name">Daftar Fitur</li>
-                <li><a class="spn" style="cursor: pointer">Perhitungan SPK</a></li>
-                <li><a class="spn" style="cursor: pointer">Edit Profile</a></li>
-                <li><a class="spn" style="cursor: pointer">Login QR Code</a></li>
+                <li><a href="#" style="cursor: pointer">Perhitungan SPK</a></li>
+                <li><a href="#" style="cursor: pointer">Edit Profile</a></li>
+                <li><a href="#" style="cursor: pointer">Login QR Code</a></li>
             </ul>
             <ul class="box">
                 <li class="link-name">Kelebihan</li>
-                <li><a class="spn" style="cursor: pointer">Modern UI</a></li>
-                <li><a class="spn" style="cursor: pointer">Responsive UI</a></li>
-                <li><a class="spn" style="cursor: pointer">Interactive UI</a></li>
-                <li><a class="spn" style="cursor: pointer">HD Image</a></li>
+                <li><a href="#" style="cursor: pointer">Modern UI</a></li>
+                <li><a href="#" style="cursor: pointer">Responsive UI</a></li>
+                <li><a href="#" style="cursor: pointer">Interactive UI</a></li>
+                <li><a href="#" style="cursor: pointer">HD Image</a></li>
             </ul>
             <ul class="box">
                 <li class="link-name">Developer</li>

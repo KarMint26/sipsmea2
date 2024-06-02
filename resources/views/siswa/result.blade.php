@@ -48,6 +48,11 @@
         Hasil perhitungan pada {{ $timestamp }}
     </div>
 
+    <a href="{{ route('download_pdf') }}" target="_blank" class="floating_btn">
+        <i class="bi bi-download"></i>
+        Download PDF
+    </a>
+
     <!-- Modal -->
     <div class="modal fade" id="resetSpk" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1"
         aria-labelledby="resetSpkLabel" aria-hidden="true">

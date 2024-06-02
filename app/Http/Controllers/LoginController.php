@@ -233,10 +233,15 @@ class LoginController extends Controller
             return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
         }
 
+        if($userExist->status != 'aktif'){
+            return redirect()->route('login')->with('warn', 'Gagal login, akun tidak aktif');
+        }
+
         if($userExist->verifikasi_siswa != 'tolak'){
             Auth::login($userExist);
             return redirect()->route('index')->with('message', 'Login berhasil');
         }
+
         return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
     }
 
@@ -276,10 +281,15 @@ class LoginController extends Controller
             return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
         }
 
+        if($userExist->status != 'aktif'){
+            return redirect()->route('login')->with('warn', 'Gagal login, akun tidak aktif');
+        }
+
         if($userExist->verifikasi_siswa != 'tolak'){
             Auth::login($userExist);
             return redirect()->route('index')->with('message', 'Login berhasil');
         }
+
         return redirect()->route('login')->with('message', 'Akun telah aktif, tunggu verifikasi akun dari operator');
     }
 

@@ -83,7 +83,7 @@ gsap.from(".about_desc", 1.1, {
     y: 150,
     delay: 0.9,
     scrollTrigger: {
-        trigger: ".about_desc",
+        trigger: ".title-content",
         start: "top 85%",
     },
 });

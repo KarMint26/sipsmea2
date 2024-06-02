@@ -50,14 +50,6 @@
         @yield('content')
     </div>
 
-    <!-- download pdf -->
-    @if (Auth::user()->w1 != 0)
-        <a href="{{ route('download_pdf') }}" target="_blank" class="floating_btn">
-            <i class="bi bi-download"></i>
-            Download PDF
-        </a>
-    @endif
-
     <!-- Footer -->
     @include('layouts.footer')
 

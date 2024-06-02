@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Website Sistem Informasi PKL Untuk Pendukung Keputusan Pemilihan Tempat PKL." />
     <title>SIP SMEA</title>
     <link rel="shortcut icon" href="{{ asset('src/assets/favicon.svg') }}" type="image/svg+xml" />
     <!-- PWA  -->
@@ -91,7 +92,7 @@
             </div>
             <div class="box-grid">
                 <div class="field-features">
-                    <img src="./src/assets/features/decision.svg" alt="features image" />
+                    <img src="{{ asset('src/assets/features/decision.svg') }}" alt="features image" />
                     <div class="title">Perhitungan SPK</div>
                     <p>
                         Website ini terdapat perhitungan SPK metode TOPSIS
@@ -99,7 +100,7 @@
                     </p>
                 </div>
                 <div class="field-features">
-                    <img src="./src/assets/features/edit.svg" alt="features image" />
+                    <img src="{{ asset('src/assets/features/edit.svg') }}" alt="features image" />
                     <div class="title">Edit Profile</div>
                     <p>
                         Anda dapat melakukan edit profile pada navigasi bar, seperti mengganti nama dan juga NISN (Nomor
@@ -107,7 +108,7 @@
                     </p>
                 </div>
                 <div class="field-features">
-                    <img src="./src/assets/features/qr.svg" alt="features image" />
+                    <img src="{{ asset('src/assets/features/qr.svg') }}" alt="features image" />
                     <div class="title">Login QR Code</div>
                     <p>
                         Anda dapat masuk ke website dengan menggunakan QR Code yang didownload pada
@@ -344,7 +345,7 @@
                 </div>
             </div>
         </div>
-        <img src="{{ asset('src/assets/faq.png') }}" class="faq-hero" />
+        <img src="{{ asset('src/assets/faq.png') }}" class="faq-hero" alt="faq-image" />
     </section>
 
     <!-- Footer -->
