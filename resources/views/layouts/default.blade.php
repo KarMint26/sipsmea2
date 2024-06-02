@@ -33,9 +33,9 @@
     <meta
       property="og:image"
       itemprop="image"
-      content="https://sipsmea.techtitans.id/src/assets/preview.png"
+      content="https://sipsmea.my.id/src/assets/preview.png"
     />
-    <meta property="og:url" content="https://sipsmea.techtitans.id" />
+    <meta property="og:url" content="https://sipsmea.my.id" />
     <meta property="og:type" content="website" />
     <meta property="og:image:type" content="image/png" />
     <meta property="og:image:width" content="600" />
