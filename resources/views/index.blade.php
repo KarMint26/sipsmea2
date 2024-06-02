@@ -285,6 +285,22 @@
                 <div class="accordion-item">
                     <h2 class="accordion-header">
                         <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            Apa itu metode TOPSIS?
+                        </button>
+                    </h2>
+                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                        <div class="accordion-body">
+                            Metode TOPSIS (<i>Technique for Order Preference by Similarity to Ideal Solution</i>) adalah
+                            sebuah
+                            teknik pengambilan keputusan multikriteria yang digunakan untuk menentukan solusi terbaik di
+                            antara sejumlah alternatif berdasarkan kedekatannya dengan solusi ideal.
+                        </div>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <h2 class="accordion-header">
+                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
                             data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                             Apa saja fitur unggulan SIP SMEA?
                         </button>
@@ -323,21 +339,6 @@
                         <div class="accordion-body">
                             Tentu saja, SIP SMEA menyediakan fitur download file pdf yang isinya adalah hasil
                             perhitungan SPK yang telah muncul pada halaman hasil.
-                        </div>
-                    </div>
-                </div>
-                <div class="accordion-item">
-                    <h2 class="accordion-header">
-                        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
-                            data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                            Dimanakah fitur untuk download QR Login?
-                        </button>
-                    </h2>
-                    <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
-                        <div class="accordion-body">
-                            Kamu dapat mendownload QR Login saat akun kamu sudah terdaftar dan terverifikasi, serta
-                            dalam keadaan sudah masuk ke akun lewat login manual terlebih dahulu dengan memasukkan email
-                            dan password.
                         </div>
                     </div>
                 </div>
