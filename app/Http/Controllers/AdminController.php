@@ -69,6 +69,7 @@ class AdminController extends Controller
             $query->where('w1', '!=', 0);
         })
                     ->where('id', '>', 1)
+                    ->orderBy('updated_at', 'asc')
                     ->get();
         return view('admin.hasil_spk', ['data_siswa' => $data_siswa]);
     }

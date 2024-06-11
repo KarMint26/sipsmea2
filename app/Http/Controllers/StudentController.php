@@ -280,10 +280,12 @@ class StudentController extends Controller
             "nisn_siswa.digits_between" => "NISN harus terdiri dari minimal 5 digit angka",
         ]);
 
-        $user_update = User::where('id', Auth::user()->id)->update([
-            "name" => $validated['nama_siswa'],
-            "nisn" => $validated['nisn_siswa']
-        ]);
+        $user = User::find(Auth::user()->id);
+        $user->timestamps = false;
+        $user->name = $validated['nama_siswa'];
+        $user->nisn = $validated['nisn_siswa'];
+        $user_update = $user->save();
+        $user->timestamps = true;
 
         if($user_update) {
             return redirect()->back()->with('message', 'Berhasil Mengubah Profile');
